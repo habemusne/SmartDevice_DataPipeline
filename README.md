@@ -14,7 +14,7 @@ drugs. The other information that can be retrieved from this data is the regions
 resonable time in running. The succes of events like marathon can be predited with this preliminary 
 information along with other factors combined.
 
-# Tools and technolgies to be used - 
+# Tools and technologies to be used 
 1. Apache Kafka
 2. Apache Spark
 3. AWS S3
