@@ -2,7 +2,7 @@
 This project aims at building data pipeline for collecting data from smart health devices
 like fitbit, apple watch etc and running analysis on the collected data. The fields/attributes 
 of the collected data will contain location(latitude, longitude), blood pressure, number of hours
-slept, hours spent in running for each user of the device. The data will be processes 
+slept, hours spent in running for each user of the device. The data will be processed 
 in two ways:
 1. Real time processing - This processing will focus on monitoring the blood pressure of the user.
 If the range of the blood pressure varies highly from the standard range (90-120), then user's emergency
