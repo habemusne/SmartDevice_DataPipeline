@@ -21,4 +21,13 @@ information along with other factors combined.
 4. Redis
 5. Flask
 
+# Data fields in the provided data
+There are two tables containing the information about the device. 
+->One table is static which contains the device id, area zipcode of the user of the device (registered address with the device company) and normal range of the blood pressure of the user of the device as this might differ from person to person depending on age and other such factors.
+-> The other table will collect the steaming data from the device with its timestamp. The fields in this table are device id, blood pressure and timestamp at which this data is collected.
+
+# Flow of the data pipeline
+The data will be read from the device with the help of Kafka on fixed intervals. This data will be fed to the Spark Streaming.  
+
+
 
