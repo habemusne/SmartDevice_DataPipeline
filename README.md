@@ -17,17 +17,19 @@ information along with other factors combined.
 # Tools and technologies to be used 
 1. Apache Kafka
 2. Apache Spark
-3. AWS S3
-4. Redis
-5. Flask
+3. Redis
+4. Flask
 
 # Data fields in the provided data
 There are two tables containing the information about the device. 
-->One table is static which contains the device id, area zipcode of the user of the device (registered address with the device company) and normal range of the blood pressure of the user of the device as this might differ from person to person depending on age and other such factors.
--> The other table will collect the steaming data from the device with its timestamp. The fields in this table are device id, blood pressure and timestamp at which this data is collected.
+->One table is static which contains the device id, area zipcode of the user of the device (registered address with the device company) and normal range of the blood pressure of the user of the device as this might differ from person to person depending on age and other such factors. (User_Details)
+-> The other table will collect the steaming data from the device with its timestamp. The fields in this table are device id, latitude of the current location,longitude of the current location, blood pressure and timestamp at which this data is collected. (User_Health_Details)
 
 # Flow of the data pipeline
-The data will be read from the device with the help of Kafka on fixed intervals. This data will be fed to the Spark Streaming.  
+The data will be read from the devices with the help of Kafka on regular intervals. This data will be fed to the Spark Streaming. If the blood pressure value from some device is deviating too much from the standard range of blood pressure that 
+is present in the table (User_Details), appropriate action would be taken for those users.
+A scheduler would be running to schedule the batch processing. At the end of the day, the data collected during the day for all the locations (based on the saved area zipcodes in User_Details table) will be processed to identify the regions with maximum number of people with blood pressure problems. This report would be shown in the form of heat map.
+
 
 
 
