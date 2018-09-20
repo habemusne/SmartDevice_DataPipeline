@@ -32,8 +32,8 @@ if __name__ == "__main__":
     .getOrCreate()
 
     # hadoop configurations for storing data to redshift
-    sc._jsc.hadoopConfiguration().set("fs.s3n.awsAccessKeyId", "AKIAITVZIRCRA45JISLQ")
-    sc._jsc.hadoopConfiguration().set("fs.s3n.awsSecretAccessKey","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")
+    sc._jsc.hadoopConfiguration().set("fs.s3n.awsAccessKeyId",<ACCESS-KEY-ID>)
+    sc._jsc.hadoopConfiguration().set("fs.s3n.awsSecretAccessKey",<SECRET-ACCESS-KEY>)
 
     broker, topic = sys.argv[1:]
     #inputFromKafka = KafkaUtils.createStream(ssc,broker,"raw-event-streaming-consumer",{topic:1})
