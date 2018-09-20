@@ -12,7 +12,7 @@ def writeToRedshift(rdd):
 
             df.write\
             .format("com.databricks.spark.redshift")\
-            .option("url", "jdbc:redshift://redshift-cluster-1.cy68m2eaezzl.us-east-1.redshift.amazonaws.com:5439/dev?user=awsuser&password=Awsuser123") \
+            .option("url", "jdbc:redshift://<redshift-cluster-url>:5439/dev?user=<userName>&password=<pswrd>") \
             .option("dbtable", "device_data") \
             .option('forward_spark_s3_credentials',True)\
             .option("tempdir", "s3n://bucket") \
