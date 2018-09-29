@@ -1,41 +1,74 @@
 #!/usr/bin/python
 
 import random
+import sys
+import math
 import datetime
+import json
+from datetime import datetime
+from time import sleep
+from json import dumps
+from kafka import KafkaProducer
 
+START = datetime.utcfromtimestamp(0)
 
-def main():
-    now = datetime.datetime.now()
-    with open('userLocationData.csv', 'r') as in_file:
-        next(in_file)
-        with open('deviceGeneartedData.csv', 'w') as out_file:
-            for line in in_file:
-                deviceId = line.split(',')[0]
-                zip_code = line.split(',')[1]
-                latitude = line.split(',')[2]
-                longitute = line.split(',')[3]
-                city = line.split(',')[4]
+class DataProducer(object):
+
+    def __init__(self,address):
+        self.dataProducer = KafkaProducer(bootstrap_servers=address)
+    
+    def timeInSecs(self,currTime):
+        return (currTime - START).total_seconds()
+
+    def produceData(self,sourceId):
+         device_count = 1
+         while True:
+             with open('userLocationData.csv', 'r') as in_file:
+                 next(in_file)
+                 for line in in_file:
+                    deviceId = str(device_count)
+                    latitude = line.split(',')[2]
+                    longitude = line.split(',')[3]
+                    timeStamp = self.timeInSecs(datetime.now())
                 
-                num = 70
-                #print(word)
-                if(int(deviceId) < 20):
-                    num = random.randint(60,70)
+                    if(int(deviceId) < 200):
+                        heartRate = random.uniform(60,70)
+			heartRate = round(heartRate,2)
 
-                elif(int(deviceId) < 40):
-                    num = random.randint(80, 90)
+                    elif(int(deviceId) < 400):
+                        heartRate = random.uniform(80, 90)
+			heartRate = round(heartRate,2)
 
-                elif(int(deviceId) < 60):
-                    num = random.randint(100, 120)
+                    elif(int(deviceId) < 600):
+                        heartRate = random.uniform(140, 200)
+			heartRate = round(heartRate,2)
 
-                elif(int(deviceId) < 80):
-                    num = random.randint(80, 90)
+                    elif(int(deviceId) < 800):
+                        heartRate = random.uniform(80, 120)
+			heartRate = round(heartRate,2)
 
-                elif(int(deviceId) <= 100):
-                    num = random.randint(40, 50)
+                    elif(int(deviceId) <= 1000):
+                        heartRate = random.uniform(90, 180)
+			heartRate = round(heartRate,2)
+                    
+                    data = json.dumps({"deviceId":deviceId,
+                                     "time":timeStamp,
+                                     "latitude":latitude,
+                                     "longitude":longitude,
+                                     "heartRate":heartRate})
+                     
+                    #print(data)
+                    #print('\n')
+                    self.dataProducer.send('device-data',data)
+                    device_count+=1
+                    if device_count%1000 == 0:
+                        device_count = 1;
+		    #sleep(0.1);
 
-                out_file.write(deviceId + ',' + zip_code + ',' + latitude + ',' + longitute + ',' + city + ',' \
-                                 + str(now.year) + ',' + str(now.month) + ','  + str(num) + '\n')
+if __name__ == "__main__":
+    args = sys.argv
+    address = str(args[1])
+    partition_id = str(args[2])
+    producer = DataProducer(address)
+    producer.produceData(partition_id)
 
-
-#Call the main function
-main()
