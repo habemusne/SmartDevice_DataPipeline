@@ -14,7 +14,7 @@ patients health records( for example desired state of the patients health after 
 or  machine learning, can make it possible for doctors to rapidly take required actions to their patients cases.
 It has the potential to enable scalable chronic disease management with better care at lower costs.
 
-# Tools and technologies to be used 
+# Tools and technologies used 
 1. Apache Kafka
 2. Apache Spark Streaming
 3. S3
@@ -35,7 +35,7 @@ be used to comapre the location of the device to first confirm if its a false al
 
 # Flow of the data pipeline
 The data will be read from the devices with the help of Kafka on regular intervals. This data will be fed to the Spark Streaming. If the averaged out value from a window of 2 minutes value from some device is deviating too much from the standard range of heart rate for that person ( present in User_Details), appropriate action would be taken for those users.
-A scheduler would be running to schedule the batch processing. At the end of the day, the data collected during the day for all the locations (based on the saved area zipcodes in User_Details table) will be processed to identify the regions with maximum number of people with blood pressure problems. This report would be shown in the form of heat map.
+A scheduler would be running to schedule the batch processing. At the end of the day, the data collected during the day for all the locations (based on the saved area zipcodes in User_Details table) will be processed to identify the regions with maximum number of people with heart problems. This report would be shown in the form of heat map.
 
 # Possible extension
 The incoming data can be used with machine learning algorithms to give more accurate results while keeping the 
