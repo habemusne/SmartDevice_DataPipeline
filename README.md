@@ -21,31 +21,45 @@ It has the potential to enable scalable chronic disease management with better c
 4. AWS Redshift
 5. Dash 
 
-# Data fields in the provided data
+# Details of the data
 There are three tables containing the information about the device. 
--> One table is static which contains the device id, area zipcode of the user of the device 
-(registered address with the device company) and normal range of the blood pressure of the user of 
-the device as this might differ from person to person depending on age and other such factors. (User_Details)
--> The other table will collect the steaming data from the device with its timestamp. The fields 
-in this table are device id, latitude of the current location,longitude of the current location, 
-heart rate  and timestamp at which this data is collected. (User_Health_Details)
--> The third table contains the gym facility locations around the given region. The data from this table would
-be used to comapre the location of the device to first confirm if its a false alarm.
+
+-> User_Details-contains the user personal details including device id, area zipcode of 
+the user, normal heart beat range of the user as this might differ from person to person 
+depending on various conditions. (User_Details)
+
+-> Streaming Data-collects the streaming data from the device with its timestamp. The fields 
+in the incoming data are device id, latitude of the current location,longitude of the current 
+location,heart rate  and timestamp at which this data is collected.
+
+-> Gym locations-contains the gym facility locations around the given region. The data from this 
+table would be used to compare the location of the device to first confirm if its a false alarm.
 
 
 # Flow of the data pipeline
 The data will be read from the devices with the help of Kafka on regular intervals. This data will be fed to the Spark Streaming. If the averaged out value from a window of 2 minutes value from some device is deviating too much from the standard range of heart rate for that person ( present in User_Details), appropriate action would be taken for those users.
-A scheduler would be running to schedule the batch processing. At the end of the day, the data collected during the day for all the locations (based on the saved area zipcodes in User_Details table) will be processed to identify the regions with maximum number of people with heart problems. This report would be shown in the form of heat map.
+The aggregated data and the raw data is saved to S3 as its coming and being processed.
+
+The anomaly will be displayed on the Dash dashboard.
+
+Scheduled jobs-
+
+A scheduler would be running to copy the data from S3 to redshift. At the end of the day, the data collected during the day for all the users will be copied to  the data ware house.
+
+Daily reports will be generated from the collected data. A comparison in the heart beat pattern over a week would 
+be available to the doctors for further analysis in the patients health.
 
 # Possible extension
 The incoming data can be used with machine learning algorithms to give more accurate results while keeping the 
 false alarms low.
 
 # Further scope of improvements
-Spark streaming does not guarantee efficiently handling late incoming data. It can lead to erronous results.
-This is very important in case of health monitoring devices. Spark Structured Streaming resolves this issue by
-using watermarking mechanism. In Structured Spark Streaming, the time limit to accept the late incoming data can be 
-specified. If the data does not come in that window, the data will be discarded and will not impact the result.
+Spark streaming does not guarantee efficiently handling late incoming data.This is very important in case of health 
+monitoring devices. The current data pipeline filters out the late incoming data based on current time and the 
+timestamp of the data. This can be further improved with Spark Structured Streaming by using watermarking mechanism. In Structured Spark Streaming, the time limit to accept the late incoming data can be specified. If the data does not come in that window, the data will be discarded and will not impact the result.
+The support for Structured spark streaming was not available for python untill recently. The repo contains the code for
+getting the data and saving the result to local machine. ForEachWriter function which is available for saving the data to
+the database did not work well in python. 
 
 
 
