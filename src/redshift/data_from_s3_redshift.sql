@@ -10,12 +10,12 @@ create table user_personal_details (
 -- create table for storing patients health details
 create table user_health_details(
 device_id                   INTEGER           not null,
-min_heart_rate		    FLOAT             not null,
+min_heart_rate		          FLOAT             not null,
 max_heart_rate              FLOAT             not null
 );
 
 -- create table for storing patients real time health details
-create table current_health_vitals(
+create table daily_health_vitals(
 device_id           INTEGER not null,
 latitude            DOUBLE PRECISION not null,
 longitude           DOUBLE PRESICION not null,
@@ -24,7 +24,7 @@ time                TIMESTAMP not null
 );
 
 -- copy data from s3
-copy current_health_vitals from 's3://anshu-insight/rawData/part_'
+copy daily_health_vitals from 's3://anshu-insight/rawData/part_'
 credentials 'aws_access_key_id=<>;aws_secret_access_key=<>'
 csv;
 
