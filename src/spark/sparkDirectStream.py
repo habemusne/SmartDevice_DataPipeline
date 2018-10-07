@@ -2,6 +2,7 @@ import sys
 import json
 import time
 import datetime
+import argparse
 import pyspark.sql.functions as func
 from pyspark import SparkContext, SparkConf
 from pyspark.streaming import StreamingContext
@@ -11,6 +12,18 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import *
 from pyspark.sql import SQLContext, Row
 from pyspark.sql.functions import lit
+
+#Read the command line arguments
+parser = argparse.ArgumentParser(description='Spark Streaming')
+parser.add_argument('--broker', type=str, default='ec2-18-235-25-194.compute-1.amazonaws.com:9092,ec2-52-202-106-225.compute-1.amazonaws.com:9092',
+                    help="List of brokers which spark is listening to")
+parser.add_argument('--topic', type=str, default='device-data',
+                    help="name of the topic on which kafka is sending the data")
+parser.add_argument('--gymLocations', type=str, default='/data/gymLocations.csv',
+                    help="path where gym Location file exists on HDFS")
+parser.add_argument('--userData', type=str, default='/data/userRecords.csv',
+                    help="path where user records exist on HDFS")
+args = parser.parse_args()
 
 #Initialize the contexts#
 sc = SparkContext(appName="HealthInsights")
@@ -43,13 +56,22 @@ def findAvgHeartRatePerDevice(rdd):
         df = df.withColumn("_3",col("_3").cast("double"))
   
         #Name the columns
-	df  = df.selectExpr("_1 as deviceID", "_2 as Longitude","_3 as Latitude","_4 as Time","_5 as HeartRate ")
+	df  = df.selectExpr("_1 as deviceID",\
+			    "_2 as Longitude",\
+			    "_3 as Latitude",\
+			    "_4 as Time",\
+			    "_5 as HeartRate ")
  
-        #Filter out the out of order data as the data is time series. A late coming data point should not affect the results.
+        #Filter out the out of order data as the data is time series. 
+	#A late coming data point should not affect the results.
         df  = df.filter((df.Time - currTime)/60000 < 2)     
 
         #Average out the heart rate for each device id in the current window.
-	groupedRDD = df.groupBy("deviceID").agg(func.round(mean("Longitude"),4).alias("Longitude"),func.round(mean("Latitude"),4).alias("Latitude"),func.round(mean("HeartRate"),0).alias("avgHeartRate"))
+	groupedRDD = df.groupBy("deviceID")\
+		       .agg(func.round(mean("Longitude"),4).alias("Longitude"),\
+			    func.round(mean("Latitude"),4).alias("Latitude"),\
+			    func.round(mean("HeartRate"),0).alias("avgHeartRate")
+			   )
         
         #Schema of the groupedRDD dataframe is:
 	#root
@@ -61,7 +83,6 @@ def findAvgHeartRatePerDevice(rdd):
 
 	print("Schema of the grouped dataframe:")
         groupedRDD.printSchema()
-        #groupedRDD = groupedRDD.selectExpr("_1 as deviceID", "Longitude as Longitude","Latitude as Latitude","avgHeartRate as avgHeartRate")
 
         #Select deviceId, HeartRate and Timestamp from the data.
 	selectedDF = df.select("deviceID","HeartRate","Time")
@@ -70,25 +91,26 @@ def findAvgHeartRatePerDevice(rdd):
         userRecordsDF = userRecords.toDF()
         joinedDF = groupedRDD.join(userRecordsDF, "deviceID")
         print("joinedData")
-        #print(joinedDF.head(2))
+      
 
-        #Filter out those users who have not their heart rates in the desired range by comparing it with their existing health records
-        filteredData = joinedDF.filter((joinedDF.avgHeartRate < joinedDF.minHeartRate) | (joinedDF.avgHeartRate > joinedDF.maxHeartRate))
+        #Filter out those users who have not their heart rates in the desired 
+	#range by comparing it with their existing health records
+        filteredData = joinedDF.filter((joinedDF.avgHeartRate < joinedDF.minHeartRate) \
+				       | (joinedDF.avgHeartRate > joinedDF.maxHeartRate))
         print("filteredData")
-        #print(filteredData.head(2))
+        print(filteredData.head(2))
 
         
         #Check if the location of the filtered users changed during the 2 minute window
 	#Get the device id of the filtered users
 	filteredDeviceRDD = filteredData.select("deviceID")
-	print("HERE HERE")
-        print(filteredDeviceRDD)
+	print("HERE")
+        print(filteredDeviceRDD.head(2))
 
-        #Name the columns
-	#df  = df.selectExpr("_1 as deviceID", "_2 as Longitude","_3 as Latitude","_4 as Time","_5 as HeartRate ")
-        
+        #Check if the patient is moving
 	movingUsersRDD = filteredDeviceRDD.join(df,"deviceID")
-        movingUsersRDD = movingUsersRDD.groupBy("deviceID").agg(func.countDistinct("Longitude","Latitude").alias("DistinctLocationsCount"))
+        movingUsersRDD = movingUsersRDD.groupBy("deviceID")\
+					.agg(func.countDistinct("Longitude","Latitude").alias("DistinctLocationsCount"))
       
 
         #Filter the moving users from the filteredRDD
@@ -96,16 +118,6 @@ def findAvgHeartRatePerDevice(rdd):
 	movingUsersRDD.printSchema() 
         stillUsersRDD = movingUsersRDD.filter(movingUsersRDD.DistinctLocationsCount == 1) 
 
-        #tempRDD = filteredData.rdd        
-        #if filteredData.count() != 0:
-        #if len(filteredData.head(1)) != 0:
-         #   for row1 in filteredData.rdd.collect():
-          #     for row2 in gymLocations.rdd.collect():
-           #        print(row1);
-            #       print(row2);
-             #      if (row1.Latitude - row2.latitude) < EPSILON and (row1.Longitude - row2.longitude) < EPSILON:
-              #         riskedUsers = tempRDD.filter(lambda x: x != row1)
-               #        tempRDD = riskedUsers
  
         #Select all the heart rate values for the current window of the risked users
         displayRDD = stillUsersRDD.join(df,"deviceID")
@@ -120,35 +132,23 @@ def findAvgHeartRatePerDevice(rdd):
         time_of_the_day = now.strftime("%H-%M-%S")
 
 
-        #Add time field to the agrregated data
+        #Add time field to the aggregated data
         groupedRDD = groupedRDD.withColumn("Time", lit(now)) 
               
         #Save the aggregated data to S3
         if  len(groupedRDD.head(1)) != 0:
             groupedRDD.write \
-               .format("com.databricks.spark.csv") \
-               .mode("append") \
-               .save("s3n://anshu-insight/aggregatedData_"+ date + "/")
+                      .format("com.databricks.spark.csv") \
+                      .mode("append") \
+                      .save("s3n://anshu-insight/aggregatedData_"+ date + "/")
          
-        #Add the time field to the data
-        #displayRDD = displayRDD.withColumn("Time",lit(now))
 
         #Save all the heart rate values for the risked users to S3 
         if len(displayRDD.head(1)) != 0:
             displayRDD.write \
-               .format("com.databricks.spark.csv") \
-               .mode("append") \
-               .save("s3n://anshu-insight/riskedUserData_" + date + "/")
-
-        
-        #if tempRDD.count() != 0:
-        #if len(tempRDD.take(1)) == 0:
-         #   print("tempRDD is empty")
-        #else:
-         #   tempRDD.write \
-          #     .format("com.databricks.spark.csv") \
-           #    .mode("append") \
-           #    .save("s3n://anshu-insight/usersInGym/")
+                      .format("com.databricks.spark.csv") \
+                      .mode("append") \
+                      .save("s3n://anshu-insight/riskedUserData_" + date + "/")
 
 def saveToDatabase(rdd):
     #if rdd.count() != 0:
@@ -160,9 +160,9 @@ def saveToDatabase(rdd):
        date = now.strftime("%Y-%m-%d")
        #Save the raw data to S3. This data will be pushed to redShift dataware house once in a day.
        df.write \
-             .format("com.databricks.spark.csv") \
-             .mode("append") \
-             .save("s3n://anshu-insight/rawData_" + date + "/")
+         .format("com.databricks.spark.csv") \
+         .mode("append") \
+         .save("s3n://anshu-insight/rawData_" + date + "/")
 
 
 def readFromKafkaAndProcess(topic,broker):
@@ -188,31 +188,7 @@ def readFromKafkaAndProcess(topic,broker):
     ssc.start()
     ssc.awaitTermination()
 
-    
-def writeToRedshift(rdd):
-    #for record in rdd:
-    #if(rdd.count() != 0):
-    if rdd.isEmpty():
-        print("redshift:RDD is empty")
-    else:
-        rdd = rdd.map(lambda x: x.split(",")).map(lambda x: [str(y) for y in x])
-        df = rdd.toDF()
-
-        df.write\
-            .format("com.databricks.spark.redshift")\
-            .option("url", "jdbc-url/dev?user=<userName>&password=<password>") \
-            .option("dbtable", "device_data") \
-            .option("forward_spark_s3_credentials",True)\
-            .option("tempdir", "s3n://anshu-insight/tmp") \
-            .mode("error") \
-            .save()
-
-
-
 if __name__ == "__main__":
-
-    #Get the required parameters from the passed arguments 
-    broker, topic, gymLocationFile, userData = sys.argv[1:]
 
     #Schema for the gym locations and user records data
     gymFileSchema = StructType([StructField("latitude", DoubleType()),StructField("longitude", DoubleType())])
@@ -220,27 +196,23 @@ if __name__ == "__main__":
 
     #Get the gym location data
     gymLocations = sqlContext.read \
-                                .format("com.databricks.spark.csv") \
-                                .schema(gymFileSchema) \
-                                .option("header", "true") \
-                                .option("mode", "DROPMALFORMED") \
-                                .load(gymLocationFile)
+                             .format("com.databricks.spark.csv") \
+                             .schema(gymFileSchema) \
+                             .option("header", "true") \
+                             .option("mode", "DROPMALFORMED") \
+                             .load(args.gymLocationFile)
 
     #Get the user records
     usersData = sqlContext.read \
-                                .format("com.databricks.spark.csv") \
-                                .schema(userDataSchema) \
-                                .option("header", "true") \
-                                .option("mode", "DROPMALFORMED") \
-                                .load(userData)
+                          .format("com.databricks.spark.csv") \
+                          .schema(userDataSchema) \
+                          .option("header", "true") \
+                          .option("mode", "DROPMALFORMED") \
+                          .load(args.userData)
  
-    #Persist this data in memory to avoid reading from hdfs again and again.
-    collectedGymLocations = gymLocations.rdd
-    #collectedGymLocations.persist()
     userRecords = usersData.rdd
-    #userRecords.persist()
-
+    
     #Consume the data from Kafka and process it
-    readFromKafkaAndProcess(topic,broker)
+    readFromKafkaAndProcess(args.topic,args.broker)
 
 
