@@ -5,12 +5,22 @@ import sys
 import math
 import datetime
 import json
+import time
 from datetime import datetime
 from time import sleep
 from json import dumps
 from kafka import KafkaProducer
+import argparse
 
 START = datetime.utcfromtimestamp(0)
+
+# Arguments settings
+parser = argparse.ArgumentParser(description='Data generation')
+parser.add_argument('--broker', type=str, default='ec2-18-235-25-194.compute-1.amazonaws.com:9092',
+                    help="list of brokers")
+parser.add_argument('--partition', type=int, default=0,
+                    help="partition on which this producer should send")
+args = parser.parse_args()
 
 class DataProducer(object):
 
@@ -29,26 +39,26 @@ class DataProducer(object):
                     deviceId = str(device_count)
                     latitude = line.split(',')[2]
                     longitude = line.split(',')[3]
-                    timeStamp = self.timeInSecs(datetime.now())
+                    timeStamp = time.time()
                 
-                    if(int(deviceId) < 200):
-                        heartRate = random.uniform(60,70)
+                    if(int(deviceId) < 2000):
+                        heartRate = random.uniform(60,65)
 			heartRate = round(heartRate,2)
 
-                    elif(int(deviceId) < 400):
-                        heartRate = random.uniform(80, 90)
+                    elif(int(deviceId) < 4000):
+                        heartRate = random.uniform(80, 85)
 			heartRate = round(heartRate,2)
 
-                    elif(int(deviceId) < 600):
-                        heartRate = random.uniform(140, 200)
+                    elif(int(deviceId) < 6000):
+                        heartRate = random.uniform(160, 165)
 			heartRate = round(heartRate,2)
 
-                    elif(int(deviceId) < 800):
-                        heartRate = random.uniform(80, 120)
+                    elif(int(deviceId) < 8000):
+                        heartRate = random.uniform(170, 175)
 			heartRate = round(heartRate,2)
 
-                    elif(int(deviceId) <= 1000):
-                        heartRate = random.uniform(90, 180)
+                    elif(int(deviceId) <= 10000):
+                        heartRate = random.uniform(95, 100)
 			heartRate = round(heartRate,2)
                     
                     data = json.dumps({"deviceId":deviceId,
@@ -66,9 +76,8 @@ class DataProducer(object):
 		    #sleep(0.1);
 
 if __name__ == "__main__":
-    args = sys.argv
-    address = str(args[1])
-    partition_id = str(args[2])
+    address = str(args.broker)
+    partition_id = str(args.partition)
     producer = DataProducer(address)
     producer.produceData(partition_id)
 
