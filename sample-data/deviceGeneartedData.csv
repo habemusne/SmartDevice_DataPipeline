@@ -1,4 +1,4 @@
-UserId,Zipcode,Latitude,Longitude,City,BloodPressure
+UserId,Zipcode,Latitude,Longitude,City,HeartRate
 42,"00501",40.922326,-72.637078,"Holtsville",115
 22,"00544",40.922326,-72.637078,"Holtsville",87
 47,"06390",40.992288,-72.723496,"Fishers Island",106
