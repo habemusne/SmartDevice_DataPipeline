@@ -24,7 +24,7 @@ time                TIMESTAMP not null
 );
 
 -- copy data from s3
-copy daily_health_vitals from 's3://anshu-insight/rawData/part_'
+copy daily_health_vitals from 's3://anshu-insight/rawData/part_<current_date>'
 credentials 'aws_access_key_id=<>;aws_secret_access_key=<>'
 csv;
 
