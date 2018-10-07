@@ -40,7 +40,7 @@ table would be used to compare the location of the device to first confirm if it
 The data will be read from the devices with the help of Kafka on regular intervals. This data will be fed to the Spark Streaming. If the averaged out value from a window of 2 minutes value from some device is deviating too much from the standard range of heart rate for that person ( present in User_Details), appropriate action would be taken for those users.
 The aggregated data and the raw data is saved to S3 as its coming and being processed.
 
-The anomaly will be displayed on the Dash dashboard.
+The device id of the patients with anomaly will be displayed on the Dash dashboard.
 
 Scheduled jobs-
 
