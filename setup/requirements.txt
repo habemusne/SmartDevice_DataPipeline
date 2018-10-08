@@ -1,0 +1,6 @@
+json
+matplotlib
+kafka
+airflow
+dash
+dash_table_experiments
