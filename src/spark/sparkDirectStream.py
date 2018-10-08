@@ -1,3 +1,17 @@
+'''
+This file contains the code to consume streaming data from the Kafka producer
+over a window of 1 min and process it to detect anomaly in the incoming data.
+The incoming data contains the following fields: deviceId, longitude, latitude,
+timestamp, heartRate. The deviceId corresponds to the device of the heart patient
+If the average value for the heart rate collected during the window does not lie
+in the range that is present in the user records(loaded in memory from HDFS), there
+might be some problem with the patient. To reduce the number of false alarms, the 
+movement of the patient is detected by counting unique locations in the recieved data.
+If it is more than 1 and range of anomaly is not that high , it is not considered as 
+anomaly.
+Note: The longitude and latitude does not change very fast(for few steps taken or for
+few meters). 
+'''
 import sys
 import json
 import time
