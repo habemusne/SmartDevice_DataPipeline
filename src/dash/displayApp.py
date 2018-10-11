@@ -1,3 +1,7 @@
+'''
+The file displays the information on the front-end 
+of the pipeline
+'''
 import time
 import datetime
 import boto3
