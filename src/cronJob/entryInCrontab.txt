@@ -1,0 +1,5 @@
+#Command to edit crontab
+crontab -e
+
+#Enter the following command to crontab
+0 18 * * * sudo /home/ubuntu/SmartDevice_DataPipeline/src/redshift/copyDataFromS3ToRedshift.sh
