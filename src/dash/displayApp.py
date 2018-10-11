@@ -554,27 +554,7 @@ app.layout = html.Div(children=[
                  display_data_72()
              ]),
 
-    #dcc.Dropdown(
-     #   id='my-dropdown',
-      #  options=[
-       #     {'label': str(patients[0]), 'value': str(patients[0])},
-        #    {'label': str(patients[1]), 'value': str(patients[1])},
-         #   {'label': str(patients[2]), 'value': str(patients[2])}
-        #],
-        #value= str(patients[0])
-    #),
-    #html.Div(id='output-container'),
-
 ])
-
-
-#@app.callback(
- #   dash.dependencies.Output('output-container', 'children'),
-  #  [dash.dependencies.Input('my-dropdown', 'value')])
-#def update_output(value):
-    #return display_data_7(value)
-#    return 'You have selected "{}"'.format(value)
-
 
 if __name__ == '__main__':
     app.run_server(debug=True,host='ec2-34-192-63-158.compute-1.amazonaws.com',port=80)
