@@ -17,7 +17,3 @@ with open('uploadedFromS3.csv', 'w') as out_file:
         out_file.write(str(body))
         out_file.write('\n')
 
-#obj = client.get_object(Bucket='anshu-insight', Key='/Users/anshu/uploadedFromS3.csv')
-#grid_sizes = pd.read_csv(obj['Body'])
-
-#my_bucket.upload_file('file',Key='/Users/anshu/FromS3.csv')
