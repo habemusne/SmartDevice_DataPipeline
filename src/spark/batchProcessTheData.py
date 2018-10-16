@@ -17,7 +17,7 @@ data = (spark.read
 data.printSchema()
 
 #Filter people with Blood Pressure greater than 90
-filteredData = data.filter(data['BloodPressure'] > 120 || data['BloodPressure'] < 70)
+filteredData = data.filter(data['BloodPressure'] > 120 or data['BloodPressure'] < 70)
 
 #Group the high blood pressure by their location
 groupedData = filteredData.groupBy("Latitude","Longitude").count()

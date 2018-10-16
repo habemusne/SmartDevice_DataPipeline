@@ -33,7 +33,6 @@ my_bucket = resource.Bucket('anshu-insight')
 prefix = 'riskedUserData_' + date  + '/'
 
 
-print(prefix)
 
 #Initialize DASH application
 app = dash.Dash()
@@ -63,11 +62,9 @@ for obj in my_bucket.objects.filter(Prefix=prefix).all():
         if df.empty:
 	    continue
         df.columns = ['DeviceID','Count','Latitude','Longitude','Timestamp','CurrentHeartRate']
-        #print(df)
         result = result.append(df)
 	newValues = df.DeviceID.unique().tolist() 
         riskedPatients = list(set(riskedPatients+newValues))
-        #print(len(df))
         
 
 #Find the count of patients having abnormal count
@@ -79,9 +76,6 @@ else:
     result_1 = result.loc[result['DeviceID']==riskedPatients[0]]
     result_2 = result.loc[result['DeviceID']==riskedPatients[1]]
 
-print(len(result))
-print("p1 is ",riskedPatients[0])
-print("p2 is ",riskedPatients[1])
 #Get the results for patient 1 for previous 7 days
 prev = datetime.datetime.now() - timedelta(1)
 date = prev.strftime("%Y-%m-%d")
@@ -114,7 +108,6 @@ date = prev.strftime("%Y-%m-%d")
 prefix_prev7 = 'rawData_' + date  + '/'
 
 
-print(prefix_prev1)
 result_prev1_p1 = pd.DataFrame(columns=('DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate'))
 result_prev1_p2 = pd.DataFrame(columns=('DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate'))
 for obj in my_bucket.objects.filter(Prefix=prefix_prev1).all():
@@ -122,17 +115,12 @@ for obj in my_bucket.objects.filter(Prefix=prefix_prev1).all():
         df = pd.read_csv(io.BytesIO(obj.get()['Body'].read()))
         if df.empty:
 	    continue
-        #print(df)
         df.columns = ['DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate']
         result_p1 = df.loc[df['DeviceID']==riskedPatients[0]]
-	print("result_p1",len(result_p1))
         result_p2 = df.loc[df['DeviceID']==riskedPatients[1]]
-	print("result_p2",len(result_p2))
         
         result_prev1_p1 = result_prev1_p1.append(result_p1)
         result_prev1_p2 = result_prev1_p2.append(result_p2)
-        print(1,len(result_prev1_p1))
-        print(1,len(result_prev1_p2))
 
 
 
@@ -146,17 +134,12 @@ for obj in my_bucket.objects.filter(Prefix=prefix_prev2).all():
         df = pd.read_csv(io.BytesIO(obj.get()['Body'].read()))
         if df.empty:
 	    continue
-        #print(df)
         df.columns = ['DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate']
         result_p1 = df.loc[df['DeviceID']==riskedPatients[0]]
-        print("result_p1",len(result_p1))
         result_p2 = df.loc[df['DeviceID']==riskedPatients[1]]
-        print("result_p2",len(result_p2))
 
         result_prev2_p1 = result_prev2_p1.append(result_p1)
         result_prev2_p2 = result_prev2_p2.append(result_p2)
-        print(2,len(result_prev2_p1))
-        print(2,len(result_prev2_p2))
 
 result_prev2_p1['CurrentHeartRate'].to_csv("patient1_tues.csv", encoding='utf-8', index=False)
 result_prev2_p2['CurrentHeartRate'].to_csv("patient2_tues.csv", encoding='utf-8', index=False)
@@ -170,14 +153,10 @@ for obj in my_bucket.objects.filter(Prefix=prefix_prev3).all():
 	    continue
         df.columns = ['DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate']
         result_p1 = df.loc[df['DeviceID']==riskedPatients[0]]
-        print("result_p1",len(result_p1))
         result_p2 = df.loc[df['DeviceID']==riskedPatients[1]]
-        print("result_p2",len(result_p2))
 
         result_prev3_p1 = result_prev3_p1.append(result_p1)
         result_prev3_p2 = result_prev3_p2.append(result_p2)
-        print(3,len(result_prev3_p1))
-        print(3,len(result_prev3_p2))
 
 result_prev3_p1['CurrentHeartRate'].to_csv("patient1_wed.csv", encoding='utf-8', index=False)
 result_prev3_p2['CurrentHeartRate'].to_csv("patient2_wed.csv", encoding='utf-8', index=False)
@@ -191,14 +170,10 @@ for obj in my_bucket.objects.filter(Prefix=prefix_prev4).all():
 	    continue
         df.columns = ['DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate']
         result_p1 = df.loc[df['DeviceID']==riskedPatients[0]]
-        print("result_p1",len(result_p1))
         result_p2 = df.loc[df['DeviceID']==riskedPatients[1]]
-        print("result_p2",len(result_p2))
 
         result_prev4_p1 = result_prev4_p1.append(result_p1)
         result_prev4_p2 = result_prev4_p2.append(result_p2)
-        print(4,len(result_prev4_p1))
-        print(4,len(result_prev4_p2))
 
 result_prev4_p1['CurrentHeartRate'].to_csv("patient1_thu.csv", encoding='utf-8', index=False)
 result_prev4_p2['CurrentHeartRate'].to_csv("patient2_thu.csv", encoding='utf-8', index=False)
@@ -212,14 +187,10 @@ for obj in my_bucket.objects.filter(Prefix=prefix_prev5).all():
 	    continue
         df.columns = ['DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate']
         result_p1 = df.loc[df['DeviceID']==riskedPatients[0]]
-        print("result_p1",len(result_p1))
         result_p2 = df.loc[df['DeviceID']==riskedPatients[1]]
-        print("result_p2",len(result_p2))
 
         result_prev5_p1 = result_prev5_p1.append(result_p1)
         result_prev5_p2 = result_prev5_p2.append(result_p2)
-        print(5,len(result_prev5_p1))
-        print(5,len(result_prev5_p2))
 
 result_prev5_p1['CurrentHeartRate'].to_csv("patient1_fri.csv", encoding='utf-8', index=False)
 result_prev5_p2['CurrentHeartRate'].to_csv("patient2_fri.csv", encoding='utf-8', index=False)
@@ -235,14 +206,10 @@ for obj in my_bucket.objects.filter(Prefix=prefix_prev6).all():
 	    continue
         df.columns = ['DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate']
         result_p1 = df.loc[df['DeviceID']==riskedPatients[0]]
-        print("result_p1",len(result_p1))
         result_p2 = df.loc[df['DeviceID']==riskedPatients[1]]
-        print("result_p2",len(result_p2))
 
         result_prev6_p1 = result_prev6_p1.append(result_p1)
         result_prev6_p2 = result_prev6_p2.append(result_p2)
-        print(6,len(result_prev6_p1))
-        print(6,len(result_prev6_p2))
 
 result_prev6_p1['CurrentHeartRate'].to_csv("patient1_sat.csv", encoding='utf-8', index=False)
 result_prev6_p2['CurrentHeartRate'].to_csv("patient2_sat.csv", encoding='utf-8', index=False)
@@ -256,14 +223,10 @@ for obj in my_bucket.objects.filter(Prefix=prefix_prev7).all():
 	    continue
         df.columns = ['DeviceID','Latitude','Longitude','Timestamp','CurrentHeartRate']
         result_p1 = df.loc[df['DeviceID']==riskedPatients[0]]
-        print("result_p1",len(result_p1))
         result_p2 = df.loc[df['DeviceID']==riskedPatients[1]]
-        print("result_p2",len(result_p2))
 
         result_prev7_p1 = result_prev7_p1.append(result_p1)
         result_prev7_p2 = result_prev7_p2.append(result_p2)
-        print(7,len(result_prev7_p1))
-        print(7,len(result_prev7_p2))
 
 
 result_prev7_p1['CurrentHeartRate'].to_csv("patient1_sun.csv", encoding='utf-8', index=False)
@@ -358,10 +321,6 @@ for i in range(10 * len(result_2)):
 
 for i in range(10 * len(result_2)):
     y_max_2.append(140)
-
-
-#print(len(x))
-#print(len(y))
 
 
 #Convert the list into string

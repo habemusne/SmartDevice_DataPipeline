@@ -67,13 +67,10 @@ class DataProducer(object):
                                      "longitude":longitude,
                                      "heartRate":heartRate})
                      
-                    #print(data)
-                    #print('\n')
                     self.dataProducer.send('device-data',data)
                     device_count+=1
                     if device_count%1000 == 0:
                         device_count = 1;
-		    #sleep(0.1);
 
 if __name__ == "__main__":
     address = str(args.broker)
