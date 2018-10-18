@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #The script contains commands to setup the cluster enviroment
-
+#It uses peg tool that can be run from local machine
 
 KAFKA_CLUSTER=kafka-cluster
 SPARK_CLUSTER=insight-cluster
@@ -27,7 +27,7 @@ peg sshcmd-cluster ${KAFKA_CLUSTER} "sudo pip install kafka"
 #hadoop and spark setup
 peg up setup/spark/master.yml
 peg up setup/spark/workers.yml
-peg fetch ${SPARAK_CLUSTER}
+peg fetch ${SPARK_CLUSTER}
 peg install ${SPARK_CLUSTER} ssh
 peg install ${SPARK_CLUSTER} aws
 peg install ${SPARK_CLUSTER} environment
