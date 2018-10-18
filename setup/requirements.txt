@@ -1,6 +1,4 @@
-json
-matplotlib
 kafka
-airflow
-dash
-dash_table_experiments
+dash==0.27.0
+dash-html-components==0.13.2
+dash-core-components==0.30.2
