@@ -37,11 +37,14 @@ parser.add_argument('--gymLocations', type=str, default='/data/gymLocations.csv'
                     help="path where gym Location file exists on HDFS")
 parser.add_argument('--userData', type=str, default='/data/userRecords.csv',
                     help="path where user records exist on HDFS")
+parser.add_argument('--checkpointDir', type=str, default='/data/',
+                    help="path where metaData will be saved to pick from if the driver node fails")
 args = parser.parse_args()
 
 #Initialize the contexts#
 sc = SparkContext(appName="HealthInsights")
 ssc = StreamingContext(sc, 60) # 1 min window
+ssc.checkpoint(args.checkpointDir)
 sqlContext = SQLContext(sc)
 EPSILON = 0.01
 
