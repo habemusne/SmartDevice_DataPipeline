@@ -1,6 +1,0 @@
-
-#Command to edit crontab
-crontab -e
-
-#Enter the following command to crontab on the spark cluster instance where this script exists
-0 18 * * * sudo /home/ubuntu/copyDataFromS3ToRedshift.sh
