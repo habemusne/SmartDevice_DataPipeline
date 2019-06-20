@@ -29,6 +29,4 @@ sudo apt install -y maven
 
 sudo apt-get install -y libpq-dev python-dev
 
-psycopg2,sqlalchemy,requests
-python3 -c "from setup import prepare; prepare.database()"
-python3 -c "from setup import prepare; prepare.connector()"
+psycopg2,sqlalchemy,requests,fire,python-dotenv
