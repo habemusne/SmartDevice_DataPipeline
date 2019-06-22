@@ -38,6 +38,7 @@ if sys.argv[1] in ['hc', 'c', 'all']:
         'db_name': config['DB_NAME'],
         'keyfield': config['HISTORICAL_TABLE_KEYFIELD'],
         'query': config['HISTORICAL_QUERY'],
+        'num_partitions': config['NUM_PARTITIONS']
     })
     historical_data_connector.delete()
     historical_data_connector.create()
@@ -50,7 +51,8 @@ if sys.argv[1] in ['rc', 'c', 'all']:
         'poll_interval': int(config['REALTIME_POLL_INTERVAL']),
         'iterations': int(config['REALTIME_ITERATIONS']),
         'schema_path': config['REALTIME_SCHEMA_PATH'],
-        'schema_keyfield': config['REALTIME_SCHEMA_KEYFIELD']
+        'schema_keyfield': config['REALTIME_SCHEMA_KEYFIELD'],
+        'num_partitions': config['NUM_PARTITIONS']
     })
     realtime_data_connector.delete()
     realtime_data_connector.create()
@@ -86,6 +88,6 @@ if sys.argv[1] in ['rs', 'st', 'all']:
         'key_field_name': config['REALTIME_STREAM_KEYFIELD'],
         'host': config['KSQL_HOST'],
         'port': config['KSQL_PORT'],
-        'offset_reset': config['REALTIME_STREAM_OFFSET_RESET']
+        'offset_reset': config['REALTIME_STREAM_OFFSET_RESET'],
     })
     realtime_data_stream.create()

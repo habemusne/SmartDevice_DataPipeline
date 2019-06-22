@@ -10,16 +10,17 @@ class KSQLObject(Resource):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.api = Api(kwargs.get('host'), kwargs.get('port'))
+        self._field_map = kwargs.get('field_map')
+        self._key_field_name = kwargs.get('key_field_name')
 
 
 class Table(KSQLObject):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._field_map = kwargs.get('field_map')
-        self._key_field_name = kwargs.get('key_field_name')
         self._name = util.naming.table_name(self._data_name)
         self._topic_name = kwargs.get('topic_name') if kwargs.get('topic_name') else util.naming.topic_name(self._data_name)
 
+    @Resource.log_notify
     def create(self):
         statement = """
         CREATE TABLE "{name}" ({fields})
@@ -39,6 +40,7 @@ class Table(KSQLObject):
         }
         self.api.ksql(payload)
 
+    @Resource.log_notify
     def delete(self, force_exit=True):
         input('Make sure that streams of table {} are deleted. Press ENTER to continue: '.format(self._name))
         self.api.ksql({
@@ -49,11 +51,10 @@ class Table(KSQLObject):
 class Stream(KSQLObject):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._field_map = kwargs.get('field_map')
-        self._key_field_name = kwargs.get('key_field_name')
         self._name = util.naming.stream_name(self._data_name)
         self._offset_reset = kwargs.get('offset_reset', 'earliest')
 
+    @Resource.log_notify
     def create(self):
         statement = """
         CREATE STREAM "{name}" ({fields})
@@ -76,6 +77,7 @@ class Stream(KSQLObject):
         }
         self.api.ksql(payload)
 
+    @Resource.log_notify
     def delete(self, force_exit=True):
         self.api.ksql({
             'ksql': 'DROP STREAM {};'.format(self._name)

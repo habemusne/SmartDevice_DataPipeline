@@ -1,9 +1,10 @@
-# Assumption: use postgres
+# Assumption: 1. use postgres 2. table column names/types are exactly the same as input data's field names/types
 
 import json
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
+from traceback import format_exc
 
 from util.resource import Resource
 from util.logger import logger
@@ -20,21 +21,14 @@ class Database(Resource):
         self._Model = getattr(Base.classes, self._data_name)
         self._seed_path = kwargs.get('seed_path')
 
+    @Resource.log_notify
     def create(self):
         session = Session(self._engine)
         objects = []
         with open(self._seed_path, 'r') as f:
             for line in f:
                 data = json.loads(line.strip())
-                objects.append(self._Model(
-                    user_id=data['user_id'],
-                    zipcode=data['zipcode'],
-                    latitude=data['latitude'],
-                    longitude=data['longitude'],
-                    city=data['city'],
-                    state=data['state'],
-                    area=data['area'],
-                ))
+                objects.append(self._Model(**{ key: data[key] for key in data }))
         try:
             session.bulk_save_objects(objects)
             session.commit()
@@ -42,6 +36,7 @@ class Database(Resource):
             logger.error(format_exc())
             session.rollback()
 
+    @Resource.log_notify
     def delete(self):
         session = Session(self._engine)
         try:

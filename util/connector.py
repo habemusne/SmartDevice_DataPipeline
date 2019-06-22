@@ -14,6 +14,7 @@ class Connector(Resource):
         self._name = util.naming.connector_name(self._data_name)
         self._api_url = 'http://{}:{}/connectors'.format(kwargs.get('host'), kwargs.get('port'))
         self._poll_interval = kwargs.get('poll_interval')
+        self._num_partitions = kwargs.get('num_partitions')
 
     def _create(self, payload, force_exit=True):
         response = requests.post(self._api_url, json=payload)
@@ -45,6 +46,7 @@ class JDBC(Connector):
         self._keyfield = kwargs.get('keyfield')
         self._query = kwargs.get('query')
 
+    @Resource.log_notify
     def create(self):
         db_connect_url_jdbc = 'jdbc:postgresql://{}:{}/{}'.format(self._db_host, self._db_port, self._db_name)
         
@@ -69,14 +71,16 @@ class JDBC(Connector):
             topic_name = util.naming.topic_name(self._data_name)
             payload['config']['query'] = self._query
             payload['config']['topic.prefix'] = topic_name
-            input('If topic {} does not exist, please create it first. Hit ENTER when done: '.format(topic_name))
+            input('If topic {} does not exist, please create it first. With number of patitions = {}. Hit ENTER when done: '.format(topic_name, self._num_partitions))
         else:
+            logger.warning('"query" parameter is not specified. All messages will be sent to a single partition.')
             payload['config']['table.whitelist'] = self._data_name
             payload['config']['topic.prefix'] = util.naming.jdbc_topic_prefix()
         if self._get():
             self._delete()
         self._create(payload)
 
+    @Resource.log_notify
     def delete(self):
         self._delete()
 
@@ -87,6 +91,7 @@ class Datagen(Connector):
         self._iterations = kwargs.get('iterations')
         self._schema_path = kwargs.get('schema_path')
         self._schema_keyfield = kwargs.get('schema_keyfield')
+
 
     def create(self):
         topic_name = util.naming.topic_name(self._data_name)
@@ -101,8 +106,9 @@ class Datagen(Connector):
                 'schema.keyfield': self._schema_keyfield,
             }
         }
-        input('If topic {} does not exist, please create it first. Hit ENTER when done: '.format(topic_name))
+        input('If topic {} does not exist, please create it first. With number of patitions = {}. Hit ENTER when done: '.format(topic_name, self._num_partitions))
         self._create(payload)
 
+    @Resource.log_notify
     def delete(self):
         self._delete()
