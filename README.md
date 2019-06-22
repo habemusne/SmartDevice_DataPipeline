@@ -7,9 +7,8 @@ This query is defined as follows: patients are users whose heart rates are out o
 # Current progress
 
 1. Currently, the whole project runs on a **single** machine. 
-2. Setup part (the first part) is completed
-3. Per-person historical heart rate range is currently hard coded. However, my query still involves joining the historical table (so that I can later iterate this project easily). My plan for addressing this part is: since historical heart rate range is the only information the query needs from the historical table, the historical table for this project can simply store these ranges but nothing else.
-4. Future plans ordered by priority
+2. Per-person historical heart rate range is currently hard coded. However, my query still involves joining the historical table (so that I can later iterate this project easily). My plan for addressing this part is: since historical heart rate range is the only information the query needs from the historical table, the historical table for this project can simply store these ranges but nothing else.
+3. Future plans ordered by priority
   1. Fix the partition bug, so that both parts can work fluently in a thorough demo
   2. Breaks the architecture to multiple machines and do the benchmarking.
   3. Benchmark using built-in kafka streaming. It also needs devOps things setup and configured for many machines.
