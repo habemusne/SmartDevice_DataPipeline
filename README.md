@@ -9,8 +9,7 @@ This query is defined as follows: patients are users whose heart rates are out o
 1. Currently, the whole project runs on a **single** machine. 
 2. Setup part (the first part) is completed
 3. Per-person historical heart rate range is currently hard coded. However, my query still involves joining the historical table (so that I can later iterate this project easily). My plan for addressing this part is: since historical heart rate range is the only information the query needs from the historical table, the historical table for this project can simply store these ranges but nothing else.
-4. The querying part of the project worked before but not now. It worked only when number of partitions (`NUM_PARTITIONS` in `.env`) equals to 1. But this doesn't make sense for a large amount of data, so I'm working on it. Since I tweaking around, the querying code likely won't work now.
-5. Future plans ordered by priority
+4. Future plans ordered by priority
   1. Fix the partition bug, so that both parts can work fluently in a thorough demo
   2. Breaks the architecture to multiple machines and do the benchmarking.
   3. Benchmark using built-in kafka streaming. It also needs devOps things setup and configured for many machines.
@@ -26,4 +25,4 @@ If you use [pegasus](https://github.com/InsightDataScience/pegasus), you can do 
 
 # Step 2: run it
 
-On the EC2 machine, run `python3 query.py setup` to setup interim tables and streams, then `python3 query.py run` to see the query result, and finally `python3 query.py teardown` to remove the interim objects.
+On the EC2 machine, run `python3 query.py` to see the streaming result. Use `CTRL + C` to stop it.
