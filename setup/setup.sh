@@ -11,8 +11,8 @@ sudo usermod -aG docker ${USER}
 git clone https://github.com/habemusne/heart_watch
 cd heart_watch
 cp env.template .env
-read -p "Modify .env, press ENTER when ready: "
+read -p "Open another terminal session and modify .env, press ENTER when ready: "
 docker-compose up -d --build
 pip3 install -r requirements.txt
-read -p "Open <host>:9021 (remember to open SG), wait until \"Kafka Connect\" is loaded, press ENTER when ready: "
+read -p "On a browser open <host>:9021 (remember to open SG), wait until \"Kafka Connect\" is loaded, press ENTER when ready: "
 python3 setup/prepare.py all
