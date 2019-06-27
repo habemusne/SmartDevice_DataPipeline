@@ -1,8 +1,8 @@
 import sys
-from os.path import join, abspath, dirname
-sys.path.insert(0, dirname(dirname(abspath(__file__))))
-
+from os.path import join, dirname, abspath
 from dotenv import dotenv_values
+
+sys.path.insert(0, dirname(dirname(dirname(abspath(__file__)))))
 
 import util.naming
 from util.logger import logger
@@ -10,7 +10,7 @@ from util.database import Database
 from util.connector import JDBC as JDBCConnector, Datagen as DatagenConnector
 from util.ksql_object import Table, Stream
 
-config = dotenv_values(join(dirname(dirname(abspath(__file__))), '.env'))
+config = dotenv_values('.env')
 
 
 if sys.argv[1] in ['db', 'all']:
@@ -36,7 +36,7 @@ if sys.argv[1] in ['hc', 'c', 'all']:
         'db_user': config['DB_USER'],
         'db_password': config['DB_PASS'],
         'db_name': config['DB_NAME'],
-        'keyfield': config['HISTORICAL_TABLE_KEYFIELD'],
+        'keyfield': config['HISTORICAL_KEYFIELD'],
         'query': config['HISTORICAL_QUERY'],
         'num_partitions': config['NUM_PARTITIONS']
     })
@@ -51,7 +51,7 @@ if sys.argv[1] in ['rc', 'c', 'all']:
         'poll_interval': int(config['REALTIME_POLL_INTERVAL']),
         'iterations': int(config['REALTIME_ITERATIONS']),
         'schema_path': config['REALTIME_SCHEMA_PATH'],
-        'schema_keyfield': config['REALTIME_SCHEMA_KEYFIELD'],
+        'schema_keyfield': config['REALTIME_KEYFIELD'],
         'num_partitions': config['NUM_PARTITIONS']
     })
     realtime_data_connector.delete()
@@ -66,7 +66,7 @@ if sys.argv[1] in ['ht', 'st', 'all']:
             'latitude': 'DOUBLE',
             'longitude': 'DOUBLE',
         },
-        'key_field_name': config['HISTORICAL_TABLE_KEYFIELD'],
+        'key_field_name': config['HISTORICAL_KEYFIELD'],
         'host': config['KSQL_HOST'],
         'port': config['KSQL_PORT'],
     })
@@ -85,9 +85,9 @@ if sys.argv[1] in ['rs', 'st', 'all']:
             'month': 'INTEGER',
             'heart_rate': 'INTEGER',
         },
-        'key_field_name': config['REALTIME_STREAM_KEYFIELD'],
+        'key_field_name': config['REALTIME_KEYFIELD'],
         'host': config['KSQL_HOST'],
         'port': config['KSQL_PORT'],
-        'offset_reset': config['REALTIME_STREAM_OFFSET_RESET'],
+        'offset_reset': config['REALTIME_OFFSET_RESET'],
     })
     realtime_data_stream.create()

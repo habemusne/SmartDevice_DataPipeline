@@ -1,1 +1,1000 @@
 {"user_id":82,"zipcode":10269,"latitude":39.89785751466514,"longitude":-73.73440521417724,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":742,"zipcode":10277,"latitude":39.92410281731348,"longitude":-73.66520981579374,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":498,"zipcode":10280,"latitude":39.75708249310656,"longitude":-73.70068046050277,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":255,"zipcode":10106,"latitude":40.852898277127245,"longitude":-73.27305377005351,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":996,"zipcode":10119,"latitude":40.07632835168152,"longitude":-74.24576816915237,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":282,"zipcode":10271,"latitude":39.57190870471857,"longitude":-73.61531696281263,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":815,"zipcode":10163,"latitude":39.42372326895398,"longitude":-74.27170039063424,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":449,"zipcode":10259,"latitude":39.61596867879157,"longitude":-74.01010222085498,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":317,"zipcode":11096,"latitude":39.21114814225613,"longitude":-73.04385604306837,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":593,"zipcode":10168,"latitude":39.72646486833783,"longitude":-73.77250105997184,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":833,"zipcode":10025,"latitude":40.34950554296908,"longitude":-73.09022734781514,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":951,"zipcode":10011,"latitude":40.38638864081493,"longitude":-73.5221716754008,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":807,"zipcode":10009,"latitude":39.39896898515121,"longitude":-73.29114859523617,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":539,"zipcode":10292,"latitude":39.273119320039825,"longitude":-73.55073366893531,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":297,"zipcode":11101,"latitude":39.340797812640034,"longitude":-74.80917383746281,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":633,"zipcode":10035,"latitude":39.13789781742993,"longitude":-74.8724626307379,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":673,"zipcode":10115,"latitude":39.16762321535422,"longitude":-74.10564507325562,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":564,"zipcode":10258,"latitude":39.03215102313464,"longitude":-73.72983116173842,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":782,"zipcode":10121,"latitude":40.319807154387696,"longitude":-74.48536994521652,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":473,"zipcode":10007,"latitude":40.57103823456957,"longitude":-73.7150842301153,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":874,"zipcode":10033,"latitude":40.697876330317904,"longitude":-73.7142748441255,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":505,"zipcode":10164,"latitude":39.30576264739727,"longitude":-73.84517608491872,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":692,"zipcode":10265,"latitude":40.07271521569066,"longitude":-73.92121324872024,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":496,"zipcode":10499,"latitude":40.1765283915391,"longitude":-73.52870734623443,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":182,"zipcode":10017,"latitude":39.6199955963806,"longitude":-74.7223339910629,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":982,"zipcode":10126,"latitude":39.50197917247626,"longitude":-74.6224036415818,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":359,"zipcode":10081,"latitude":40.85330077540364,"longitude":-74.13635202941336,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":606,"zipcode":11004,"latitude":39.74923078334874,"longitude":-73.01734552991167,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":870,"zipcode":10305,"latitude":40.15790078690829,"longitude":-74.07725577015526,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":213,"zipcode":11003,"latitude":39.2981607481305,"longitude":-73.34151496903509,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":291,"zipcode":10177,"latitude":40.57672785668587,"longitude":-74.04673329318076,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":461,"zipcode":10019,"latitude":40.09764808678567,"longitude":-73.42893485852494,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":163,"zipcode":10172,"latitude":40.520615627906274,"longitude":-73.97494527743373,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":189,"zipcode":10458,"latitude":39.199414136251605,"longitude":-73.79417369251627,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":309,"zipcode":10117,"latitude":40.12138368302669,"longitude":-74.1920197025481,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":216,"zipcode":10026,"latitude":40.99270895794207,"longitude":-73.16543100953983,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":5,"zipcode":10306,"latitude":39.38019308832634,"longitude":-73.31432988079264,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":746,"zipcode":10257,"latitude":39.05226816267841,"longitude":-73.46474004009049,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":841,"zipcode":10257,"latitude":40.85235214840075,"longitude":-73.80354995534485,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":756,"zipcode":11004,"latitude":40.01093478835117,"longitude":-74.86868876461993,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":566,"zipcode":10272,"latitude":40.027239405835346,"longitude":-74.35069918736463,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":181,"zipcode":10018,"latitude":40.09155354171033,"longitude":-74.71989403371178,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":940,"zipcode":10044,"latitude":39.88831266293106,"longitude":-73.64369000495098,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":750,"zipcode":10159,"latitude":40.850905397255936,"longitude":-74.16443606635728,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":914,"zipcode":10167,"latitude":40.359615631599404,"longitude":-73.93083038320191,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":720,"zipcode":10470,"latitude":39.42850806430127,"longitude":-74.13349527108797,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":668,"zipcode":10459,"latitude":39.854357242072965,"longitude":-73.87359455694173,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":705,"zipcode":10055,"latitude":39.93827031029837,"longitude":-73.43220089784876,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":616,"zipcode":10156,"latitude":40.23684873805775,"longitude":-73.11281610236615,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":388,"zipcode":10012,"latitude":39.53070489561992,"longitude":-74.60262411555313,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":318,"zipcode":10305,"latitude":39.896421275313635,"longitude":-73.72006913852059,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":997,"zipcode":10165,"latitude":39.683380307861995,"longitude":-74.34209788364667,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":694,"zipcode":10138,"latitude":40.92223657428269,"longitude":-73.08093446414051,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":457,"zipcode":10468,"latitude":39.19948039064698,"longitude":-74.62754658414758,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":639,"zipcode":10104,"latitude":39.57872714903621,"longitude":-73.91339602864079,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":760,"zipcode":10026,"latitude":39.61694227310013,"longitude":-73.45992612211913,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":231,"zipcode":10303,"latitude":40.33658533339136,"longitude":-73.06082214605975,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":27,"zipcode":10170,"latitude":40.81811575533694,"longitude":-74.03264075156937,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":585,"zipcode":10035,"latitude":40.94384266175706,"longitude":-73.75665837524248,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":362,"zipcode":10162,"latitude":40.80292792765305,"longitude":-73.97007819198042,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":114,"zipcode":10471,"latitude":40.661969828012445,"longitude":-73.42263419783063,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":954,"zipcode":10310,"latitude":39.22410491987057,"longitude":-73.49712021211437,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":352,"zipcode":11104,"latitude":40.48565941872334,"longitude":-74.26326936864534,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":165,"zipcode":10282,"latitude":40.41429589835913,"longitude":-73.50130707586732,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":879,"zipcode":10279,"latitude":39.46086180288622,"longitude":-74.32979487268345,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":770,"zipcode":10032,"latitude":40.4514198053141,"longitude":-74.5436879472009,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":428,"zipcode":10151,"latitude":40.06879947120452,"longitude":-73.0630846152193,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":208,"zipcode":10119,"latitude":40.15591426710967,"longitude":-73.1634437458098,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":358,"zipcode":10107,"latitude":39.91542271494213,"longitude":-73.14836676702294,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":997,"zipcode":10310,"latitude":39.793761013768865,"longitude":-73.10004798807873,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":170,"zipcode":10271,"latitude":39.923661969772574,"longitude":-73.72864788956679,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":422,"zipcode":11103,"latitude":40.3303985402785,"longitude":-74.21370562424973,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":841,"zipcode":10005,"latitude":40.04371197360748,"longitude":-74.37698702292272,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":703,"zipcode":10025,"latitude":40.1573612953873,"longitude":-73.4025028534554,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":910,"zipcode":10158,"latitude":39.7545235932899,"longitude":-73.81179320678568,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":54,"zipcode":10469,"latitude":40.766409174980396,"longitude":-74.26928322215616,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":843,"zipcode":10173,"latitude":40.814014312443994,"longitude":-74.0897410193677,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":17,"zipcode":10055,"latitude":39.501987039343064,"longitude":-73.85265820076887,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":997,"zipcode":10011,"latitude":39.71881140695575,"longitude":-74.20699598325889,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":969,"zipcode":10010,"latitude":40.565279542475444,"longitude":-74.66843869454812,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":41,"zipcode":10118,"latitude":40.95544269463822,"longitude":-74.80426582739199,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":784,"zipcode":10203,"latitude":40.31136009602118,"longitude":-74.46755551111193,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":208,"zipcode":10172,"latitude":39.56886824570591,"longitude":-73.47154054442429,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":645,"zipcode":10171,"latitude":40.67067453093125,"longitude":-74.4553968268432,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":939,"zipcode":10213,"latitude":39.95242677385079,"longitude":-74.29479865525764,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":521,"zipcode":10041,"latitude":40.48930213002415,"longitude":-74.78034894759233,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":905,"zipcode":10165,"latitude":39.59323479319101,"longitude":-74.43374082457376,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":726,"zipcode":10112,"latitude":40.6273075095409,"longitude":-74.52485649013578,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":907,"zipcode":10457,"latitude":40.212650186761856,"longitude":-73.16480512202595,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":290,"zipcode":10292,"latitude":39.84548037820062,"longitude":-73.45294016289063,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":975,"zipcode":10309,"latitude":39.152675357173315,"longitude":-74.80912425077155,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":201,"zipcode":10030,"latitude":39.568571448054605,"longitude":-73.70999685321178,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":647,"zipcode":10277,"latitude":40.71245215888182,"longitude":-74.97624687554243,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":230,"zipcode":10457,"latitude":39.41471221018921,"longitude":-74.45378153550136,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":997,"zipcode":10158,"latitude":39.57687765801585,"longitude":-74.62066029506232,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":418,"zipcode":10278,"latitude":39.459268252489665,"longitude":-73.03339981920351,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":960,"zipcode":10153,"latitude":39.55066321987338,"longitude":-73.40246768120068,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":957,"zipcode":10130,"latitude":40.24636483041973,"longitude":-73.43335518829963,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":376,"zipcode":10185,"latitude":39.97095976451394,"longitude":-74.98278760906297,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":358,"zipcode":10040,"latitude":39.918449017950074,"longitude":-74.963356626146,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":559,"zipcode":10466,"latitude":39.78129719563842,"longitude":-73.22910002532016,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":228,"zipcode":10020,"latitude":40.005463018709335,"longitude":-73.89663168102312,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":151,"zipcode":10304,"latitude":39.07662055450977,"longitude":-73.26016386374971,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":843,"zipcode":10213,"latitude":40.55870482695194,"longitude":-73.32857457829631,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":44,"zipcode":10275,"latitude":39.64747499238734,"longitude":-74.07231603122119,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":810,"zipcode":10109,"latitude":39.74469743535705,"longitude":-73.92610987071049,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":993,"zipcode":10152,"latitude":39.740973657128876,"longitude":-74.75073690167302,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":611,"zipcode":10249,"latitude":40.70207704913383,"longitude":-74.54234477995075,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":670,"zipcode":10104,"latitude":40.90340864192362,"longitude":-73.41616829900207,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":757,"zipcode":10276,"latitude":39.53660314294198,"longitude":-74.55083565729798,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":494,"zipcode":10281,"latitude":40.766806841734194,"longitude":-74.86890506201405,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":492,"zipcode":10123,"latitude":39.569083385186346,"longitude":-73.972780797412,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":404,"zipcode":10087,"latitude":39.288227531511644,"longitude":-74.99068809201319,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":874,"zipcode":10312,"latitude":40.297756822996675,"longitude":-74.38609441062347,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":164,"zipcode":10286,"latitude":39.951213398332,"longitude":-74.31820827639586,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":274,"zipcode":10055,"latitude":40.586184839750565,"longitude":-74.6687833012872,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":848,"zipcode":10306,"latitude":39.40488168267218,"longitude":-73.61983028289642,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":483,"zipcode":10124,"latitude":40.09191862171671,"longitude":-73.88526900535658,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":765,"zipcode":10466,"latitude":39.96524395997546,"longitude":-74.94416239400705,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":171,"zipcode":10278,"latitude":39.31834600744596,"longitude":-73.21193358635774,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":75,"zipcode":10499,"latitude":40.25930978830021,"longitude":-74.46327619277764,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":269,"zipcode":10309,"latitude":40.46662320788274,"longitude":-74.44965170759879,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":451,"zipcode":10108,"latitude":39.3854309200441,"longitude":-73.84652173813946,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":249,"zipcode":10103,"latitude":39.70716958273403,"longitude":-73.2125657939684,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":38,"zipcode":10302,"latitude":39.52951365871674,"longitude":-73.05852747501395,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":339,"zipcode":11103,"latitude":39.95780253105848,"longitude":-74.73379562803115,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":924,"zipcode":10123,"latitude":40.65874089075978,"longitude":-73.90642605304626,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":550,"zipcode":10280,"latitude":39.78141460630632,"longitude":-74.90381346362197,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":231,"zipcode":10069,"latitude":40.26113269501072,"longitude":-74.73964624157959,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":392,"zipcode":10106,"latitude":39.78960091236594,"longitude":-74.76328799536705,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":304,"zipcode":10023,"latitude":39.065712908082304,"longitude":-74.14756036289445,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":143,"zipcode":10040,"latitude":39.80553544601261,"longitude":-73.41047444152449,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":505,"zipcode":10118,"latitude":39.12556611501923,"longitude":-73.86641772225326,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":293,"zipcode":10026,"latitude":39.001621304912746,"longitude":-73.94862433238865,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":647,"zipcode":10018,"latitude":39.84224447125721,"longitude":-73.30162852221378,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":796,"zipcode":10112,"latitude":40.94320669695786,"longitude":-74.58008389919569,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":465,"zipcode":10012,"latitude":40.62864350607004,"longitude":-74.84263495388007,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":171,"zipcode":10019,"latitude":40.75341934941895,"longitude":-73.73315973500812,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":111,"zipcode":10469,"latitude":40.528689572218845,"longitude":-74.5871114822839,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":513,"zipcode":10154,"latitude":40.93662738784164,"longitude":-73.76163240746237,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":701,"zipcode":10121,"latitude":40.72229691225032,"longitude":-74.13462543154664,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":637,"zipcode":10039,"latitude":40.38614080228475,"longitude":-73.45491032615706,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":580,"zipcode":10257,"latitude":40.33563646528199,"longitude":-73.0364559676554,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":689,"zipcode":10021,"latitude":39.03872681414749,"longitude":-73.60291320987395,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":188,"zipcode":10043,"latitude":40.148641751400184,"longitude":-73.42106250112747,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":597,"zipcode":10081,"latitude":40.96377477980393,"longitude":-73.03127428284527,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":182,"zipcode":10158,"latitude":39.84893596492409,"longitude":-74.72050771203811,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":275,"zipcode":10155,"latitude":39.48422064555106,"longitude":-73.81052950837886,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":552,"zipcode":10465,"latitude":40.53532582197977,"longitude":-74.61252607627006,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":647,"zipcode":10013,"latitude":39.47157457341229,"longitude":-74.29253967280545,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":491,"zipcode":10271,"latitude":40.74225449264016,"longitude":-73.9201784879136,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":893,"zipcode":11104,"latitude":39.146795694975,"longitude":-74.8771386235705,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":577,"zipcode":10282,"latitude":40.762959764157415,"longitude":-73.77419814169079,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":35,"zipcode":10156,"latitude":40.61677537444222,"longitude":-74.19434222968206,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":414,"zipcode":10150,"latitude":40.32362813470616,"longitude":-73.68400554127598,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":562,"zipcode":10114,"latitude":40.70352976407491,"longitude":-73.02855889823009,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":239,"zipcode":10165,"latitude":39.43989524505222,"longitude":-74.96750221374765,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":702,"zipcode":10301,"latitude":39.25681627840168,"longitude":-73.73103368920833,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":683,"zipcode":10261,"latitude":39.71319909156052,"longitude":-73.28643593407327,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":291,"zipcode":10164,"latitude":39.61397932439781,"longitude":-73.07890939785645,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":774,"zipcode":10095,"latitude":39.44656950068985,"longitude":-74.69641597173384,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":996,"zipcode":10011,"latitude":40.87285217989143,"longitude":-74.15121828727908,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":615,"zipcode":10170,"latitude":39.23251658622381,"longitude":-74.86533832775689,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":576,"zipcode":10008,"latitude":39.520198802905696,"longitude":-73.50500163034103,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":801,"zipcode":10080,"latitude":40.4510892200917,"longitude":-73.00160884807904,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":228,"zipcode":10313,"latitude":40.211419679521576,"longitude":-73.0435108882239,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":314,"zipcode":10274,"latitude":40.18148943481487,"longitude":-74.96841794519919,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":535,"zipcode":10133,"latitude":40.285280752411374,"longitude":-73.86174753941306,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":273,"zipcode":10038,"latitude":39.04967898729499,"longitude":-74.29047911827158,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":393,"zipcode":10012,"latitude":39.23469832406496,"longitude":-73.01486875280821,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":780,"zipcode":10065,"latitude":40.58727970561386,"longitude":-74.87688199713008,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":193,"zipcode":10003,"latitude":39.81183550005566,"longitude":-74.65839708877722,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":108,"zipcode":10463,"latitude":39.75007276404064,"longitude":-73.7235851604047,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":43,"zipcode":10036,"latitude":40.84988781785795,"longitude":-73.0256441206688,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":486,"zipcode":10265,"latitude":39.73012989975762,"longitude":-74.40087433269848,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":236,"zipcode":10075,"latitude":39.01815750991555,"longitude":-74.00096254767335,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":687,"zipcode":10272,"latitude":39.392880484111714,"longitude":-73.39788896066503,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":449,"zipcode":10002,"latitude":40.53079889618642,"longitude":-74.97480276990852,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":788,"zipcode":10039,"latitude":40.28431963811105,"longitude":-73.35487024664194,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":391,"zipcode":10164,"latitude":40.89865197044089,"longitude":-73.67923694542438,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":27,"zipcode":10118,"latitude":40.79541427954295,"longitude":-74.67465096237815,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":973,"zipcode":10007,"latitude":39.899834393193245,"longitude":-73.84555038490824,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":250,"zipcode":10459,"latitude":39.758150743047516,"longitude":-73.12239453259306,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":438,"zipcode":10173,"latitude":39.45642605701926,"longitude":-73.9373582376043,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":337,"zipcode":10464,"latitude":40.40441264274574,"longitude":-74.79473744947629,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":779,"zipcode":10170,"latitude":40.60611459807316,"longitude":-74.62590486573815,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":297,"zipcode":10014,"latitude":40.57506281446562,"longitude":-73.60809714899669,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":762,"zipcode":10258,"latitude":40.46977413612507,"longitude":-74.91491927839219,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":858,"zipcode":10122,"latitude":39.55855341380382,"longitude":-73.40652410519893,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":816,"zipcode":10280,"latitude":39.41557989658637,"longitude":-73.31055067542268,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":889,"zipcode":10302,"latitude":40.6086844693343,"longitude":-74.45139304909681,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":299,"zipcode":10311,"latitude":39.540617148776484,"longitude":-73.68116933150313,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":354,"zipcode":10060,"latitude":39.58859977614304,"longitude":-73.80149971988742,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":335,"zipcode":10035,"latitude":40.32148078117761,"longitude":-74.5696066233966,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":829,"zipcode":10162,"latitude":39.26782819438173,"longitude":-73.6395447465926,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":645,"zipcode":10104,"latitude":39.671782987379565,"longitude":-74.90790150646586,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":342,"zipcode":10212,"latitude":39.42247708883448,"longitude":-74.51009787052713,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":15,"zipcode":10301,"latitude":40.68874448633632,"longitude":-73.13673747267978,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":119,"zipcode":10130,"latitude":40.32314107016684,"longitude":-73.60923804386054,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":133,"zipcode":10173,"latitude":40.731343179576434,"longitude":-74.5371647571724,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":235,"zipcode":10018,"latitude":40.614530174583706,"longitude":-73.45520484508738,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":202,"zipcode":10125,"latitude":39.963284891974624,"longitude":-73.62333429855919,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":305,"zipcode":10213,"latitude":39.575324991348374,"longitude":-74.5643725632537,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":674,"zipcode":10028,"latitude":40.58604935045586,"longitude":-73.297988819925,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":806,"zipcode":10276,"latitude":40.7826658045926,"longitude":-73.09321438191853,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":630,"zipcode":10261,"latitude":39.30740061874205,"longitude":-74.30728737978357,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":81,"zipcode":10471,"latitude":39.18554451216737,"longitude":-73.06396158870383,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":220,"zipcode":10455,"latitude":40.42224125707083,"longitude":-74.61185535724846,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":45,"zipcode":10312,"latitude":40.31403609457231,"longitude":-74.89242188212755,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":464,"zipcode":10455,"latitude":40.66498487889686,"longitude":-74.47417082084363,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":528,"zipcode":10463,"latitude":39.02184320040568,"longitude":-74.94770723462658,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":779,"zipcode":10166,"latitude":40.82142548454452,"longitude":-73.29969570447125,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":287,"zipcode":10260,"latitude":40.8893732180486,"longitude":-73.10597248195573,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":469,"zipcode":10107,"latitude":40.21534770746366,"longitude":-74.10545625490974,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":256,"zipcode":10470,"latitude":40.72109232452493,"longitude":-73.3679879762374,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":58,"zipcode":10312,"latitude":40.51905370761097,"longitude":-73.56374394542563,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":707,"zipcode":10472,"latitude":39.87803835287508,"longitude":-73.09149886193458,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":613,"zipcode":10111,"latitude":39.94203082344723,"longitude":-73.11266858641905,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":376,"zipcode":11003,"latitude":40.324198648514646,"longitude":-73.08566937807765,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":904,"zipcode":10106,"latitude":40.44885528812483,"longitude":-74.96561847538051,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":658,"zipcode":10031,"latitude":39.97030096557813,"longitude":-74.41200735051069,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":456,"zipcode":10269,"latitude":40.12307150997286,"longitude":-74.908194628121,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":688,"zipcode":10155,"latitude":40.31300202085829,"longitude":-73.26331835287553,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":946,"zipcode":10014,"latitude":39.661409004118276,"longitude":-73.55755465439185,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":70,"zipcode":11001,"latitude":40.54031733291613,"longitude":-73.622492129301,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":223,"zipcode":10126,"latitude":40.941752423196036,"longitude":-73.88275170589469,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":702,"zipcode":10118,"latitude":39.660495665555956,"longitude":-74.75307526251028,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":2,"zipcode":10153,"latitude":39.00446621366186,"longitude":-73.94675589708037,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":123,"zipcode":11102,"latitude":40.172731597600524,"longitude":-74.00417910232017,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":599,"zipcode":10005,"latitude":39.12195017217122,"longitude":-74.32632070686809,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":122,"zipcode":10312,"latitude":39.10170568396089,"longitude":-74.32760876899661,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":80,"zipcode":10474,"latitude":39.0638650418784,"longitude":-74.88337910888656,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":692,"zipcode":10014,"latitude":40.53777335068411,"longitude":-73.55322381865287,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":859,"zipcode":10157,"latitude":39.50977475320471,"longitude":-73.48364415870239,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":195,"zipcode":10282,"latitude":40.24076952775948,"longitude":-73.44125062245449,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":78,"zipcode":10276,"latitude":40.787704983779456,"longitude":-73.96071570096058,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":597,"zipcode":10452,"latitude":40.364182144206346,"longitude":-74.26310828005911,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":156,"zipcode":10179,"latitude":39.85327035982108,"longitude":-73.77718826703193,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":961,"zipcode":10038,"latitude":39.330455777925714,"longitude":-74.93457950842024,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":554,"zipcode":10125,"latitude":40.45277788729307,"longitude":-74.20167757569045,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":550,"zipcode":10265,"latitude":40.63623888771622,"longitude":-73.15990467769963,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":455,"zipcode":10012,"latitude":39.67452488888038,"longitude":-74.75976211567843,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":710,"zipcode":11101,"latitude":39.59357127985179,"longitude":-73.60939463878499,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":322,"zipcode":10026,"latitude":39.181079865139296,"longitude":-74.67874400211154,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":831,"zipcode":10009,"latitude":40.330640539944156,"longitude":-74.65699531718107,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":833,"zipcode":10307,"latitude":39.0836151545478,"longitude":-74.07578761298097,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":169,"zipcode":10106,"latitude":39.801404663552184,"longitude":-73.80219247903428,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":940,"zipcode":11003,"latitude":39.0755581187949,"longitude":-74.87507138716184,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":80,"zipcode":10314,"latitude":40.01090493795621,"longitude":-74.59075959263191,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":618,"zipcode":10020,"latitude":40.65139180190188,"longitude":-74.61450731319273,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":821,"zipcode":10292,"latitude":39.48255766886861,"longitude":-74.97293058105389,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":606,"zipcode":10152,"latitude":39.21807172726483,"longitude":-74.24251597914142,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":320,"zipcode":10453,"latitude":40.41144753081748,"longitude":-74.78116181220454,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":129,"zipcode":10107,"latitude":39.03818647250609,"longitude":-74.13021617334246,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":465,"zipcode":10017,"latitude":40.60622035999219,"longitude":-74.90203537610645,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":348,"zipcode":10177,"latitude":39.25887751243015,"longitude":-74.34786566929756,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":281,"zipcode":10019,"latitude":40.770424139966366,"longitude":-73.13109393594311,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":589,"zipcode":10011,"latitude":40.96810212712267,"longitude":-73.88389963622276,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":597,"zipcode":10007,"latitude":39.86714791675109,"longitude":-73.35228228118297,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":899,"zipcode":10164,"latitude":40.1257765680345,"longitude":-73.12162420681909,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":320,"zipcode":10312,"latitude":39.109886753598246,"longitude":-74.13575103144129,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":155,"zipcode":10065,"latitude":40.34362477125371,"longitude":-74.3274569606651,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":492,"zipcode":10280,"latitude":40.795300477194495,"longitude":-73.00334872956218,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":127,"zipcode":10467,"latitude":40.49238805720441,"longitude":-73.03423826860188,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":796,"zipcode":10452,"latitude":39.91375337342345,"longitude":-74.21823747959317,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":835,"zipcode":10307,"latitude":39.812874256794686,"longitude":-74.50598592783055,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":856,"zipcode":10705,"latitude":40.821310943841205,"longitude":-73.10551169670597,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":365,"zipcode":10301,"latitude":40.06884234403075,"longitude":-73.52270334842066,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":543,"zipcode":10185,"latitude":39.71854514857164,"longitude":-73.5400249007001,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":556,"zipcode":10129,"latitude":40.93188819197781,"longitude":-73.69540219182879,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":792,"zipcode":10212,"latitude":39.14964792008705,"longitude":-74.62513438284965,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":628,"zipcode":10041,"latitude":40.51451666364362,"longitude":-74.67603392364234,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":172,"zipcode":10455,"latitude":40.00879773141952,"longitude":-74.85480403929348,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":495,"zipcode":10110,"latitude":40.20691319610593,"longitude":-74.82196257149266,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":403,"zipcode":10040,"latitude":40.8245448747033,"longitude":-73.66825734425316,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":190,"zipcode":10087,"latitude":39.821261610277325,"longitude":-74.06112743361372,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":341,"zipcode":10203,"latitude":39.498506500126766,"longitude":-74.5816953350958,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":346,"zipcode":10278,"latitude":39.75675373870442,"longitude":-73.42705941821026,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":740,"zipcode":10705,"latitude":40.7194696781088,"longitude":-74.66978251305223,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":672,"zipcode":10021,"latitude":40.3768971185319,"longitude":-73.63109991830297,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":730,"zipcode":10454,"latitude":40.38191900943374,"longitude":-73.56870387575381,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":138,"zipcode":10292,"latitude":39.10280877048619,"longitude":-73.34494956409614,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":3,"zipcode":10258,"latitude":40.33911099297461,"longitude":-74.22440923399746,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":427,"zipcode":10040,"latitude":40.592583627115374,"longitude":-74.90621847346041,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":449,"zipcode":10037,"latitude":39.45144037061623,"longitude":-74.99972727180501,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":779,"zipcode":10173,"latitude":40.6745031333745,"longitude":-74.85287783498936,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":806,"zipcode":11096,"latitude":40.29356210731555,"longitude":-74.51165438386334,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":645,"zipcode":10282,"latitude":40.964002485365704,"longitude":-74.05310120463123,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":766,"zipcode":10118,"latitude":39.10737105462948,"longitude":-74.56834643752458,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":585,"zipcode":10060,"latitude":40.01039972298183,"longitude":-74.8323533727303,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":98,"zipcode":10274,"latitude":40.08758554129352,"longitude":-74.03095926619095,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":384,"zipcode":10159,"latitude":39.73510778147747,"longitude":-74.11090304070528,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":606,"zipcode":10001,"latitude":39.223649266602486,"longitude":-73.39905064395093,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":603,"zipcode":10456,"latitude":40.34035575470222,"longitude":-73.44713201429695,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":792,"zipcode":10174,"latitude":40.46354462961883,"longitude":-74.81405923748495,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":378,"zipcode":10036,"latitude":40.94454014423572,"longitude":-73.42375297572485,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":977,"zipcode":10277,"latitude":40.58572396895369,"longitude":-73.24147129083927,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":737,"zipcode":10273,"latitude":40.25166591962502,"longitude":-73.99775630798875,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":515,"zipcode":10308,"latitude":39.94479145850272,"longitude":-73.42046327185372,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":345,"zipcode":10128,"latitude":40.55862077331603,"longitude":-73.33675438973683,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":607,"zipcode":10018,"latitude":40.181136019791936,"longitude":-74.19561939061553,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":274,"zipcode":10455,"latitude":40.472210956972084,"longitude":-73.95430113392005,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":888,"zipcode":10292,"latitude":40.447004705039646,"longitude":-73.84806160809389,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":220,"zipcode":10165,"latitude":40.63117211933309,"longitude":-74.39840723114257,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":352,"zipcode":10124,"latitude":40.00034056767504,"longitude":-73.64604441875927,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":651,"zipcode":10212,"latitude":39.44621166303437,"longitude":-73.69826954299876,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":674,"zipcode":10286,"latitude":40.858171885553936,"longitude":-74.00455355443569,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":660,"zipcode":10069,"latitude":40.979240442625496,"longitude":-74.68535833881309,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":623,"zipcode":10473,"latitude":40.194754326082894,"longitude":-73.19025430902772,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":10,"zipcode":10162,"latitude":39.33326266842866,"longitude":-73.22138054393422,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":717,"zipcode":10159,"latitude":40.333616314460336,"longitude":-73.58655750764069,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":963,"zipcode":10499,"latitude":40.725122664274,"longitude":-74.42593171761595,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":927,"zipcode":10029,"latitude":40.440966624902046,"longitude":-74.14165709427554,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":329,"zipcode":10095,"latitude":40.32890207885261,"longitude":-73.93328767480496,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":49,"zipcode":10036,"latitude":40.71066933535208,"longitude":-74.10193812941486,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":487,"zipcode":10005,"latitude":40.22892849409941,"longitude":-73.84693937135337,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":836,"zipcode":10463,"latitude":40.174504797557354,"longitude":-73.66970785882714,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":746,"zipcode":10131,"latitude":39.78504837170081,"longitude":-74.82206340025198,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":714,"zipcode":10470,"latitude":39.91829464484352,"longitude":-73.34705691401471,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":542,"zipcode":10174,"latitude":39.422236900828544,"longitude":-74.10381795145933,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":141,"zipcode":10117,"latitude":40.983498322618736,"longitude":-74.80986574646614,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":943,"zipcode":10271,"latitude":39.50121559015929,"longitude":-73.49058203183043,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":878,"zipcode":10273,"latitude":39.54017159800619,"longitude":-74.91432517592557,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":727,"zipcode":10021,"latitude":39.35223462233287,"longitude":-74.27718534279863,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":723,"zipcode":10102,"latitude":40.89203909831357,"longitude":-74.43338794796938,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":376,"zipcode":10150,"latitude":39.76249552982677,"longitude":-73.05873017603264,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":492,"zipcode":10101,"latitude":39.78544958693058,"longitude":-74.25660909009021,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":640,"zipcode":10309,"latitude":39.85705121464921,"longitude":-74.7294567501586,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":677,"zipcode":10462,"latitude":40.51498853908704,"longitude":-73.81190932400924,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":473,"zipcode":10116,"latitude":40.217874250749325,"longitude":-73.5756705793387,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":401,"zipcode":10302,"latitude":40.029588083009855,"longitude":-74.47370947852563,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":922,"zipcode":10458,"latitude":39.71683466714068,"longitude":-74.61320774158158,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":535,"zipcode":10451,"latitude":39.130434384859086,"longitude":-74.64417846744568,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":841,"zipcode":10105,"latitude":39.5225269791766,"longitude":-73.42818301998331,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":52,"zipcode":10041,"latitude":40.80839979861539,"longitude":-73.31230984751839,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":650,"zipcode":10312,"latitude":40.361439367497766,"longitude":-73.0085177858204,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":45,"zipcode":11101,"latitude":40.59295516963642,"longitude":-73.33224226222629,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":976,"zipcode":10121,"latitude":39.81031553356035,"longitude":-74.26040125409057,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":86,"zipcode":10021,"latitude":39.681617952940684,"longitude":-73.88445909007396,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":175,"zipcode":10162,"latitude":40.264425137988546,"longitude":-73.0395751903541,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":810,"zipcode":10154,"latitude":40.700300815676286,"longitude":-73.90179403651673,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":942,"zipcode":10045,"latitude":40.517788904181415,"longitude":-74.13706308542069,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":990,"zipcode":10106,"latitude":40.7280112106045,"longitude":-73.31082658342567,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":614,"zipcode":10465,"latitude":40.51439638557144,"longitude":-74.38137136444529,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":281,"zipcode":10285,"latitude":39.12805366703249,"longitude":-73.25632046692601,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":962,"zipcode":10460,"latitude":40.84856682359926,"longitude":-74.08668719106686,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":648,"zipcode":10249,"latitude":39.592273765102526,"longitude":-73.8836388001123,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":352,"zipcode":10037,"latitude":40.72853660299745,"longitude":-73.81535792577458,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":965,"zipcode":10160,"latitude":40.36128487222057,"longitude":-73.4371064425112,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":961,"zipcode":10213,"latitude":39.24706325789272,"longitude":-74.75288733718745,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":67,"zipcode":10458,"latitude":40.97462081858859,"longitude":-74.42037992076106,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":80,"zipcode":10471,"latitude":40.459522201572824,"longitude":-73.92848967386358,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":520,"zipcode":10270,"latitude":39.17917635369543,"longitude":-74.23107736324107,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":592,"zipcode":10199,"latitude":39.64308619674972,"longitude":-74.66133039032923,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":823,"zipcode":10474,"latitude":39.237221930996675,"longitude":-73.24300880363553,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":121,"zipcode":10311,"latitude":40.54582871365221,"longitude":-74.67312003403202,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":305,"zipcode":10242,"latitude":39.18803010857405,"longitude":-73.82588022198772,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":438,"zipcode":10211,"latitude":39.93392703628703,"longitude":-73.57664375005444,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":750,"zipcode":10286,"latitude":39.39730989185618,"longitude":-74.6686186000166,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":13,"zipcode":10095,"latitude":39.46676846612999,"longitude":-73.31576509334927,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":325,"zipcode":10106,"latitude":39.650040648256535,"longitude":-73.25652839130377,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":684,"zipcode":11003,"latitude":40.18813131495617,"longitude":-73.57787197396551,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":178,"zipcode":10301,"latitude":39.18500348652826,"longitude":-74.03613540796397,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":600,"zipcode":10469,"latitude":39.68742922656378,"longitude":-73.30079799997337,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":989,"zipcode":10286,"latitude":40.41965892138095,"longitude":-74.1203547332007,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":704,"zipcode":10165,"latitude":40.38522144753088,"longitude":-74.82288121198734,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":661,"zipcode":10003,"latitude":39.06458775549884,"longitude":-74.11982554409315,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":191,"zipcode":10281,"latitude":40.215010133682334,"longitude":-73.74068267364066,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":6,"zipcode":10165,"latitude":39.176329697496534,"longitude":-74.45694059462147,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":739,"zipcode":10281,"latitude":40.14821896118386,"longitude":-74.50140631134849,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":436,"zipcode":10463,"latitude":40.151196944769985,"longitude":-74.29405182987524,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":658,"zipcode":10310,"latitude":40.13687906325953,"longitude":-74.61740218309819,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":804,"zipcode":10153,"latitude":39.33183712120036,"longitude":-74.79711083722026,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":19,"zipcode":10013,"latitude":39.88089286258088,"longitude":-74.19323186871719,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":994,"zipcode":10256,"latitude":39.800549396970275,"longitude":-73.0148924443899,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":734,"zipcode":10249,"latitude":39.77200519373497,"longitude":-74.34028511054004,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":345,"zipcode":10242,"latitude":40.99244667698585,"longitude":-73.18000513165477,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":465,"zipcode":10305,"latitude":39.98923837085363,"longitude":-74.75229634309106,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":110,"zipcode":10211,"latitude":39.30758626225359,"longitude":-74.07290596541276,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":149,"zipcode":10179,"latitude":39.24124676772872,"longitude":-74.05347889911846,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":772,"zipcode":11003,"latitude":39.17048410714106,"longitude":-74.41965901610676,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":406,"zipcode":10021,"latitude":40.446768603234894,"longitude":-74.92930405583647,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":327,"zipcode":10005,"latitude":39.62056929094499,"longitude":-73.64750038755867,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":674,"zipcode":10014,"latitude":40.748304078091536,"longitude":-73.02186673967539,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":435,"zipcode":10119,"latitude":39.06694623656915,"longitude":-73.0724502952324,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":512,"zipcode":10060,"latitude":40.85577988477325,"longitude":-74.22472802267649,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":395,"zipcode":10043,"latitude":39.260396033337756,"longitude":-74.45703322923188,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":610,"zipcode":11101,"latitude":40.66197411957556,"longitude":-73.54727119556276,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":946,"zipcode":10123,"latitude":39.686190679233654,"longitude":-73.41418640474,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":547,"zipcode":10451,"latitude":39.36182943910801,"longitude":-73.93088246707521,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":437,"zipcode":10120,"latitude":39.730593694861064,"longitude":-73.24994412432096,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":733,"zipcode":10472,"latitude":40.60167236828802,"longitude":-74.17733486069577,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":564,"zipcode":10151,"latitude":40.29570484575259,"longitude":-73.28053261698632,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":409,"zipcode":10160,"latitude":39.29624227397917,"longitude":-74.97604095282682,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":624,"zipcode":10150,"latitude":39.61165657109391,"longitude":-74.52089150981354,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":228,"zipcode":10121,"latitude":39.152015889977804,"longitude":-74.46751488253551,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":932,"zipcode":10274,"latitude":39.30840805036418,"longitude":-73.8569010697205,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":306,"zipcode":10138,"latitude":39.251542222178266,"longitude":-73.02537360067062,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":10,"zipcode":10031,"latitude":39.25409421142413,"longitude":-74.66203727627152,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":723,"zipcode":10292,"latitude":39.56858802091281,"longitude":-73.24217535061662,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":335,"zipcode":10455,"latitude":40.04189335122342,"longitude":-74.42384311990008,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":909,"zipcode":10125,"latitude":39.43728072344628,"longitude":-74.32277276305918,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":754,"zipcode":10463,"latitude":39.51776154060151,"longitude":-74.77329608408662,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":78,"zipcode":10459,"latitude":39.8858358708324,"longitude":-73.17380816043011,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":975,"zipcode":10469,"latitude":40.49846915345105,"longitude":-73.67140998376357,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":760,"zipcode":10177,"latitude":40.61881391942834,"longitude":-73.97443383283961,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":352,"zipcode":10109,"latitude":40.3507448555559,"longitude":-73.05653612676974,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":216,"zipcode":10161,"latitude":40.199376898948685,"longitude":-73.55996035304635,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":472,"zipcode":10277,"latitude":40.81181330784532,"longitude":-73.49086666868308,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":221,"zipcode":11103,"latitude":39.7091580651206,"longitude":-73.77935521446412,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":666,"zipcode":10103,"latitude":40.15928028155368,"longitude":-73.10739182091095,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":951,"zipcode":10249,"latitude":39.56882200037347,"longitude":-74.42549180803812,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":655,"zipcode":11101,"latitude":40.32050593980009,"longitude":-73.1345689544971,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":817,"zipcode":10103,"latitude":40.16413063614079,"longitude":-73.30371748971505,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":510,"zipcode":10111,"latitude":40.89088546676782,"longitude":-74.49451957496501,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":397,"zipcode":10312,"latitude":39.973548080141455,"longitude":-74.51333543514377,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":1,"zipcode":10122,"latitude":40.35566041026014,"longitude":-73.30473164497663,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":847,"zipcode":10282,"latitude":39.723562156203165,"longitude":-73.67539899701009,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":250,"zipcode":10242,"latitude":40.536087500965934,"longitude":-74.77980005502626,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":289,"zipcode":10027,"latitude":39.05268281995209,"longitude":-73.34997754269655,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":526,"zipcode":10306,"latitude":40.7693244646741,"longitude":-73.08924156703152,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":775,"zipcode":10305,"latitude":40.746443799343936,"longitude":-74.54168272869138,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":409,"zipcode":10454,"latitude":40.34983342132112,"longitude":-73.58416246692325,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":276,"zipcode":10027,"latitude":40.97189211958344,"longitude":-73.38242377552058,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":731,"zipcode":10126,"latitude":39.982277167584776,"longitude":-73.70758773319145,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":16,"zipcode":10017,"latitude":39.40545111397152,"longitude":-74.78750465406539,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":564,"zipcode":10013,"latitude":40.50187308383651,"longitude":-73.44237777384325,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":8,"zipcode":11001,"latitude":39.68338798095511,"longitude":-74.1814625142929,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":260,"zipcode":10269,"latitude":39.89430051723837,"longitude":-73.76240502668428,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":415,"zipcode":10024,"latitude":39.3363654101349,"longitude":-74.95339234722064,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":888,"zipcode":10167,"latitude":39.086106857682914,"longitude":-73.01634010641841,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":643,"zipcode":10301,"latitude":39.0819043484642,"longitude":-74.8915847898396,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":263,"zipcode":10013,"latitude":40.37695697114219,"longitude":-73.11204890987236,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":897,"zipcode":10003,"latitude":40.98048967559617,"longitude":-73.82153780643581,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":543,"zipcode":10475,"latitude":39.45209403199869,"longitude":-73.75002690101368,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":257,"zipcode":10274,"latitude":40.108214932244415,"longitude":-73.48096645698553,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":104,"zipcode":10455,"latitude":39.25835829127343,"longitude":-74.58703985691845,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":480,"zipcode":10456,"latitude":39.81323603939393,"longitude":-73.35524728530095,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":781,"zipcode":10040,"latitude":39.667621146122165,"longitude":-73.25050129346671,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":449,"zipcode":10013,"latitude":39.71309595404279,"longitude":-73.9054648616309,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":916,"zipcode":10312,"latitude":40.71136299411621,"longitude":-74.56813955650004,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":120,"zipcode":10169,"latitude":40.91963897538358,"longitude":-73.0813054102546,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":27,"zipcode":10162,"latitude":39.57943150253114,"longitude":-73.56799046978917,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":400,"zipcode":10164,"latitude":40.768465028634374,"longitude":-73.04863016081333,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":728,"zipcode":10462,"latitude":39.77109454089193,"longitude":-74.92624150279123,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":637,"zipcode":10069,"latitude":39.95762674545971,"longitude":-73.096590252623,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":395,"zipcode":10044,"latitude":39.40992195006561,"longitude":-74.1242474100451,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":509,"zipcode":10119,"latitude":39.49875514631162,"longitude":-74.2352772721524,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":325,"zipcode":10041,"latitude":39.33462331310996,"longitude":-73.99418089293373,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":269,"zipcode":10030,"latitude":39.44246171150224,"longitude":-74.15957096770333,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":109,"zipcode":10103,"latitude":39.11081485165852,"longitude":-73.30207387243695,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":729,"zipcode":10272,"latitude":39.804410669248306,"longitude":-73.2392116827445,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":777,"zipcode":10069,"latitude":40.43511079215661,"longitude":-73.09799119730297,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":272,"zipcode":10178,"latitude":40.49083845416956,"longitude":-73.79411711250616,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":29,"zipcode":10123,"latitude":39.7905164163424,"longitude":-73.66005512458919,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":693,"zipcode":11104,"latitude":39.96072123091187,"longitude":-74.01624957796214,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":585,"zipcode":10069,"latitude":40.83466567559638,"longitude":-73.72005536828279,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":364,"zipcode":10271,"latitude":39.68070620161732,"longitude":-74.98734636367342,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":47,"zipcode":10301,"latitude":39.440076206851195,"longitude":-73.3752284406587,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":738,"zipcode":10163,"latitude":40.599036512556644,"longitude":-74.8917187656229,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":685,"zipcode":10461,"latitude":39.04461598033074,"longitude":-74.59902320216929,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":700,"zipcode":10090,"latitude":40.512960948409344,"longitude":-74.90503296185129,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":423,"zipcode":10121,"latitude":40.90336585683869,"longitude":-74.84257989198558,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":20,"zipcode":10021,"latitude":39.613733670253104,"longitude":-73.61717503829065,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":193,"zipcode":10028,"latitude":40.75885367576979,"longitude":-73.99128640012611,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":533,"zipcode":10006,"latitude":39.10373059913577,"longitude":-73.07739704035282,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":269,"zipcode":10087,"latitude":40.57029677270205,"longitude":-74.37393451510022,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":943,"zipcode":10104,"latitude":39.687137196501446,"longitude":-73.58411395906774,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":580,"zipcode":10016,"latitude":40.37536200915198,"longitude":-73.92622654036632,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":670,"zipcode":10036,"latitude":40.191053591966835,"longitude":-73.72489132900347,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":240,"zipcode":10103,"latitude":39.617602010033885,"longitude":-74.63997843160139,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":296,"zipcode":10460,"latitude":39.485918907693666,"longitude":-73.54300629617705,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":183,"zipcode":10257,"latitude":39.782987688280954,"longitude":-74.5823713223846,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":354,"zipcode":10036,"latitude":40.307331201621245,"longitude":-73.29789906201604,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":189,"zipcode":10282,"latitude":39.77990831878313,"longitude":-73.88782219767099,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":580,"zipcode":10258,"latitude":40.256333939957706,"longitude":-73.42403116410512,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":338,"zipcode":10007,"latitude":39.90497527241329,"longitude":-73.8940181978611,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":223,"zipcode":10080,"latitude":40.04901084380433,"longitude":-73.89605317543219,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":978,"zipcode":10106,"latitude":40.60452918695735,"longitude":-73.04268692793198,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":239,"zipcode":10475,"latitude":39.53197734965879,"longitude":-73.2914285860095,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":179,"zipcode":10271,"latitude":39.61773192003345,"longitude":-74.16780429201579,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":579,"zipcode":10033,"latitude":40.76753575055157,"longitude":-74.01218470749649,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":872,"zipcode":10273,"latitude":40.926612023635656,"longitude":-73.56596672124458,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":678,"zipcode":10016,"latitude":40.96657258804651,"longitude":-73.08643972305757,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":111,"zipcode":10105,"latitude":39.60274548685256,"longitude":-73.84612553934824,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":284,"zipcode":11102,"latitude":40.71067506007307,"longitude":-74.0127036611859,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":948,"zipcode":10455,"latitude":39.89697547782211,"longitude":-73.3930927936834,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":210,"zipcode":10010,"latitude":39.915633235849505,"longitude":-73.62434961345136,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":279,"zipcode":10305,"latitude":39.44153121264588,"longitude":-74.59922762578356,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":238,"zipcode":10055,"latitude":39.66092590729792,"longitude":-74.92051462107837,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":780,"zipcode":10458,"latitude":40.30317733333472,"longitude":-73.41329610891795,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":322,"zipcode":10019,"latitude":40.31466567126568,"longitude":-74.30919479137177,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":875,"zipcode":10172,"latitude":40.827935636593715,"longitude":-73.66021558595679,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":567,"zipcode":10178,"latitude":39.447758283979695,"longitude":-73.40836385176691,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":167,"zipcode":10466,"latitude":39.145054653321935,"longitude":-74.77953782765498,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":1,"zipcode":10101,"latitude":39.63790944969264,"longitude":-74.2152443787714,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":991,"zipcode":10274,"latitude":40.149079536902725,"longitude":-74.73714824276607,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":310,"zipcode":10310,"latitude":40.35304964058558,"longitude":-73.43981374043253,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":112,"zipcode":10468,"latitude":39.45918287467162,"longitude":-73.85054872795271,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":116,"zipcode":10259,"latitude":39.270440698226174,"longitude":-74.55741060464865,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":850,"zipcode":10115,"latitude":39.875674631460626,"longitude":-73.94380813978971,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":648,"zipcode":10151,"latitude":40.38413666821667,"longitude":-73.71183534128487,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":325,"zipcode":10075,"latitude":39.23240201135435,"longitude":-74.76808951945394,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":307,"zipcode":10161,"latitude":39.48779016309776,"longitude":-74.13329150841399,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":632,"zipcode":11101,"latitude":40.204402366386084,"longitude":-73.9856571027097,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":464,"zipcode":10132,"latitude":39.65648778482136,"longitude":-73.95730857039753,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":489,"zipcode":10030,"latitude":39.90276257313353,"longitude":-73.56121800824536,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":148,"zipcode":10112,"latitude":39.411057862907484,"longitude":-73.06759473680626,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":816,"zipcode":10055,"latitude":40.20949545122672,"longitude":-74.31991104400939,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":295,"zipcode":10256,"latitude":39.70807927477046,"longitude":-74.25751459700554,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":200,"zipcode":10116,"latitude":40.41694617568483,"longitude":-74.24551846751802,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":818,"zipcode":11101,"latitude":40.791833471979395,"longitude":-74.12523961914758,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":907,"zipcode":10041,"latitude":39.38761643623289,"longitude":-73.17858916525815,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":578,"zipcode":10464,"latitude":39.46013584727417,"longitude":-73.79400342356156,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":993,"zipcode":10095,"latitude":39.096418971019965,"longitude":-74.64892221357152,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":990,"zipcode":10138,"latitude":40.280058566656514,"longitude":-74.98248030536618,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":680,"zipcode":10120,"latitude":39.919581436103805,"longitude":-73.20081404179118,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":420,"zipcode":10163,"latitude":39.74397374942993,"longitude":-74.9360153130775,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":127,"zipcode":10460,"latitude":40.66027963537878,"longitude":-73.6469197502625,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":69,"zipcode":10001,"latitude":39.93929731894186,"longitude":-73.15594008591214,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":593,"zipcode":11101,"latitude":39.22442813543655,"longitude":-73.96556129822864,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":14,"zipcode":10279,"latitude":40.831264325116024,"longitude":-73.21393288352226,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":806,"zipcode":10131,"latitude":39.66096640413739,"longitude":-74.12863619272434,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":514,"zipcode":10017,"latitude":40.197708397779095,"longitude":-73.78749429429973,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":829,"zipcode":10034,"latitude":39.445783063399375,"longitude":-73.94847986558509,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":231,"zipcode":10107,"latitude":40.23511188240736,"longitude":-73.57103568286193,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":429,"zipcode":10171,"latitude":40.30969043384797,"longitude":-73.34141477141512,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":472,"zipcode":10022,"latitude":39.15933974199789,"longitude":-73.16848490161682,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":526,"zipcode":10466,"latitude":39.38743405353904,"longitude":-73.34632516822607,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":861,"zipcode":10033,"latitude":39.19192002592046,"longitude":-74.3151283650996,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":951,"zipcode":10249,"latitude":40.20166685197536,"longitude":-74.27522322230963,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":552,"zipcode":10310,"latitude":39.24919622226835,"longitude":-73.75979878651215,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":112,"zipcode":10125,"latitude":39.10446773653567,"longitude":-73.81996912431559,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":443,"zipcode":10310,"latitude":39.6890970308541,"longitude":-74.40840817729303,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":925,"zipcode":10160,"latitude":39.79691721519266,"longitude":-74.44937211970998,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":193,"zipcode":10306,"latitude":40.5268575056775,"longitude":-73.52488589570012,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":334,"zipcode":10117,"latitude":39.85828571989375,"longitude":-73.50187392757488,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":640,"zipcode":10465,"latitude":39.67123023701497,"longitude":-73.13823577405937,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":910,"zipcode":10036,"latitude":40.670620210834635,"longitude":-73.8527039130215,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":705,"zipcode":10107,"latitude":39.6772525665832,"longitude":-73.64084314229014,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":492,"zipcode":10032,"latitude":40.45826479224896,"longitude":-73.59633715802396,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":645,"zipcode":10037,"latitude":40.13743619116573,"longitude":-73.80326970727015,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":889,"zipcode":10278,"latitude":39.51769094565688,"longitude":-73.86458433653281,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":765,"zipcode":10213,"latitude":40.673524674939145,"longitude":-74.08823410401209,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":601,"zipcode":11004,"latitude":39.13978090895571,"longitude":-74.57073852386547,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":170,"zipcode":10211,"latitude":40.23517323566257,"longitude":-74.8287220959188,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":94,"zipcode":10185,"latitude":39.67947235615366,"longitude":-73.74770018685261,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":820,"zipcode":10006,"latitude":39.40574908013152,"longitude":-74.24336428832044,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":713,"zipcode":10158,"latitude":40.067769071726524,"longitude":-73.29343980011177,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":168,"zipcode":10030,"latitude":39.16087915879468,"longitude":-74.69128926577072,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":104,"zipcode":10175,"latitude":39.55612463870977,"longitude":-74.75483801410148,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":628,"zipcode":10179,"latitude":40.180593832233775,"longitude":-73.40727554192983,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":411,"zipcode":10036,"latitude":39.30694454815735,"longitude":-73.51891222257775,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":582,"zipcode":10456,"latitude":40.69537679175398,"longitude":-73.18860867635115,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":437,"zipcode":10150,"latitude":39.67650287761433,"longitude":-74.03049134176665,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":921,"zipcode":10455,"latitude":40.92084209445852,"longitude":-74.20377290028473,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":520,"zipcode":10045,"latitude":40.66426444193569,"longitude":-74.85308605277744,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":48,"zipcode":10104,"latitude":39.53206710152932,"longitude":-74.92989058495816,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":869,"zipcode":10292,"latitude":39.41801474429694,"longitude":-73.31431535457078,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":965,"zipcode":10175,"latitude":40.130022585918624,"longitude":-73.96434189014354,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":459,"zipcode":10014,"latitude":39.18616093127417,"longitude":-73.75184076350266,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":701,"zipcode":10031,"latitude":40.19850766324695,"longitude":-73.45366787537117,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":614,"zipcode":10173,"latitude":40.40215518272113,"longitude":-74.9671199579671,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":642,"zipcode":10167,"latitude":40.23622282675412,"longitude":-73.59086262873763,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":260,"zipcode":10470,"latitude":39.282530866222295,"longitude":-74.21297469031036,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":942,"zipcode":10281,"latitude":39.327053505498036,"longitude":-74.095407634131,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":118,"zipcode":10159,"latitude":40.437115784094594,"longitude":-74.04126397189522,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":541,"zipcode":10175,"latitude":40.79048784685401,"longitude":-73.94757292616968,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":166,"zipcode":10033,"latitude":39.451420616565194,"longitude":-73.61691514699994,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":270,"zipcode":10175,"latitude":40.29781413836583,"longitude":-74.63202128995226,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":637,"zipcode":10499,"latitude":39.537071731603056,"longitude":-74.0059852136331,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":429,"zipcode":10174,"latitude":39.16903603768581,"longitude":-74.58178022577866,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":947,"zipcode":10259,"latitude":40.39279627632241,"longitude":-74.65385290014223,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":91,"zipcode":10469,"latitude":39.85725941752591,"longitude":-74.82211003185144,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":992,"zipcode":11102,"latitude":40.01845131216519,"longitude":-73.31437287312393,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":413,"zipcode":10155,"latitude":39.91484997003693,"longitude":-74.50836860008097,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":502,"zipcode":10108,"latitude":39.9267438765052,"longitude":-73.44490499235387,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":725,"zipcode":10023,"latitude":39.208384878117585,"longitude":-73.24007707662348,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":828,"zipcode":10018,"latitude":39.9566961897617,"longitude":-74.26236087251806,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":58,"zipcode":10454,"latitude":40.65303074915312,"longitude":-73.91619397554481,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":75,"zipcode":10473,"latitude":40.570897247195994,"longitude":-74.82233375280302,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":661,"zipcode":10280,"latitude":39.273425779189886,"longitude":-74.26903624280267,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":530,"zipcode":10115,"latitude":39.38272363221332,"longitude":-74.54129201190892,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":700,"zipcode":10467,"latitude":40.62563002786629,"longitude":-74.96500804944591,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":446,"zipcode":10313,"latitude":39.88384337803927,"longitude":-74.27876980699187,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":522,"zipcode":10105,"latitude":39.34768559159661,"longitude":-73.77174321269094,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":433,"zipcode":10126,"latitude":39.506506051276304,"longitude":-73.52427570499684,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":256,"zipcode":11001,"latitude":39.315504370034404,"longitude":-73.33959752607548,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":767,"zipcode":10473,"latitude":39.74570959271607,"longitude":-74.32781050637317,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":94,"zipcode":10025,"latitude":40.193125565961445,"longitude":-74.80057173702176,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":329,"zipcode":10095,"latitude":40.9758842928584,"longitude":-73.65273279955775,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":812,"zipcode":10176,"latitude":39.36506199896922,"longitude":-73.91337296022895,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":284,"zipcode":10035,"latitude":40.624088660531086,"longitude":-74.93828564689154,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":210,"zipcode":10132,"latitude":40.76293678273358,"longitude":-74.7368551366032,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":367,"zipcode":10045,"latitude":39.711937027450894,"longitude":-74.30319361985856,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":451,"zipcode":10273,"latitude":40.04460361200445,"longitude":-73.74668740474458,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":85,"zipcode":10022,"latitude":40.562912242871896,"longitude":-73.31190511772432,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":280,"zipcode":10185,"latitude":40.20339770721885,"longitude":-74.46670981814455,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":317,"zipcode":10302,"latitude":40.207928492477244,"longitude":-73.2155872197318,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":791,"zipcode":10275,"latitude":40.88628276665418,"longitude":-73.70571323919631,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":171,"zipcode":10115,"latitude":40.13383504563199,"longitude":-73.56892476026098,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":731,"zipcode":10459,"latitude":39.54689486091973,"longitude":-74.60475408456449,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":863,"zipcode":11005,"latitude":40.337062947129475,"longitude":-74.95293107471537,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":941,"zipcode":11096,"latitude":39.77354415444125,"longitude":-74.23575094228289,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":528,"zipcode":10301,"latitude":39.90414657850232,"longitude":-73.88888838499517,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":674,"zipcode":10169,"latitude":40.590065783640064,"longitude":-73.36893273044268,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":21,"zipcode":10109,"latitude":40.68497548953899,"longitude":-74.93850309603378,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":693,"zipcode":10002,"latitude":39.76222205364714,"longitude":-73.25839182343351,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":676,"zipcode":10002,"latitude":40.10217890549244,"longitude":-73.32342576932369,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":689,"zipcode":10314,"latitude":40.84359879617937,"longitude":-73.488955025851,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":9,"zipcode":10211,"latitude":39.20609241896077,"longitude":-73.3802494148537,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":20,"zipcode":10017,"latitude":40.20831197856459,"longitude":-74.7850025448587,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":89,"zipcode":10122,"latitude":39.10063367524698,"longitude":-74.85550916810062,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":694,"zipcode":10101,"latitude":39.1453036714735,"longitude":-73.49765008073749,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":937,"zipcode":11001,"latitude":40.598697837061145,"longitude":-73.84335281585913,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":154,"zipcode":10272,"latitude":40.38875573851946,"longitude":-73.64954675643223,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":219,"zipcode":10282,"latitude":40.09020268350194,"longitude":-73.32449131174057,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":528,"zipcode":10010,"latitude":40.54564549049072,"longitude":-73.9088404692309,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":433,"zipcode":10473,"latitude":39.20174589753049,"longitude":-74.37055945507832,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":834,"zipcode":10175,"latitude":39.72540831492346,"longitude":-74.76180588860572,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":384,"zipcode":11001,"latitude":39.88031218407439,"longitude":-74.56867063326132,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":995,"zipcode":10112,"latitude":39.40501084707561,"longitude":-73.1271326171041,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":922,"zipcode":10038,"latitude":40.43716143280089,"longitude":-74.87603292564438,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":553,"zipcode":10468,"latitude":39.95868326485326,"longitude":-74.46760772888152,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":615,"zipcode":10212,"latitude":40.14077116184563,"longitude":-73.5570518736922,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":864,"zipcode":10259,"latitude":40.284555613794005,"longitude":-73.46431819357709,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":657,"zipcode":10277,"latitude":40.85457477617155,"longitude":-73.05217585006767,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":30,"zipcode":10313,"latitude":39.16620122868322,"longitude":-74.9757190074912,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":716,"zipcode":10128,"latitude":39.58755925537118,"longitude":-74.38939026799711,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":479,"zipcode":10013,"latitude":39.167559565916,"longitude":-74.35387856436361,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":678,"zipcode":10199,"latitude":40.6811395465373,"longitude":-74.23003283966021,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":449,"zipcode":10121,"latitude":39.38309403396596,"longitude":-74.37160424504553,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":156,"zipcode":10273,"latitude":39.61794244456912,"longitude":-73.83853185698523,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":447,"zipcode":10102,"latitude":40.81579300178109,"longitude":-73.75938065028815,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":845,"zipcode":11040,"latitude":39.43728562682964,"longitude":-74.52255870190115,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":441,"zipcode":10017,"latitude":40.7544463679746,"longitude":-74.48630043005831,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":106,"zipcode":10473,"latitude":39.7145567422132,"longitude":-74.59148174668213,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":125,"zipcode":10464,"latitude":39.645477061572734,"longitude":-73.86434997713114,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":771,"zipcode":10031,"latitude":40.64996259254116,"longitude":-73.15620887048848,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":171,"zipcode":10460,"latitude":39.636682821687074,"longitude":-74.82420393906638,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":925,"zipcode":10112,"latitude":40.56505537395738,"longitude":-74.5155564184911,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":446,"zipcode":10102,"latitude":39.399999676930165,"longitude":-73.41050282400813,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":967,"zipcode":10087,"latitude":39.978131522718925,"longitude":-73.15998014399204,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":385,"zipcode":10044,"latitude":39.86353866295941,"longitude":-74.8766132912322,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":614,"zipcode":10260,"latitude":40.28336561134335,"longitude":-74.13339603385495,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":992,"zipcode":10469,"latitude":39.10162421895919,"longitude":-74.51801692136522,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":764,"zipcode":10130,"latitude":40.160967002303046,"longitude":-73.53220240447602,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":750,"zipcode":10002,"latitude":39.5035787076778,"longitude":-73.45841726330076,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":287,"zipcode":10156,"latitude":40.37055647639029,"longitude":-74.03553618226343,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":74,"zipcode":10128,"latitude":39.28200936636216,"longitude":-74.47581676119611,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":637,"zipcode":10160,"latitude":40.10743360884874,"longitude":-74.64405309676721,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":329,"zipcode":10129,"latitude":39.86005843964789,"longitude":-74.20336561942761,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":549,"zipcode":10002,"latitude":39.117770842180406,"longitude":-73.19165910502677,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":7,"zipcode":10460,"latitude":39.32143421003208,"longitude":-74.83164648325061,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":370,"zipcode":10172,"latitude":40.16660480170369,"longitude":-73.96493880283346,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":596,"zipcode":10040,"latitude":39.20024873497833,"longitude":-73.0389069091164,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":733,"zipcode":10159,"latitude":39.0306283193932,"longitude":-74.04156736426418,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":731,"zipcode":10045,"latitude":39.869201831302185,"longitude":-73.14099986596109,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":109,"zipcode":10129,"latitude":39.15129469224335,"longitude":-73.20855980021621,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":982,"zipcode":10123,"latitude":40.75017363181454,"longitude":-74.33462314400158,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":322,"zipcode":11004,"latitude":39.54395925064526,"longitude":-74.85434386589641,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":345,"zipcode":10199,"latitude":39.77277318697174,"longitude":-74.95077469948176,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":741,"zipcode":10116,"latitude":39.03327705398215,"longitude":-74.69964509171297,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":559,"zipcode":10460,"latitude":40.85203952167447,"longitude":-73.47883953826272,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":546,"zipcode":10280,"latitude":40.79768242074875,"longitude":-74.13908490178366,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":178,"zipcode":10103,"latitude":40.710760181368116,"longitude":-74.99781450216061,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":207,"zipcode":10041,"latitude":40.38656803183676,"longitude":-74.15001792959904,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":77,"zipcode":10301,"latitude":40.85546115271618,"longitude":-74.88603373226047,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":78,"zipcode":10285,"latitude":40.55909289065804,"longitude":-73.87301375402302,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":553,"zipcode":10169,"latitude":40.804985433299485,"longitude":-73.194298392878,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":288,"zipcode":11102,"latitude":39.62595341343566,"longitude":-73.10882336465954,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":321,"zipcode":10022,"latitude":39.299918951339514,"longitude":-73.8732162331893,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":953,"zipcode":10465,"latitude":40.503778934115054,"longitude":-73.98270572515285,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":425,"zipcode":10176,"latitude":40.879394665661394,"longitude":-74.75123649291696,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":180,"zipcode":10121,"latitude":39.87114320417274,"longitude":-73.11542102026681,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":386,"zipcode":10185,"latitude":39.24470969110407,"longitude":-74.46649927952411,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":365,"zipcode":10133,"latitude":40.00684051479591,"longitude":-73.87157538034796,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":725,"zipcode":10260,"latitude":39.73868547025469,"longitude":-74.75812466467094,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":628,"zipcode":10475,"latitude":40.862640250852294,"longitude":-73.03461827369429,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":247,"zipcode":10463,"latitude":39.2139806426022,"longitude":-73.00962080904891,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":719,"zipcode":10151,"latitude":39.348035194033926,"longitude":-73.83170049399003,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":343,"zipcode":10004,"latitude":39.857094026097336,"longitude":-73.6911101608577,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":734,"zipcode":10179,"latitude":39.76361220999094,"longitude":-73.19259164863382,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":772,"zipcode":10020,"latitude":39.14826626307713,"longitude":-73.44423387833402,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":447,"zipcode":10027,"latitude":39.79892931483128,"longitude":-73.91047815655271,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":339,"zipcode":11096,"latitude":40.197860100041545,"longitude":-73.66381563834273,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":588,"zipcode":10276,"latitude":39.90275993833688,"longitude":-74.75801483206968,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":120,"zipcode":10269,"latitude":40.990273339398044,"longitude":-74.31732199342707,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":369,"zipcode":10026,"latitude":39.437086700779936,"longitude":-74.22253023522576,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":195,"zipcode":10459,"latitude":40.52646833708369,"longitude":-73.76426688928652,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":763,"zipcode":10121,"latitude":40.54637756371879,"longitude":-74.32658431877336,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":280,"zipcode":11001,"latitude":39.08148957402972,"longitude":-73.94414488007008,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":52,"zipcode":10075,"latitude":40.721779885576375,"longitude":-74.8046978633129,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":602,"zipcode":10122,"latitude":39.53584215311125,"longitude":-74.53816556560578,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":335,"zipcode":10106,"latitude":39.63350370982776,"longitude":-73.86830569471681,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":424,"zipcode":10060,"latitude":40.40751853320221,"longitude":-74.71566797578488,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":488,"zipcode":10304,"latitude":40.8676614805447,"longitude":-74.90688610083994,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":573,"zipcode":10025,"latitude":39.36924467030453,"longitude":-74.58304545853886,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":499,"zipcode":10455,"latitude":39.06626560545592,"longitude":-73.08557532448377,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":572,"zipcode":10012,"latitude":40.903871851688436,"longitude":-74.28747500451072,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":636,"zipcode":10313,"latitude":40.86728676686429,"longitude":-73.0939418223133,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":415,"zipcode":10165,"latitude":39.70671899559544,"longitude":-74.30964832153632,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":68,"zipcode":10038,"latitude":40.618220968087115,"longitude":-74.80626349867487,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":68,"zipcode":10001,"latitude":39.52027766903984,"longitude":-74.32271009261663,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":780,"zipcode":10021,"latitude":39.64033216136619,"longitude":-74.70366974053758,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":463,"zipcode":10176,"latitude":39.473478867968225,"longitude":-73.20615082480401,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":128,"zipcode":10155,"latitude":39.80670697118575,"longitude":-74.29967792210499,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":246,"zipcode":10303,"latitude":40.54039257702078,"longitude":-74.58464239372265,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":476,"zipcode":10301,"latitude":40.226806627923885,"longitude":-74.06351365526405,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":274,"zipcode":10203,"latitude":39.43373802599254,"longitude":-73.40767235474868,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":855,"zipcode":10101,"latitude":39.17090654549143,"longitude":-74.35445762323748,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":734,"zipcode":10027,"latitude":40.76513249989189,"longitude":-73.48499386718663,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":825,"zipcode":10101,"latitude":39.19350650658261,"longitude":-73.41335133010493,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":399,"zipcode":10128,"latitude":40.45104555303821,"longitude":-74.02778964037155,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":87,"zipcode":10027,"latitude":39.30554720748137,"longitude":-73.59611947298464,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":801,"zipcode":10292,"latitude":39.59166581871346,"longitude":-73.692216661507,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":151,"zipcode":11003,"latitude":40.487417387751854,"longitude":-74.71427411559105,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":739,"zipcode":10308,"latitude":40.02627187449632,"longitude":-73.55058080669869,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":524,"zipcode":10466,"latitude":39.72084993679423,"longitude":-73.8481514736473,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":237,"zipcode":11103,"latitude":40.75644040322796,"longitude":-73.08945436356193,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":746,"zipcode":10055,"latitude":40.846720135272854,"longitude":-74.44314312320216,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":945,"zipcode":10276,"latitude":39.86696892964829,"longitude":-73.61101937629876,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":574,"zipcode":10278,"latitude":40.13254924292297,"longitude":-73.35421842893788,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":320,"zipcode":10122,"latitude":40.559444285078676,"longitude":-73.24496787949202,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":234,"zipcode":10123,"latitude":39.569510082419676,"longitude":-73.08013676580241,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":294,"zipcode":10081,"latitude":39.696905429759894,"longitude":-74.708334178927,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":723,"zipcode":10129,"latitude":40.13150748964718,"longitude":-74.38021847088152,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":573,"zipcode":10105,"latitude":40.74822761333698,"longitude":-73.61835343305533,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":201,"zipcode":10466,"latitude":40.94229346786411,"longitude":-74.29142599946749,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":965,"zipcode":10203,"latitude":39.282156874750285,"longitude":-74.8012490931375,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":2,"zipcode":10286,"latitude":39.34065152205766,"longitude":-74.10359881797777,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":107,"zipcode":10282,"latitude":40.914042141813226,"longitude":-73.97392689382522,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":269,"zipcode":10007,"latitude":40.944776281180296,"longitude":-73.7915347626866,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":709,"zipcode":10030,"latitude":39.73020768960683,"longitude":-73.32581327723221,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":531,"zipcode":10114,"latitude":39.13766110911553,"longitude":-74.77351417756294,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":562,"zipcode":10081,"latitude":39.2387821384836,"longitude":-73.90819672176647,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":406,"zipcode":10040,"latitude":40.974415329967734,"longitude":-74.53986638495077,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":415,"zipcode":10026,"latitude":40.511101067910936,"longitude":-73.95582864621099,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":422,"zipcode":10305,"latitude":40.80504278396214,"longitude":-74.8890791648872,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":866,"zipcode":10459,"latitude":39.73023915812541,"longitude":-73.02139294497984,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":332,"zipcode":10157,"latitude":40.27365359246928,"longitude":-73.28329715081497,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":250,"zipcode":10158,"latitude":40.35475057538358,"longitude":-73.39267949866019,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":248,"zipcode":11003,"latitude":39.5649254603518,"longitude":-73.59414186337105,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":236,"zipcode":10018,"latitude":40.69451022553189,"longitude":-74.07356746599213,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":135,"zipcode":10013,"latitude":39.4947156549552,"longitude":-73.50166109225727,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":609,"zipcode":10313,"latitude":40.19610510896269,"longitude":-74.62566465420132,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":158,"zipcode":10451,"latitude":39.364117157128625,"longitude":-73.62567417446174,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":165,"zipcode":10463,"latitude":39.11822928763721,"longitude":-74.46382807241346,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":755,"zipcode":10029,"latitude":40.401291480519944,"longitude":-73.54537171626599,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":321,"zipcode":10001,"latitude":40.66993733393585,"longitude":-73.44573065223518,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":246,"zipcode":10274,"latitude":39.49566616768142,"longitude":-73.97904919330713,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":395,"zipcode":10069,"latitude":40.8696170830819,"longitude":-74.55681472067617,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":873,"zipcode":10026,"latitude":39.08339038888752,"longitude":-74.17434767993706,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":217,"zipcode":10036,"latitude":39.29960371315217,"longitude":-74.52480027085775,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":150,"zipcode":10006,"latitude":39.176371431902915,"longitude":-73.96714579906948,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":242,"zipcode":11103,"latitude":39.176175128989755,"longitude":-74.7535739338669,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":823,"zipcode":10031,"latitude":40.25110042542549,"longitude":-74.81483221989839,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":415,"zipcode":10179,"latitude":39.47920277121149,"longitude":-74.08968891738367,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":6,"zipcode":10039,"latitude":40.045392111851015,"longitude":-73.55139344649629,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":985,"zipcode":10020,"latitude":39.698176038684956,"longitude":-74.76453386723442,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":578,"zipcode":10462,"latitude":40.174940397560064,"longitude":-74.64561753577404,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":423,"zipcode":10268,"latitude":40.61613509740376,"longitude":-74.12389614981352,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":780,"zipcode":10155,"latitude":39.207307511642874,"longitude":-74.71154194385198,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":436,"zipcode":10168,"latitude":39.69093162587899,"longitude":-74.29032985048866,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":523,"zipcode":10457,"latitude":39.65494636424565,"longitude":-73.10760683857333,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":433,"zipcode":10257,"latitude":40.381148641826755,"longitude":-74.1223592948886,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":725,"zipcode":10105,"latitude":40.91368323590856,"longitude":-73.19711272536281,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":216,"zipcode":10103,"latitude":39.235147422328644,"longitude":-74.25177631576747,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":728,"zipcode":10060,"latitude":40.02758683852613,"longitude":-74.60056959643426,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":13,"zipcode":10157,"latitude":39.90552927481289,"longitude":-74.70355025326867,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":168,"zipcode":10467,"latitude":39.26040165050637,"longitude":-73.26715974413646,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":767,"zipcode":10151,"latitude":40.313501211409005,"longitude":-73.83332891456747,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":633,"zipcode":10274,"latitude":40.659053043659526,"longitude":-73.98836633400738,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":756,"zipcode":10261,"latitude":40.970175499825565,"longitude":-74.85009549705227,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":115,"zipcode":10176,"latitude":39.37371754261126,"longitude":-73.9761408459839,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":553,"zipcode":10468,"latitude":40.622910442786406,"longitude":-74.91492641191005,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":621,"zipcode":10109,"latitude":39.62542636248326,"longitude":-73.0788419826337,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":315,"zipcode":10313,"latitude":40.74887453489935,"longitude":-73.20339450547458,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":192,"zipcode":10168,"latitude":40.46620441781006,"longitude":-74.2023712362496,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":470,"zipcode":10045,"latitude":39.43578275811212,"longitude":-73.96514985347106,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":760,"zipcode":10156,"latitude":40.34467504132589,"longitude":-73.47700849453412,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":643,"zipcode":11003,"latitude":40.49817434986982,"longitude":-73.67951093155074,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":273,"zipcode":10471,"latitude":40.864458678929175,"longitude":-74.94170326515007,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":39,"zipcode":10044,"latitude":40.559870079179646,"longitude":-74.15418259743996,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":79,"zipcode":10470,"latitude":39.80238778732171,"longitude":-74.13005888113953,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":268,"zipcode":10175,"latitude":39.728824990648036,"longitude":-74.70290461557398,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":747,"zipcode":10043,"latitude":40.64363217730442,"longitude":-73.40274887784418,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":493,"zipcode":10170,"latitude":40.495177179273014,"longitude":-73.31810206771861,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":100,"zipcode":10039,"latitude":40.70260389273767,"longitude":-74.49017714593889,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":809,"zipcode":10272,"latitude":40.84884055147969,"longitude":-73.57137254522172,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":767,"zipcode":10466,"latitude":39.84956774583706,"longitude":-74.141131451815,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":556,"zipcode":10001,"latitude":40.247701673202045,"longitude":-74.46658087959896,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":42,"zipcode":10005,"latitude":40.377052789655146,"longitude":-74.51603062331743,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":44,"zipcode":10041,"latitude":39.03581106753598,"longitude":-74.8698617114822,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":993,"zipcode":10454,"latitude":39.447514125614276,"longitude":-73.85892824719006,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":268,"zipcode":10009,"latitude":40.933611729981685,"longitude":-74.77412170069847,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":11,"zipcode":10305,"latitude":39.60056941017955,"longitude":-74.71625235115042,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":287,"zipcode":10035,"latitude":40.17617195955627,"longitude":-74.44261433290283,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":293,"zipcode":10303,"latitude":40.10710086307278,"longitude":-74.57163331178324,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":980,"zipcode":10213,"latitude":40.29379579569687,"longitude":-74.43049755394041,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":708,"zipcode":10286,"latitude":40.587403970766665,"longitude":-73.10814391901002,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":975,"zipcode":10106,"latitude":40.10171630731147,"longitude":-74.21240283952055,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":585,"zipcode":10043,"latitude":40.716456318940295,"longitude":-74.60864572026784,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":275,"zipcode":10095,"latitude":39.537546017465274,"longitude":-74.34911545760336,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":720,"zipcode":10256,"latitude":39.38259939053459,"longitude":-73.32225019926183,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":912,"zipcode":10075,"latitude":39.058714394555544,"longitude":-74.10240891831207,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":543,"zipcode":10019,"latitude":40.11405524788645,"longitude":-74.3644574160449,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":354,"zipcode":10308,"latitude":39.54546602833348,"longitude":-73.54256886312682,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":181,"zipcode":10211,"latitude":39.614561396377425,"longitude":-73.12838018055766,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":756,"zipcode":10212,"latitude":40.362581899788076,"longitude":-73.4705976154815,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":149,"zipcode":10113,"latitude":39.93508567428826,"longitude":-73.85638835080826,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":186,"zipcode":10024,"latitude":40.385521694617786,"longitude":-74.97269064204256,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":707,"zipcode":10123,"latitude":40.13939951542689,"longitude":-73.3910690569844,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":37,"zipcode":10260,"latitude":39.521116619261065,"longitude":-73.8082341461978,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":173,"zipcode":10005,"latitude":39.689826991487266,"longitude":-73.97088791144904,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":513,"zipcode":10028,"latitude":40.33248114628908,"longitude":-74.86796559447498,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":806,"zipcode":10024,"latitude":40.484571667525664,"longitude":-73.88239935768286,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":121,"zipcode":11096,"latitude":39.75190262834379,"longitude":-74.98348890140079,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":515,"zipcode":10041,"latitude":39.22473649190865,"longitude":-74.7940934093892,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":638,"zipcode":10472,"latitude":40.12981880157416,"longitude":-74.87420832161845,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":605,"zipcode":10020,"latitude":39.188816327521664,"longitude":-74.48752025087322,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":310,"zipcode":10032,"latitude":39.77455718536746,"longitude":-73.0278718559538,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":978,"zipcode":10008,"latitude":40.56264175739285,"longitude":-74.62350838566546,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":815,"zipcode":10055,"latitude":39.09448620532719,"longitude":-74.96495900227048,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":647,"zipcode":10155,"latitude":39.13731069646912,"longitude":-74.1331264878924,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":503,"zipcode":10275,"latitude":40.02607568709164,"longitude":-74.36753486822172,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":447,"zipcode":10469,"latitude":40.77664178485874,"longitude":-74.1463356262973,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":895,"zipcode":10010,"latitude":39.838780982567556,"longitude":-73.78609679452576,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":670,"zipcode":10024,"latitude":40.805445935836005,"longitude":-73.25157994911969,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":628,"zipcode":10001,"latitude":40.027606265595246,"longitude":-73.49327760876933,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":680,"zipcode":10116,"latitude":40.02302213673092,"longitude":-73.8461713118069,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":884,"zipcode":10176,"latitude":39.86987254396367,"longitude":-74.04471675800386,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":780,"zipcode":10475,"latitude":40.95156345513716,"longitude":-74.76327872584544,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":375,"zipcode":10301,"latitude":40.523565563673515,"longitude":-74.34238964807462,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":872,"zipcode":10313,"latitude":40.14169173885235,"longitude":-74.96343871509708,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":958,"zipcode":10178,"latitude":39.126372021375616,"longitude":-73.6753641013037,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":141,"zipcode":10185,"latitude":40.73845033550384,"longitude":-73.41730073279074,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":612,"zipcode":10311,"latitude":39.219084044787515,"longitude":-74.13225715270194,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":921,"zipcode":10282,"latitude":39.328353436040956,"longitude":-73.28611156817865,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":524,"zipcode":10282,"latitude":40.62266157664096,"longitude":-74.82726562747473,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":362,"zipcode":10249,"latitude":39.51534304723732,"longitude":-73.87527048847508,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":246,"zipcode":10158,"latitude":40.45934723540524,"longitude":-74.03996090493209,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":880,"zipcode":10462,"latitude":39.29082249728037,"longitude":-74.68594974315576,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":894,"zipcode":10021,"latitude":40.795526682553785,"longitude":-74.21424548720071,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":58,"zipcode":10008,"latitude":40.55664472500543,"longitude":-74.1558196700134,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":187,"zipcode":10116,"latitude":39.02447915823821,"longitude":-73.96388856165572,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":386,"zipcode":10242,"latitude":39.0226106938528,"longitude":-73.64164067342898,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":224,"zipcode":10025,"latitude":40.88396299954905,"longitude":-74.05455881795687,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":650,"zipcode":10211,"latitude":40.9305113135601,"longitude":-74.97693389816651,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":544,"zipcode":10006,"latitude":40.356189904149126,"longitude":-74.63268064819482,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":985,"zipcode":10081,"latitude":39.86009707302636,"longitude":-73.00391294096745,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":426,"zipcode":10007,"latitude":40.721857482197656,"longitude":-74.70092469339254,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":352,"zipcode":10101,"latitude":39.35991733377563,"longitude":-73.14090035480407,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":129,"zipcode":10128,"latitude":39.98748897421964,"longitude":-73.5436269800421,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":142,"zipcode":10249,"latitude":39.83530904431631,"longitude":-74.9588595620149,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":902,"zipcode":10106,"latitude":39.68457122703121,"longitude":-74.12158512650417,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":429,"zipcode":10038,"latitude":39.440763932534395,"longitude":-74.40149202666888,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":855,"zipcode":10012,"latitude":39.71434445641516,"longitude":-73.61692778188088,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":398,"zipcode":10260,"latitude":39.4945410306176,"longitude":-73.53438075656594,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":65,"zipcode":10122,"latitude":40.20428083736831,"longitude":-73.64126556365832,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":274,"zipcode":10036,"latitude":40.89604515810263,"longitude":-74.23544696083782,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":677,"zipcode":10035,"latitude":39.12824432979068,"longitude":-73.04402901665843,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":600,"zipcode":10282,"latitude":40.32374065629279,"longitude":-74.07082759823913,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":813,"zipcode":11096,"latitude":39.255261499777035,"longitude":-73.78645760907324,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":523,"zipcode":10069,"latitude":40.67204218087387,"longitude":-73.6102227329913,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":238,"zipcode":10272,"latitude":40.52119659094503,"longitude":-73.58753962294435,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":330,"zipcode":10031,"latitude":40.704795947329835,"longitude":-74.84060013267757,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":323,"zipcode":10129,"latitude":40.50912450104471,"longitude":-74.70249229341285,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":479,"zipcode":10305,"latitude":40.621967371551094,"longitude":-73.19742725031635,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":548,"zipcode":10458,"latitude":40.87978151523109,"longitude":-74.55703531398555,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":718,"zipcode":10105,"latitude":40.92255993404862,"longitude":-74.45262510243015,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":761,"zipcode":10029,"latitude":40.471349348630206,"longitude":-74.42041951248987,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":341,"zipcode":10161,"latitude":39.27443388423301,"longitude":-73.52625055325709,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":591,"zipcode":10155,"latitude":40.70244801051854,"longitude":-74.83934925716996,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":566,"zipcode":10258,"latitude":40.15065220900125,"longitude":-73.8163106953163,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":788,"zipcode":10121,"latitude":39.83427894197573,"longitude":-73.24975497161216,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":333,"zipcode":10473,"latitude":39.748579554501504,"longitude":-74.30364236471253,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":959,"zipcode":10459,"latitude":39.70432395227045,"longitude":-73.70374799371324,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":326,"zipcode":10033,"latitude":40.56478001424674,"longitude":-73.26574686400316,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":44,"zipcode":10465,"latitude":40.51807460189397,"longitude":-73.75870422035997,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":650,"zipcode":10131,"latitude":40.254626274056044,"longitude":-73.5479036758069,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":291,"zipcode":11001,"latitude":40.11638894644009,"longitude":-74.6316874711862,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":817,"zipcode":10104,"latitude":40.76552478992406,"longitude":-73.95859290597868,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":100,"zipcode":10256,"latitude":39.41995512763858,"longitude":-73.17651881693665,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":259,"zipcode":10138,"latitude":39.80811067295269,"longitude":-74.28978076968373,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":501,"zipcode":10022,"latitude":39.24093548228889,"longitude":-73.1376405957236,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":694,"zipcode":10463,"latitude":40.538243005335666,"longitude":-73.86526416829425,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":780,"zipcode":10302,"latitude":39.753373456048884,"longitude":-74.61318777451595,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":11,"zipcode":10258,"latitude":39.78797290800856,"longitude":-73.39007413007754,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":578,"zipcode":10306,"latitude":40.19282332465991,"longitude":-73.45178539888711,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":614,"zipcode":10158,"latitude":39.63593343845855,"longitude":-74.5527034472853,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":105,"zipcode":10022,"latitude":40.03261126536823,"longitude":-73.23971377366975,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":185,"zipcode":10045,"latitude":39.78314578726637,"longitude":-73.50519383820526,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":966,"zipcode":10199,"latitude":39.33610879744267,"longitude":-74.0271384183354,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":743,"zipcode":10007,"latitude":40.741626005653686,"longitude":-73.54319300562027,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":540,"zipcode":10179,"latitude":39.24460076634117,"longitude":-73.50777023136058,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":569,"zipcode":10035,"latitude":39.79923762349472,"longitude":-73.4020182374483,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":412,"zipcode":11003,"latitude":40.81821057214459,"longitude":-74.1130165462995,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":727,"zipcode":10453,"latitude":39.05005042599988,"longitude":-74.29233561110526,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":743,"zipcode":10103,"latitude":40.548611123777434,"longitude":-73.61058270476387,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":416,"zipcode":10257,"latitude":40.33635661471583,"longitude":-73.68083066773352,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":472,"zipcode":10464,"latitude":40.80885037954891,"longitude":-73.10350611708023,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":502,"zipcode":10002,"latitude":40.00404616591205,"longitude":-73.78150570633471,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":414,"zipcode":10261,"latitude":40.95576466154622,"longitude":-73.69742463821723,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":148,"zipcode":10464,"latitude":39.101077368725406,"longitude":-74.51003513965671,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":765,"zipcode":10032,"latitude":40.56858502972494,"longitude":-73.02391488452845,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":386,"zipcode":10087,"latitude":40.62937821971547,"longitude":-74.35874161628308,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":427,"zipcode":10128,"latitude":40.8641761468051,"longitude":-74.85216486241268,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":493,"zipcode":10081,"latitude":40.180002553988516,"longitude":-73.20876957074665,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":483,"zipcode":11101,"latitude":40.30182561379299,"longitude":-74.35998084234261,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":703,"zipcode":10475,"latitude":40.632326519450366,"longitude":-73.78822392365198,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":967,"zipcode":11003,"latitude":39.06183696556865,"longitude":-74.5318499933562,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":826,"zipcode":10017,"latitude":40.379327223567046,"longitude":-74.43346070629582,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":581,"zipcode":10462,"latitude":40.89181650809979,"longitude":-74.46390673604476,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":791,"zipcode":10035,"latitude":40.95761950652636,"longitude":-73.48215520614967,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":962,"zipcode":10156,"latitude":39.858194027216136,"longitude":-73.03435324615039,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":854,"zipcode":10172,"latitude":40.12426493625466,"longitude":-74.33178373016425,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":577,"zipcode":10458,"latitude":40.070125427191755,"longitude":-73.98808763902429,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":655,"zipcode":10012,"latitude":39.84998592043356,"longitude":-73.59002962686488,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":712,"zipcode":10167,"latitude":39.36670071061968,"longitude":-74.62466663207958,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":453,"zipcode":10122,"latitude":40.814149290723584,"longitude":-74.32241414525635,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":872,"zipcode":10457,"latitude":39.34077419002003,"longitude":-74.20169452975546,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":675,"zipcode":10025,"latitude":39.620802062861024,"longitude":-73.00895105060599,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":303,"zipcode":10258,"latitude":39.63444635422194,"longitude":-74.1974619774543,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":371,"zipcode":10019,"latitude":40.843476589411104,"longitude":-74.14137853349962,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":50,"zipcode":10090,"latitude":40.059217656939936,"longitude":-74.63707513524515,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":743,"zipcode":10037,"latitude":39.29201438125026,"longitude":-74.45483260787316,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":11,"zipcode":10304,"latitude":40.30129815012755,"longitude":-73.78909074526092,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":777,"zipcode":10159,"latitude":40.62610869497562,"longitude":-73.46573552659677,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":674,"zipcode":10032,"latitude":39.458956208337455,"longitude":-74.29222867490579,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":916,"zipcode":10010,"latitude":39.0727209721606,"longitude":-73.49797940726864,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":655,"zipcode":10271,"latitude":39.76981754010863,"longitude":-74.87524252438857,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":63,"zipcode":11103,"latitude":40.89930940560641,"longitude":-74.78273803254277,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":713,"zipcode":10080,"latitude":40.12364582477645,"longitude":-74.58240888399123,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":217,"zipcode":10176,"latitude":40.21949790924109,"longitude":-73.91773153617682,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":583,"zipcode":10124,"latitude":39.478541524696986,"longitude":-74.2010260405885,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":150,"zipcode":10105,"latitude":40.33623844553491,"longitude":-73.21755075394296,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":831,"zipcode":10175,"latitude":39.420147713890444,"longitude":-74.38820659782927,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":461,"zipcode":10466,"latitude":40.23976084857689,"longitude":-73.86951281978608,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":732,"zipcode":10039,"latitude":39.795047715047886,"longitude":-74.88828533739928,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":575,"zipcode":10069,"latitude":40.0599827288136,"longitude":-73.76501832554959,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":474,"zipcode":10456,"latitude":40.73803701748068,"longitude":-74.88925959496014,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":124,"zipcode":10260,"latitude":40.61815370188293,"longitude":-74.1838057390488,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":25,"zipcode":10036,"latitude":40.28154881208192,"longitude":-74.75050995326333,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":974,"zipcode":10006,"latitude":40.02915644394174,"longitude":-74.79090217899933,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":838,"zipcode":10452,"latitude":40.02366953939345,"longitude":-74.40203484886777,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":53,"zipcode":10211,"latitude":40.27916052413869,"longitude":-73.63024257765764,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":192,"zipcode":10475,"latitude":40.63459225691368,"longitude":-74.11874473142069,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":221,"zipcode":10272,"latitude":39.454554254178696,"longitude":-74.77542466798559,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":559,"zipcode":10164,"latitude":39.051981981768826,"longitude":-73.15692426126472,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":526,"zipcode":10110,"latitude":40.84483960684265,"longitude":-74.18117582982543,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":972,"zipcode":10256,"latitude":39.4617672062257,"longitude":-74.04245183525487,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":355,"zipcode":10212,"latitude":40.408296496871614,"longitude":-73.06688224263958,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":208,"zipcode":11103,"latitude":39.146780467017535,"longitude":-74.85419330857692,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":534,"zipcode":10165,"latitude":39.40478206806606,"longitude":-74.19776277364643,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":531,"zipcode":10044,"latitude":40.232150004529686,"longitude":-74.47732478239712,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":657,"zipcode":10257,"latitude":40.60135674764964,"longitude":-74.89551074954943,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":455,"zipcode":10065,"latitude":39.640350012869256,"longitude":-73.93011725433253,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":383,"zipcode":10211,"latitude":40.98609919776472,"longitude":-73.0377702567213,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":872,"zipcode":10113,"latitude":39.22354713747823,"longitude":-73.00760051496475,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":637,"zipcode":10024,"latitude":39.932316243749554,"longitude":-74.06770736958302,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":92,"zipcode":10499,"latitude":40.25579504191615,"longitude":-74.74393783267222,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":707,"zipcode":10176,"latitude":40.19444804092094,"longitude":-74.84797880395007,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":991,"zipcode":10311,"latitude":39.08842313409512,"longitude":-73.77346301539774,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":520,"zipcode":10452,"latitude":39.849642799154566,"longitude":-73.61813680941421,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":947,"zipcode":10178,"latitude":39.80060056785511,"longitude":-73.36306913834197,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":709,"zipcode":10111,"latitude":39.592805820863205,"longitude":-74.25523549277517,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":465,"zipcode":10037,"latitude":39.77172843165495,"longitude":-73.5846787905121,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":771,"zipcode":10467,"latitude":40.82174417146299,"longitude":-73.24216978324702,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":117,"zipcode":10080,"latitude":39.07747989467987,"longitude":-74.27827921744212,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":25,"zipcode":10138,"latitude":39.29290794330276,"longitude":-74.30887851974911,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":245,"zipcode":10270,"latitude":39.937670821719585,"longitude":-73.69965035278338,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":571,"zipcode":10027,"latitude":39.27349994925841,"longitude":-74.56352465488291,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":821,"zipcode":10310,"latitude":39.74865479396061,"longitude":-73.22237026263153,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":915,"zipcode":10269,"latitude":39.95496757412999,"longitude":-73.3534271330492,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":428,"zipcode":10178,"latitude":40.79880206079701,"longitude":-73.43462288924033,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":700,"zipcode":10014,"latitude":39.22492849196101,"longitude":-73.21190495951976,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":675,"zipcode":10465,"latitude":39.03229073849171,"longitude":-73.29517644931006,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":602,"zipcode":10043,"latitude":39.924497240236796,"longitude":-74.52410286039591,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":900,"zipcode":10292,"latitude":40.28961932908784,"longitude":-73.64082381648036,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":186,"zipcode":10261,"latitude":39.55709883470051,"longitude":-74.29284662792467,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":98,"zipcode":10472,"latitude":40.5648887688489,"longitude":-74.8144975837777,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":442,"zipcode":10464,"latitude":40.58075623150336,"longitude":-73.25891981340297,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":823,"zipcode":10102,"latitude":40.88820948562884,"longitude":-74.14786333907203,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":214,"zipcode":10033,"latitude":39.33235039775763,"longitude":-73.12691174529382,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":124,"zipcode":10305,"latitude":40.53101289965865,"longitude":-73.71688073446323,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":316,"zipcode":10302,"latitude":40.12955151538835,"longitude":-74.60975401295131,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":120,"zipcode":10199,"latitude":39.06329145474922,"longitude":-73.5197704081173,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":239,"zipcode":10119,"latitude":40.910336916259716,"longitude":-74.11778645067812,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":886,"zipcode":10120,"latitude":39.24181156855221,"longitude":-74.92396101581876,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":62,"zipcode":10087,"latitude":39.04382176088419,"longitude":-73.21097284443533,"city":"New York","state":"NY","area":"Brooklyn"}
+{"user_id":261,"zipcode":10075,"latitude":40.31034213360177,"longitude":-73.90558553763167,"city":"New York","state":"NY","area":"The Bronx"}
+{"user_id":945,"zipcode":10211,"latitude":39.72836374097011,"longitude":-73.278763233034,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":631,"zipcode":10129,"latitude":39.736367383378116,"longitude":-73.86936894278266,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":978,"zipcode":10171,"latitude":40.13863772063989,"longitude":-74.5278783306629,"city":"New York","state":"NY","area":"Staten Island"}
+{"user_id":873,"zipcode":11003,"latitude":39.03931657244201,"longitude":-74.38947876538768,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":708,"zipcode":10080,"latitude":40.55394027043675,"longitude":-74.30450927751026,"city":"New York","state":"NY","area":"Manhattan"}
+{"user_id":212,"zipcode":10112,"latitude":40.684990421987955,"longitude":-73.3480078050234,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":499,"zipcode":10150,"latitude":40.86295602948911,"longitude":-74.45838960902647,"city":"New York","state":"NY","area":"Queens"}
+{"user_id":941,"zipcode":11003,"latitude":39.18780374267662,"longitude":-73.05590752274507,"city":"New York","state":"NY","area":"Manhattan"}
