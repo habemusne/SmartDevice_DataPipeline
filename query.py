@@ -1,67 +1,84 @@
 import sys
 import json
+from os import getenv
 from os.path import join, abspath, dirname
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 from fire import Fire
 
 import util.naming
 from util.logger import logger
 from util.ksql_api import Api
 
-config = dotenv_values(join(dirname(abspath(__file__)), '.env'))
+load_dotenv(dotenv_path=join(dirname(abspath(__file__)), '.env'))
+version_id = getenv('RESOURCE_NAME_VERSION_ID')
+interim_11 = 'INTERIM_11_' + version_id
+interim_12 = 'INTERIM_12_' + version_id
+interim_21 = 'INTERIM_21_' + version_id
+final = 'FINAL_' + version_id
 
 
 stmts_setup = [{
     'desc': 'Creating interim table: user id + num distinct locations',
     'stmt': """
-        create table INTERIM_11 with (partitions = {}) as
+        create table {} with (partitions = {}) as
             select user_id, count(cast(latitude as string) + ' | ' + cast(longitude as string)) as num_locations
             from "{}"
             group by user_id
         ;
-    """.format(config['NUM_PARTITIONS'], util.naming.stream_name('realtime')),
+    """.format(interim_11, getenv('NUM_PARTITIONS'), util.naming.stream_name('realtime')),
 }, {
     'desc': 'Creating interim table: user id + avg heart rate',
     'stmt': """
-        create table INTERIM_12 with (partitions = {}) as
+        create table {} with (partitions = {}) as
             select user_id, sum(heart_rate)/count(heart_rate) as avg_heart_rate
             from "{}"
             group by user_id
         ;
-    """.format(config['NUM_PARTITIONS'], util.naming.stream_name('realtime')),
+    """.format(interim_12, getenv('NUM_PARTITIONS'), util.naming.stream_name('realtime')),
 }, {
     'desc': 'Creating interim table: user id + num distinct locations + avg heart rate',
     'stmt': """
-        create table INTERIM_21 with (partitions = {}) as
+        create table {} with (partitions = {}) as
             select t1.user_id as user_id, t1.num_locations as num_locations, t2.avg_heart_rate as avg_heart_rate
-            from "INTERIM_11" t1
-            join "INTERIM_12" t2 on t1.user_id = t2.user_id
+            from "{}" t1
+            join "{}" t2 on t1.user_id = t2.user_id
         ;
-    """.format(config['NUM_PARTITIONS']),
+    """.format(interim_21, getenv('NUM_PARTITIONS'), interim_11, interim_12),
+}, {
+    'desc': 'Final stream: get the users who are still and have heart rate out of their historical range',
+    'stmt': """
+        create table {} with (partitions = {}) as
+            select t1.user_id as user_id, t1.avg_heart_rate as avg_heart_rate, t1.num_locations as num_locations
+            from "{}" t1
+            join "{}" h on t1.user_id = h.user_id
+            window tumbling (size {} seconds)
+            where t1.avg_heart_rate < 60 or t1.avg_heart_rate > 100
+            and t1.num_locations = 1
+        ;
+    """.format(final, getenv('NUM_PARTITIONS'), interim_21, util.naming.table_name('historical'), getenv('WINDOW_TUMBLING_SECONDS')),
 }]
 
 stmts_run = [{
     'desc': 'get the users who are still and have heart rate out of their historical range',
     'stmt': """
-        select t1.user_id, t1.avg_heart_rate, t1.num_locations
-        from "INTERIM_21" t1
-        join "{}" h on t1.user_id = h.user_id
+        select user_id, avg_heart_rate, num_locations
+        from "{}"
         window tumbling (size {} seconds)
-        where t1.avg_heart_rate < 60 or t1.avg_heart_rate > 100
-        and t1.num_locations = 1
         ;
-    """.format(util.naming.table_name('historical'), config['WINDOW_TUMBLING_SECONDS']),
+    """.format(final, getenv('WINDOW_TUMBLING_SECONDS')),
 }]
 
 stmts_teardown = [{
-    'stmt': 'drop table "INTERIM_21";',
+    'stmt': 'drop table "{}";'.format(interim_21),
 }, {
-    'stmt': 'drop table "INTERIM_12";',
+    'stmt': 'drop table "{}";'.format(interim_12),
 }, {
-    'stmt': 'drop table "INTERIM_11";',
+    'stmt': 'drop table "{}";'.format(interim_11),
+}, {
+    'stmt': 'drop table "{}";'.format(final),
 }]
 
-api = Api(config['KSQL_HOST'], config['KSQL_PORT'])
+api = Api(getenv('KSQL_HOST'), getenv('KSQL_PORT'))
 
 
 def setup():
@@ -74,11 +91,12 @@ def setup():
 
 
 def run():
-    logger.info('Health risk detection running. Result will be updated every {} seconds'.format(config['WINDOW_TUMBLING_SECONDS']))
+    logger.info('Health risk detection running. Result will be updated every {} seconds'.format(getenv('WINDOW_TUMBLING_SECONDS')))
     for response in api.stream({
         'ksql': stmts_run[0]['stmt'],
-        'auto.offset.reset': 'latest',
+        'auto.offset.reset': 'earliest',
     }):
+        print(response.text)
         for line in response.iter_lines():
             if line:
                 data = json.loads(line.decode('utf-8'))

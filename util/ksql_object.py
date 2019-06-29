@@ -1,3 +1,4 @@
+from os import getenv
 from os.path import join
 
 import util.naming
@@ -9,7 +10,10 @@ from util.ksql_api import Api
 class KSQLObject(Resource):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.api = Api(kwargs.get('host'), kwargs.get('port'))
+        self.api = Api(
+            kwargs.get('host', getenv('KSQL_HOST')),
+            kwargs.get('port', getenv('KSQL_PORT'))
+        )
         self._field_map = kwargs.get('field_map')
         self._key_field_name = kwargs.get('key_field_name')
 

@@ -8,3 +8,10 @@ create table historical (
   state text,
   area text
 );
+
+create table anomaly (
+  id serial primary key,
+  user_id integer,
+  heart_rate integer,
+  recorded timestamp with time zone
+);
