@@ -61,7 +61,7 @@ stmts_teardown = [{
     'stmt': 'drop table "INTERIM_11";',
 }]
 
-api = Api(config['KSQL_HOST'], config['KSQL_PORT'])
+api = Api(config['KSQL_LEADER'], config['KSQL_PORT'])
 
 
 def setup():

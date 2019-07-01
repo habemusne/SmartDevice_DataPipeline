@@ -25,16 +25,16 @@ services:
       - ./docker_volumes/connect/:/code/
     hostname: connect
     container_name: connect
-    depends_on:
+    # depends_on:
       # - zookeeper1
       # - broker1
-      - schema-registry
+      # - schema-registry
     ports:
       - "8083:8083"
     environment:
       CONNECT_BOOTSTRAP_SERVERS: ${BROKER_LIST}
       # CONNECT_REST_ADVERTISED_HOST_NAME: ${CONNECT_HOST}:8088
-      CONNECT_REST_ADVERTISED_HOST_NAME: ${CONNECT_HOST}:8088
+      CONNECT_REST_ADVERTISED_HOST_NAME: ${CONNECT_HOST}
       CONNECT_REST_PORT: 8083
       CONNECT_GROUP_ID: compose-connect-group
       CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
@@ -90,7 +90,7 @@ services:
       # - zookeeper1
       # - broker1
       - schema-registry
-      - connect
+      # - connect
       # - ksql-server
     ports:
       - "9021:9021"
@@ -98,8 +98,8 @@ services:
       CONTROL_CENTER_BOOTSTRAP_SERVERS: ${BROKER_LIST}
       CONTROL_CENTER_ZOOKEEPER_CONNECT: ${ZOOKEEPER_LIST}
       CONTROL_CENTER_CONNECT_CLUSTER: '${CONNECT_HOST}:8083'
-      CONTROL_CENTER_KSQL_URL: "http://${KSQL_HOST_1}:8088"
-      CONTROL_CENTER_KSQL_ADVERTISED_URL: "${KSQL_HOST_1}:8088"
+      CONTROL_CENTER_KSQL_APP_URL: ${KSQL_LIST}
+      # CONTROL_CENTER_KSQL_ADVERTISED_URL: ${KSQL_LIST}
       CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://${SCHEMA_REGISTRY_HOST}:8081"
       CONTROL_CENTER_REPLICATION_FACTOR: 1
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1

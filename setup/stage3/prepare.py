@@ -67,7 +67,7 @@ if sys.argv[1] in ['ht', 'st', 'all']:
             'longitude': 'DOUBLE',
         },
         'key_field_name': config['HISTORICAL_KEYFIELD'],
-        'host': config['KSQL_HOST'],
+        'host': config['KSQL_LEADER'],
         'port': config['KSQL_PORT'],
     })
     historical_data_table.create()
@@ -86,7 +86,7 @@ if sys.argv[1] in ['rs', 'st', 'all']:
             'heart_rate': 'INTEGER',
         },
         'key_field_name': config['REALTIME_KEYFIELD'],
-        'host': config['KSQL_HOST'],
+        'host': config['KSQL_LEADER'],
         'port': config['KSQL_PORT'],
         'offset_reset': config['REALTIME_OFFSET_RESET'],
     })

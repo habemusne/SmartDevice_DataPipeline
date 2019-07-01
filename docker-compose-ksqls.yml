@@ -2,6 +2,8 @@
 version: '2'
 services:
   ksql-server:
+    env_file:
+      - .env.override/ksqls
     image: confluentinc/cp-ksql-server:5.2.1
     hostname: ksql-server
     container_name: ksql-server
@@ -14,7 +16,7 @@ services:
       KSQL_CONFIG_DIR: "/etc/ksql"
       KSQL_LOG4J_OPTS: "-Dlog4j.configuration=file:/etc/ksql/log4j-rolling.properties"
       KSQL_BOOTSTRAP_SERVERS: ${BROKER_LIST}
-      KSQL_HOST_NAME: ksql-server
+      KSQL_HOST_NAME: ${KSQL_HOST}
       KSQL_APPLICATION_ID: "heart-watch"
       KSQL_LISTENERS: "http://0.0.0.0:8088"
       KSQL_CACHE_MAX_BYTES_BUFFERING: 0

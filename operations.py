@@ -12,7 +12,7 @@ LOCAL_ROOT_DIR = '/Users/a67/Project/insight/heart_watch'
 REMOTE_ROOT_DIR = '/home/ubuntu/heart_watch'
 CLUSTERS = {
     'brokers': {
-        'num_nodes': 2,
+        'num_nodes': 1,
         'env_overrides': [
             'BROKER_LIST',
             'BROKER_HOST',
@@ -25,12 +25,12 @@ CLUSTERS = {
             'KSQL_LEADER',
         ],
     },
-    # 'ksqls': {
-    #     'num_nodes': 2,
-    #     'env_overrides': [
-    #         '',
-    #     ],
-    # },
+    'ksqls': {
+        'num_nodes': 2,
+        'env_overrides': [
+            '',
+        ],
+    },
 }
 
 
@@ -98,7 +98,8 @@ def fetch():
 def add_ssh_key():
     cmds = []
     for key, val in CLUSTERS.items():
-        for i in range(val['num_nodes']):
+        server_list = re.findall('Public DNS: (.*)', os.popen('peg fetch {}'.format(key)).read())
+        for i in range(len(server_list)):
             cmds.append('peg ssh {} {}'.format(key, str(i + 1)))
     processes = []
     for _args in cmds:
@@ -122,31 +123,34 @@ def upload(local_path=LOCAL_ROOT_DIR):
 def sync():
     command = """rsync -avL --exclude '.env.override/*' --progress -e "ssh -i ~/.ssh/mark-chen-IAM-key-pair.pem" --log-file="/Users/a67/rsync.log" /Users/a67/Project/insight/heart_watch/ ubuntu@{}:~/heart_watch/"""
     for dns in [
-        'ec2-3-214-23-69.compute-1.amazonaws.com',
-        'ec2-3-218-144-198.compute-1.amazonaws.com',
-        'ec2-3-220-176-43.compute-1.amazonaws.com',
-        # 'ec2-3-209-167-77.compute-1.amazonaws.com',
+        'ec2-3-216-241-119.compute-1.amazonaws.com', # broker 1
+        'ec2-18-213-242-203.compute-1.amazonaws.com', # ksql 1
+        'ec2-3-220-227-59.compute-1.amazonaws.com', # ksql 2
+        'ec2-3-209-167-77.compute-1.amazonaws.com', # extra 1
         # 'ec2-3-209-181-191.compute-1.amazonaws.com',
     ]:
         os.system(command.format(dns))
 
 
 def env_override(cluster='all'):
+    def work(cluster, vars):
+        remote_path = join(REMOTE_ROOT_DIR, relpath('.env.override/{}'.format(cluster), LOCAL_ROOT_DIR))
+        server_list = re.findall('Public DNS: (.*)', os.popen('peg fetch {}'.format(cluster)).read())
+        for i in range(len(server_list)):
+            with open('.env.override/{}'.format(cluster), 'w') as f:
+                if 'KAFKA_ADVERTISED_LISTENERS' in vars:
+                    f.write('{}={}\n'.format('KAFKA_ADVERTISED_LISTENERS', 'PLAINTEXT://{}:9092'.format(server_list[i])))
+                if 'KAFKA_BROKER_ID' in vars:
+                    f.write('{}={}\n'.format('KAFKA_BROKER_ID', i + 1))
+                if 'KSQL_HOST' in vars:
+                    f.write('{}={}\n'.format('KSQL_HOST', server_list[i]))
+            os.system('peg scp from-local {} {} {} {}'.format(cluster, str(i + 1), '.env.override/{}'.format(cluster), remote_path))
+
     if cluster in ['brokers', 'all']:
-        remote_path = join(REMOTE_ROOT_DIR, relpath('.env.override/brokers', LOCAL_ROOT_DIR))
-        broker_list = re.findall('Public DNS: (.*)', os.popen('peg fetch brokers').read())
-        for i in range(CLUSTERS['brokers']['num_nodes']):
-            var_to_val = {
-                'KAFKA_ADVERTISED_LISTENERS': 'PLAINTEXT://{}:9092'.format(broker_list[i]),
-                'KAFKA_BROKER_ID': i + 1,
-            }
-            with open('.env.override/brokers', 'w') as f:
-                [f.write('{}={}\n'.format(key, val)) for key, val in var_to_val.items()]
-            os.system('peg scp from-local {} {} {} {}'.format('brokers', str(i + 1), '.env.override/brokers', remote_path))
+        work('brokers', set(['KAFKA_ADVERTISED_LISTENERS', 'KAFKA_BROKER_ID']))
 
     if cluster in ['ksqls', 'all']:
-        pass
-        # ksql_list = re.findall('Public DNS: (.*)', os.popen('peg fetch ksqls').read())
+        work('ksqls', set(['KSQL_HOST']))
 
     # var_to_val = {
     #     'ZOOKEEPER_LEADER': broker_list[0],
@@ -158,7 +162,7 @@ def env_override(cluster='all'):
     #     [f.write('{}={}\n'.format(key, val)) for key, val in var_to_val.items()]
 
 
-def clean_log():
+def clean_logs():
     _parallel(['peg sshcmd-cluster {} "sudo sh -c \'truncate -s 0 /var/lib/docker/containers/*/*-json.log\'"'.format(key) for key in CLUSTERS], prompt=False)
 
 
