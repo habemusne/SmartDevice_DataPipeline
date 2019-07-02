@@ -1,6 +1,7 @@
 # Assumption: use postgres; pg table name consistent with resource name ('historical'/'realtime')...
 
 import requests
+from os import getenv
 from os.path import join
 
 import util.naming
@@ -12,9 +13,12 @@ class Connector(Resource):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._name = util.naming.connector_name(self._data_name)
-        self._api_url = 'http://{}:{}/connectors'.format(kwargs.get('host'), kwargs.get('port'))
-        self._poll_interval = kwargs.get('poll_interval')
-        self._num_partitions = kwargs.get('num_partitions')
+        self._api_url = 'http://{}:{}/connectors'.format(
+            kwargs.get('host', getenv('CONNECT_HOST')),
+            kwargs.get('port', getenv('CONNECT_PORT'))
+        )
+        self._poll_interval = int(kwargs.get('poll_interval', getenv('POLL_INTERVAL')))
+        self._num_partitions = int(kwargs.get('num_partitions', getenv('NUM_PARTITIONS')))
 
     def _create(self, payload, force_exit=True):
         response = requests.post(self._api_url, json=payload)
@@ -35,14 +39,14 @@ class Connector(Resource):
         return requests.get(join(self._api_url, self._name)).status_code == 200
 
 
-class JDBC(Connector):
+class JDBCSource(Connector):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._db_host = kwargs.get('db_host')
-        self._db_port = kwargs.get('db_port')
-        self._db_user = kwargs.get('db_user')
-        self._db_password = kwargs.get('db_password')
-        self._db_name = kwargs.get('db_name')
+        self._db_host = kwargs.get('db_host', getenv('DB_HOST'))
+        self._db_port = kwargs.get('db_port', getenv('DB_PORT'))
+        self._db_user = kwargs.get('db_user', getenv('DB_USER'))
+        self._db_password = kwargs.get('db_password', getenv('DB_PASS'))
+        self._db_name = kwargs.get('db_name', getenv('DB_NAME'))
         self._keyfield = kwargs.get('keyfield')
         self._query = kwargs.get('query')
 
@@ -92,7 +96,7 @@ class Datagen(Connector):
         self._schema_path = kwargs.get('schema_path')
         self._schema_keyfield = kwargs.get('schema_keyfield')
 
-
+    @Resource.log_notify
     def create(self):
         topic_name = util.naming.topic_name(self._data_name)
         payload = {
@@ -104,6 +108,9 @@ class Datagen(Connector):
                 'iterations': self._iterations,
                 'schema.filename': self._schema_path,
                 'schema.keyfield': self._schema_keyfield,
+                'transforms': 'insertGenerationAt',
+                'transforms.insertGenerationAt.type': 'org.apache.kafka.connect.transforms.InsertField$Value',
+                'transforms.insertGenerationAt.timestamp.field': getenv('GENERATED_AT_FIELD'),
             }
         }
         input('If topic {} does not exist, please create it first. With number of patitions = {}. Hit ENTER when done: '.format(topic_name, self._num_partitions))
@@ -112,3 +119,24 @@ class Datagen(Connector):
     @Resource.log_notify
     def delete(self):
         self._delete()
+
+
+class S3Sink(Connector):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    @Resource.log_notify
+    def create(self):
+        payload = {
+            'name': self._name + '.sink',
+            config: {
+                'format.class': 'io.confluent.connect.s3.format.avro.AvroFormat',
+                'flush.size': 10000,
+                # 'rotate.interval.ms': 10000,
+                's3.bucket.name': '',
+            }
+        }
+
+    @Resource.log_notify
+    def delete(self):
+        pass

@@ -18,5 +18,7 @@ class Api:
         return response
 
     def stream(self, payload, force_exit=True):
-        with requests.post(self._query_endpoint, json=payload, stream=True) as response:
+        session = requests.Session()
+        session.head(self._query_endpoint, stream=True)
+        with session.post(self._query_endpoint, json=payload, stream=True, timeout=40) as response:
             yield response

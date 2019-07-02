@@ -1,11 +1,12 @@
 import logging
+from os import getenv
 from os.path import join, abspath, dirname
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 
-_config = dotenv_values(join(dirname(dirname(abspath(__file__))), '.env'))
+load_dotenv(dotenv_path=join(dirname(dirname(abspath(__file__))), '.env'))
 _handler = logging.StreamHandler()
 _handler.setFormatter(logging.Formatter('%(levelname)s: %(name)s: %(message)s'))
 
-logger = logging.getLogger(_config['LOGGER_NAME'])
-logger.setLevel(_config['LOGGING_LEVEL'])
+logger = logging.getLogger(getenv('LOGGER_NAME'))
+logger.setLevel(getenv('LOGGING_LEVEL'))
 logger.addHandler(_handler)

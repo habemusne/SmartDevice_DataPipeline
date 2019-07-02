@@ -3,7 +3,7 @@ from util.logger import logger
 
 class Resource:
     def __init__(self, **kwargs):
-        self._data_name = kwargs.get('data_name')
+        self._data_name = kwargs.get('data_name', '')
 
     def create(self, **kwargs):
         raise NotImplementedError

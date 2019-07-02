@@ -1,67 +1,102 @@
 import sys
 import json
+from os import getenv
 from os.path import join, abspath, dirname
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 from fire import Fire
 
 import util.naming
 from util.logger import logger
 from util.ksql_api import Api
 
-config = dotenv_values(join(dirname(abspath(__file__)), '.env'))
-
+load_dotenv(dotenv_path=join(dirname(abspath(__file__)), '.env'))
+version_id = getenv('RESOURCE_NAME_VERSION_ID')
+interim_1 = 'INTERIM_1_' + version_id
+interim_2 = 'INTERIM_2_' + version_id
+final = 'FINAL_' + version_id
 
 stmts_setup = [{
-    'desc': 'Creating interim table: user id + num distinct locations',
+    'desc': 'Creating table {} from historical data topic'.format(interim_1),
     'stmt': """
-        create table INTERIM_11 with (partitions = {}) as
-            select user_id, count(cast(latitude as string) + ' | ' + cast(longitude as string)) as num_locations
-            from "{}"
-            group by user_id
-        ;
-    """.format(config['NUM_PARTITIONS'], util.naming.stream_name('realtime')),
+        CREATE TABLE "{name}" (user_id STRING, latitude DOUBLE, longitude DOUBLE)
+        WITH (
+            KAFKA_TOPIC = '{topic}',
+            VALUE_FORMAT = 'AVRO',
+            KEY = '{key}'
+        );
+    """.format(
+        name=interim_1,
+        topic=util.naming.topic_name('historical'),
+        key=getenv('HISTORICAL_KEYFIELD'),
+    ),
 }, {
-    'desc': 'Creating interim table: user id + avg heart rate',
+    'desc': 'Creating stream {} from real-time data topic'.format(interim_2),
     'stmt': """
-        create table INTERIM_12 with (partitions = {}) as
-            select user_id, sum(heart_rate)/count(heart_rate) as avg_heart_rate
-            from "{}"
-            group by user_id
-        ;
-    """.format(config['NUM_PARTITIONS'], util.naming.stream_name('realtime')),
+        CREATE STREAM "{name}" (
+            user_id STRING,
+            zipcode INTEGER,
+            latitude DOUBLE,
+            longitude DOUBLE,
+            city STRING,
+            year INTEGER,
+            month INTEGER,
+            heart_rate INTEGER,
+            {generated_at} BIGINT,
+            {processing_started_at} BIGINT
+        ) WITH (
+            KAFKA_TOPIC = '{topic}',
+            VALUE_FORMAT = 'AVRO',
+            KEY = '{key}',
+            TIMESTAMP = '{processing_started_at}'
+        );
+    """.format(
+        name=interim_2,
+        generated_at=getenv('GENERATED_AT_FIELD'),
+        processing_started_at=getenv('PROCESSING_STARTED_AT_FIELD'),
+        topic=util.naming.topic_name('realtime'),
+        key=getenv('REALTIME_KEYFIELD'),
+    ),
 }, {
-    'desc': 'Creating interim table: user id + num distinct locations + avg heart rate',
+    'desc': 'Creating table {}: user id + num distinct locations'.format(final),
     'stmt': """
-        create table INTERIM_21 with (partitions = {}) as
-            select t1.user_id as user_id, t1.num_locations as num_locations, t2.avg_heart_rate as avg_heart_rate
-            from "INTERIM_11" t1
-            join "INTERIM_12" t2 on t1.user_id = t2.user_id
+        create table {name} with (partitions = {num_partitions}) as
+            select
+                r.user_id as user_id,
+                sum(r.heart_rate)/count(r.heart_rate) as avg_heart_rate
+            from "{interim_2}" r
+            window tumbling (size {tumbling} seconds)
+            group by r.user_id
         ;
-    """.format(config['NUM_PARTITIONS']),
+    """.format(
+        name=final,
+        num_partitions=getenv('NUM_PARTITIONS'),
+        generated_at=getenv('GENERATED_AT_FIELD'),
+        processing_started_at=getenv('PROCESSING_STARTED_AT_FIELD'),
+        tumbling=getenv('WINDOW_TUMBLING_SECONDS'),
+        interim_1=interim_1,
+        interim_2=interim_2,
+    ),
 }]
 
 stmts_run = [{
     'desc': 'get the users who are still and have heart rate out of their historical range',
     'stmt': """
-        select t1.user_id, t1.avg_heart_rate, t1.num_locations
-        from "INTERIM_21" t1
-        join "{}" h on t1.user_id = h.user_id
+        select user_id, avg_heart_rate, earliest_generated_at, latest_generated_at, earliest_processing_started_at, latest_processing_started_at
+        from "{}"
         window tumbling (size {} seconds)
-        where t1.avg_heart_rate < 60 or t1.avg_heart_rate > 100
-        and t1.num_locations = 1
         ;
-    """.format(util.naming.table_name('historical'), config['WINDOW_TUMBLING_SECONDS']),
+    """.format(final, getenv('WINDOW_TUMBLING_SECONDS')),
 }]
 
 stmts_teardown = [{
-    'stmt': 'drop table "INTERIM_21";',
+    'stmt': 'drop table "{}";'.format(final),
 }, {
-    'stmt': 'drop table "INTERIM_12";',
+    'stmt': 'drop stream "{}";'.format(interim_2),
 }, {
-    'stmt': 'drop table "INTERIM_11";',
+    'stmt': 'drop table "{}";'.format(interim_1),
 }]
 
-api = Api(config['KSQL_LEADER'], config['KSQL_PORT'])
+api = Api(getenv('KSQL_LEADER'), getenv('KSQL_PORT'))
 
 
 def setup():
@@ -74,11 +109,12 @@ def setup():
 
 
 def run():
-    logger.info('Health risk detection running. Result will be updated every {} seconds'.format(config['WINDOW_TUMBLING_SECONDS']))
+    logger.info('Health risk detection running. Result will be updated every {} seconds'.format(getenv('WINDOW_TUMBLING_SECONDS')))
     for response in api.stream({
         'ksql': stmts_run[0]['stmt'],
-        'auto.offset.reset': 'latest',
+        'auto.offset.reset': 'earliest',
     }):
+        print(response.text)
         for line in response.iter_lines():
             if line:
                 data = json.loads(line.decode('utf-8'))

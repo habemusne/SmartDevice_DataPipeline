@@ -1,9 +1,10 @@
 import logging
+from os import getenv
 from os.path import join, abspath, dirname
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 
-_config = dotenv_values(join(dirname(dirname(abspath(__file__))), '.env'))
-version_id = _config.get('RESOURCE_NAME_VERSION_ID', '1')
+load_dotenv(dotenv_path=join(dirname(dirname(abspath(__file__))), '.env'))
+version_id = getenv('RESOURCE_NAME_VERSION_ID')
 
 
 def topic_name(data_name):

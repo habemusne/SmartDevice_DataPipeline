@@ -1,3 +1,4 @@
+from os import getenv
 from os.path import join
 
 import util.naming
@@ -9,7 +10,10 @@ from util.ksql_api import Api
 class KSQLObject(Resource):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.api = Api(kwargs.get('host'), kwargs.get('port'))
+        self.api = Api(
+            kwargs.get('host', getenv('KSQL_LEADER')),
+            kwargs.get('port', getenv('KSQL_PORT'))
+        )
         self._field_map = kwargs.get('field_map')
         self._key_field_name = kwargs.get('key_field_name')
 
@@ -53,6 +57,7 @@ class Stream(KSQLObject):
         super().__init__(**kwargs)
         self._name = util.naming.stream_name(self._data_name)
         self._offset_reset = kwargs.get('offset_reset', 'earliest')
+        self._timestamp_field_name = kwargs.get('timestamp_field_name', 'processed_at')
 
     @Resource.log_notify
     def create(self):
@@ -61,13 +66,15 @@ class Stream(KSQLObject):
         WITH (
             KAFKA_TOPIC = '{topic}',
             VALUE_FORMAT = 'AVRO',
-            Key = '{key}'
+            KEY = '{key}',
+            TIMESTAMP = '{timestamp_field_name}'
         );
         """.format(
             name=self._name,
             fields=','.join([field_name + ' ' + field_type for field_name, field_type in self._field_map.items()]),
             topic=util.naming.topic_name(self._data_name),
             key=self._key_field_name,
+            timestamp_field_name=self._timestamp_field_name,
         )
         payload = {
             'ksql': statement,
