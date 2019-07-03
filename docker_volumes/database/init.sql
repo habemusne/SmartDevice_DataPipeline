@@ -1,17 +1,11 @@
 create table historical (
-  id serial primary key,
-  user_id integer,
-  zipcode integer,
-  latitude real,
-  longitude real,
-  city text,
-  state text,
-  area text
+  user_id serial primary key,
+  min_heart_rate integer,
+  max_heart_rate integer
 );
 
 create table anomaly (
-  id serial primary key,
-  user_id integer,
+  user_id integer primary key,
   heart_rate integer,
   recorded timestamp with time zone
 );

@@ -13,7 +13,7 @@ services:
 
   broker:
     env_file:
-      - .env.override/brokers
+      - ../.env.override/brokers
     image: confluentinc/cp-enterprise-kafka:5.2.1
     hostname: broker
     container_name: broker

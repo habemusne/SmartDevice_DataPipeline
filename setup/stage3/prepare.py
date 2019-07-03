@@ -9,7 +9,6 @@ import util.naming
 from util.logger import logger
 from util.database import Database
 from util.connector import JDBCSource as JDBCSourceConnector, Datagen as DatagenConnector
-from util.ksql_object import Table, Stream
 
 load_dotenv(dotenv_path=join(dirname(dirname(abspath(__file__))), '.env'))
 
@@ -19,12 +18,14 @@ if sys.argv[1] in ['db', 'all']:
         'data_name': 'anomaly',
         'seed_path': join(getenv('DATA_DIR'), getenv('ANOMALY_DATA_FILE')),
     })
+    anomaly_database.delete()
     anomaly_database.create()
 
     historical_database = Database(**{
         'data_name': 'historical',
         'seed_path': join(getenv('DATA_DIR'), getenv('HISTORICAL_DATA_FILE')),
     })
+    historical_database.delete()
     historical_database.create()
 
 if sys.argv[1] in ['hc', 'c', 'all']:
@@ -33,7 +34,7 @@ if sys.argv[1] in ['hc', 'c', 'all']:
         'poll_interval': int(getenv('HISTORICAL_POLL_INTERVAL')),
         'keyfield': getenv('HISTORICAL_KEYFIELD'),
         'query': getenv('HISTORICAL_QUERY'),
-        'num_partitions': getenv('NUM_PARTITIONS')
+        'num_partitions': getenv('NUM_PARTITIONS'),
     })
     historical_data_connector.delete()
     historical_data_connector.create()
@@ -41,11 +42,12 @@ if sys.argv[1] in ['hc', 'c', 'all']:
 if sys.argv[1] in ['rc', 'c', 'all']:
     realtime_data_connector = DatagenConnector(**{
         'data_name': 'realtime',
+        'id': i + 1,
         'poll_interval': int(getenv('REALTIME_POLL_INTERVAL')),
         'iterations': int(getenv('REALTIME_ITERATIONS')),
         'schema_path': getenv('REALTIME_SCHEMA_PATH'),
         'schema_keyfield': getenv('REALTIME_KEYFIELD'),
-        'num_partitions': getenv('NUM_PARTITIONS')
+        'num_partitions': getenv('NUM_PARTITIONS'),
     })
     realtime_data_connector.delete()
     realtime_data_connector.create()

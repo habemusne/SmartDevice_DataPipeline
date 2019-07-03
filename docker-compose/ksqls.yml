@@ -3,7 +3,7 @@ version: '2'
 services:
   ksql-server:
     env_file:
-      - .env.override/ksqls
+      - ../.env.override/ksqls
     image: confluentinc/cp-ksql-server:5.2.1
     hostname: ksql-server
     container_name: ksql-server
