@@ -13,7 +13,7 @@ from util.logger import logger
 
 class Database(Resource):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        self.name = kwargs.get('data_name', '')
         connect_string = 'postgres://{}:{}@{}:{}/{}'.format(
             kwargs.get('user', getenv('DB_USER')),
             kwargs.get('password', getenv('DB_PASS')),
@@ -23,7 +23,7 @@ class Database(Resource):
         )
         self.Base, self._engine = automap_base(), create_engine(connect_string)
         self.Base.prepare(self._engine, reflect=True)
-        self._Model = self.get_model(self._data_name)
+        self._Model = self.get_model(self.name)
         self._seed_path = kwargs.get('seed_path', '')
 
     @Resource.log_notify
