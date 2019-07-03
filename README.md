@@ -1,71 +1,65 @@
-# Introduction
-This project aims at building data pipeline for collecting data from smart health devices
-like fitbit, apple watch etc and running analysis on the collected data. The fields/attributes 
-of the collected data will contain the device ID, location(latitude, longitude), heart rate, number 
-of hours slept, hours spent in running for each user of the device. The data will be processed 
-in real time to detect anomaly in the heart rates of the patients who need their health to be monitored 
-continously.
+# Project description
 
-# Motivation
-Chronic diseases such as heart disease are the major causes of sickness and health care costs in the nation.
-The biggest areas of spending and concern are for coordination of care and preventing hospital admissions for 
-people with chronic conditions. The wearable health devices that can monitor vital signs when combined with 
-patients health records( for example desired state of the patients health after any surgery or in daily routine ) 
-or  machine learning, can make it possible for doctors to rapidly take required actions to their patients cases.
-It has the potential to enable scalable chronic disease management with better care at lower costs.
+There are two parts on a thorough workflow demo: the first is setting the project up, and the second is to make a query for the problem that the [previous project](https://github.com/anshu3769/SmartDevice_DataPipeline) addresses.
 
-# Tools and technologies used 
-1. Apache Kafka
-2. Apache Spark Streaming
-3. S3
-4. AWS Redshift
-5. Dash 
+This query is defined as follows: patients are users whose heart rates are out of their historical range but did not move in the previous X seconds (`WINDOW_TUMBLING_SECONDS` in .env file). Continuously find them out.
 
-# Details of the data
-There are three tables containing the information about the device. 
+# Current progress
 
--> User_Details-contains the user personal details including device id, area zipcode of 
-the user, normal heart beat range of the user as this might differ from person to person 
-depending on various conditions. (User_Details)
-
--> Streaming Data-collects the streaming data from the device with its timestamp. The fields 
-in the incoming data are device id, latitude of the current location,longitude of the current 
-location,heart rate  and timestamp at which this data is collected.
-
--> Gym locations-contains the gym facility locations around the given region. The data from this 
-table would be used to compare the location of the device to first confirm if its a false alarm.
+1. Currently, the whole project runs on a **single** machine. 
+2. Per-person historical heart rate range is currently hard coded. However, my query still involves joining the historical table (so that I can later iterate this project easily). My plan for addressing this part is: since historical heart rate range is the only information the query needs from the historical table, the historical table for this project can simply store these ranges but nothing else.
+3. Future plans ordered by priority
+  1. Fix the partition bug, so that both parts can work fluently in a thorough demo
+  2. Breaks the architecture to multiple machines and do the benchmarking.
+  3. Benchmark using built-in kafka streaming. It also needs devOps things setup and configured for many machines.
 
 
-# Flow of the data pipeline
+# Step 1: setup
 
-![Alt text](datapipeline.png?raw=true "Optional Title")
+Firstly bring up 1 m4.large EC2 ubuntu machine with sufficient storage (currently I use 20 GB)
 
- 
-The data will be read from the devices with the help of Kafka on regular intervals. This data will be fed to the Spark Streaming. If the averaged out value from a window of 2 minutes value from some device is deviating too much from 
-the standard range of heart rate for that person ( present in User_Details), appropriate action would be taken for those users. The aggregated data and the raw data is saved to S3 as its coming and being processed.
+Then ssh into it, and then run everything in `setup/setup.sh`.
 
-The device id of the patients with anomaly will be displayed on the Dash dashboard.
+If you use [pegasus](https://github.com/InsightDataScience/pegasus), you can do `peg up setup/brokers.yml` and then `peg ssh brokers 1`. Then run the setup script.
 
-Scheduled jobs-
+# Step 2: run it
 
-A scheduler would be running to copy the data from S3 to redshift. At the end of the day, the data collected during the day for all the users will be copied to  the data ware house.
-
-Daily reports will be generated from the collected data. A comparison in the heart beat pattern over a week would 
-be available to the doctors for further analysis in the patients health.
-
-# Possible extension
-The incoming data can be used with machine learning algorithms to give more accurate results while keeping the 
-false alarms low.
-
-# Further scope of improvements
-Spark streaming does not guarantee efficiently handling late incoming data.This is very important in case of health 
-monitoring devices. The current data pipeline filters out the late incoming data based on current time and the 
-timestamp of the data. This can be further improved with Spark Structured Streaming by using watermarking mechanism. In Structured Spark Streaming, the time limit to accept the late incoming data can be specified. If the data does not come in that window, the data will be discarded and will not impact the result.
-The support for Structured spark streaming was not available for python untill recently. The repo contains the code for
-getting the data and saving the result to local machine. ForEachWriter function which is available for saving the data to
-the database did not work well in python. 
+On the EC2 machine, run `python3 query.py` to see the streaming result. Use `CTRL + C` to stop it.
 
 
+# Other Notes
 
+## A caveat for running in large scale
 
+- When running large scale, it is necessary to install docker on all the machines. If you opt for pegasus for large scale deployment (instead of terraform or cloudfront), you may like to use `peg sshcmd-cluster` for convience. But with this command to run my bash scripts that installs docker-compose, you will see "cannot execute binary file: Exec format error" upon running `docker-compose`. Specifically, `peg sshcmd-cluster` fails to install a valid `docker-compose` with these 2 commands (they are directly copy pasted from docker's official website):
 
+```
+sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+Unfortunately, I was not able to figure out why. I was guessing that it's because of permission and ACL, but pegasus uses "ubuntu" as the user to login and run `sshcmd-cluster` (see `run_cmd_on_cluster` function in `util.sh`).
+
+A solution is to ssh into every machine, then run the above commands. But this is not scalable at all.
+
+As another solution, I made a public AMI that comes with docker and docker-compose. This AMI is built on top of the AMI used by pegasus (in us-east-1). However, pegasus does not support customized AMI, and I feel like it's too much work to refactor it for that. The solution here is to actually modify pegasus's source code to use my AMI. It is located at `select_ami` method in `util.sh` under your pegasus home directory. Just replace the hard-coded AMI string with `ami-0d9ff4b3c55d0b601`, and you will be good to go.
+
+If you want to know what I did on top of the original pegasus image, here are the commands:
+
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
+sudo add-apt-repository --remove -y ppa:andrei-pozolotin/maven3
+sudo apt-get -y update
+apt-cache policy docker-ce
+sudo kill -9 $(ps aux | grep 'dpkg' | awk '{print $2}')
+sudo kill -9 $(ps aux | grep 'apt' | awk '{print $2}')
+sudo killall -r dpkg
+sudo killall -r apt
+sudo dpkg --configure -a
+sudo apt-get install -y docker-ce python3-pip libpq-dev python-dev maven awscli
+sudo usermod -aG docker ubuntu
+sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose # check if it works
+```
