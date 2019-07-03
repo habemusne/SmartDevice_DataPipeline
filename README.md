@@ -4,17 +4,37 @@ There are two parts on a thorough workflow demo: the first is setting the projec
 
 This query is defined as follows: patients are users whose heart rates are out of their historical range but did not move in the previous X seconds (`WINDOW_TUMBLING_SECONDS` in .env file). Continuously find them out.
 
-# Step 1: setup
+## Step 1: setup
 
-Firstly bring up 1 m4.large EC2 ubuntu machine with sufficient storage (currently I use 20 GB)
+Firstly, install [pegasus](https://github.com/InsightDataScience/pegasus). Then
 
-Then ssh into it, and then run everything in `setup/setup.sh`.
+```
+pip3 install requirements.txt
+python3 operations.py stage1
+python3 operations.py stage2
+python3 operations.py stage3
+```
 
-If you use [pegasus](https://github.com/InsightDataScience/pegasus), you can do `peg up setup/brokers.yml` and then `peg ssh brokers 1`. Then run the setup script.
+## Step 2: run it
 
-# Step 2: run it
+`python3 operations.py start_containers`
 
-On the EC2 machine, run `python3 query.py` to see the streaming result. Use `CTRL + C` to stop it.
+Optional: then ssh into your "controller machine" -- i.e. the EC2 that can access all the other EC2 machines, and preferrably, in the same network (VPC) as they are. This is optional, becauce you can still run the next command on your local computer (as long as it can access all your machines), it's just that inserting seed data to postgres will be very slow.
+
+`python3 operations.py setup/stage3/prepare.py`
+
+## Step 3: start the analytics stream
+
+`python3 query.py setup`
+
+## step 4: see the result
+
+The UI is currently not available. You can go to the ksql server and run these commands to see the analytics result
+```
+docker-compose -f docker-compose/ksqls.yml exec ksql-cli ksql http://<KSQL_HOST>:8088
+set 'auto.offset.reset'='earliest';  # Optional
+select user_id, avg_heart_rate, processed_at from "FINAL_<RESOURCE_NAME_VERSION_ID>" window tumbling (size 10 seconds);
+```
 
 
 # Other Notes
