@@ -3,4 +3,7 @@
 __pycache__
 *.pyc
 .env
+*.class
+target/
+.env.override/
 ui/node_modules

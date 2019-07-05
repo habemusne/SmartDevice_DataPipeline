@@ -8,7 +8,7 @@
       "type": {
         "type": "int",
         "arg.properties": {
-          "range": { "min": 1, "max": 1000 }
+          "range": { "min": 1, "max": 20000 }
         }
       }
     },

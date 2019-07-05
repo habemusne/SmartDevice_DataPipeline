@@ -1,14 +1,16 @@
 import requests
+from os import getenv
 
 from util.logger import logger
 
 
 class Api:
-    def __init__(self, host, port):
+    def __init__(self, host=None, port=8088):
+        host = host or getenv('KSQL_LEADER')
         self._ksql_endpoint = 'http://{}:{}/ksql'.format(host, port)
         self._query_endpoint = 'http://{}:{}/query'.format(host, port)
 
-    def ksql(self, payload, force_exit=True, show_output=True):
+    def query(self, payload, force_exit=True, show_output=True):
         response = requests.post(self._ksql_endpoint, json=payload)
         if response.status_code >= 400:
             if show_output:

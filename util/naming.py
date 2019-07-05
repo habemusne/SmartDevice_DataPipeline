@@ -7,8 +7,9 @@ load_dotenv(dotenv_path=join(dirname(dirname(abspath(__file__))), '.env'))
 version_id = getenv('RESOURCE_NAME_VERSION_ID')
 
 
-def topic_name(data_name):
-    return '_'.join(['topic', version_id, data_name])
+def topic_name(data_name, index=''):
+    result = '_'.join(['topic', version_id, data_name])
+    return result if not index else '{}_{}'.format(result, index)
 
 
 def jdbc_topic_prefix():
@@ -27,5 +28,6 @@ def topic_name_jdbc(data_name):
     return jdbc_topic_prefix() + data_name
 
 
-def connector_name(data_name):
-    return '_'.join(['connect', version_id, data_name])
+def connector_name(data_name, index=''):
+    result = '_'.join(['connect', version_id, data_name])
+    return result if not index else '{}_{}'.format(result, index)

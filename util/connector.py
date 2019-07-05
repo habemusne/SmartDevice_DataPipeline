@@ -7,12 +7,11 @@ from os.path import join
 import util.naming
 from util.resource import Resource
 from util.logger import logger
+from util.topic import Topic
 
 
 class Connector(Resource):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._name = util.naming.connector_name(self._data_name)
         self._api_url = 'http://{}:{}/connectors'.format(
             kwargs.get('host', getenv('CONNECT_HOST')),
             kwargs.get('port', getenv('CONNECT_PORT'))
@@ -23,39 +22,48 @@ class Connector(Resource):
     def _create(self, payload, force_exit=True):
         response = requests.post(self._api_url, json=payload)
         if response.status_code >= 400:
-            logger.error('Unable to create new connector {}. Please inspect from the logs'.format(self._name))
+            logger.error('Unable to create new connector {}. Please inspect from the logs'.format(self.name))
             logger.error(response.text)
             exit(1) if force_exit else None
 
     def _delete(self, force_exit=True):
         if self._get():
-            response = requests.delete(join(self._api_url, self._name))
+            response = requests.delete(join(self._api_url, self.name))
             if response.status_code >= 400:
-                logger.error('Unable to delete existing connector {}. Please manually delete it from the web UI.'.format(self._name))
+                logger.error('Unable to delete existing connector {}. Please manually delete it from the web UI.'.format(self.name))
                 logger.error(response.text)
                 exit(1) if force_exit else None
 
     def _get(self):
-        return requests.get(join(self._api_url, self._name)).status_code == 200
+        return requests.get(join(self._api_url, self.name)).status_code == 200
 
 
 class JDBCSource(Connector):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        data_name = kwargs.get('data_name')
+        self._table_name = data_name
+        self.name = util.naming.connector_name(data_name)
+        self._query = kwargs.get('query')
+        if self._query:
+            self._topic = Topic(util.naming.topic_name(data_name), getenv('NUM_PARTITIONS'))
+        else:
+            self._topic_prefix = util.naming.jdbc_topic_prefix()
+            self._topic = Topic(self._topic_prefix + data_name, getenv('NUM_PARTITIONS'))
+
         self._db_host = kwargs.get('db_host', getenv('DB_HOST'))
         self._db_port = kwargs.get('db_port', getenv('DB_PORT'))
         self._db_user = kwargs.get('db_user', getenv('DB_USER'))
         self._db_password = kwargs.get('db_password', getenv('DB_PASS'))
         self._db_name = kwargs.get('db_name', getenv('DB_NAME'))
         self._keyfield = kwargs.get('keyfield')
-        self._query = kwargs.get('query')
 
     @Resource.log_notify
     def create(self):
         db_connect_url_jdbc = 'jdbc:postgresql://{}:{}/{}'.format(self._db_host, self._db_port, self._db_name)
         
         payload = {
-            'name': self._name,
+            'name': self.name,
             'config': {
                 'connector.class': 'io.confluent.connect.jdbc.JdbcSourceConnector',
                 'connection.url': db_connect_url_jdbc,
@@ -72,13 +80,12 @@ class JDBCSource(Connector):
             }
         }
         if self._query:
-            topic_name = util.naming.topic_name(self._data_name)
             payload['config']['query'] = self._query
-            payload['config']['topic.prefix'] = topic_name
-            input('If topic {} does not exist, please create it first. With number of patitions = {}. Hit ENTER when done: '.format(topic_name, self._num_partitions))
+            payload['config']['topic.prefix'] = self._topic.name
+            self._topic.create()
         else:
             logger.warning('"query" parameter is not specified. All messages will be sent to a single partition.')
-            payload['config']['table.whitelist'] = self._data_name
+            payload['config']['table.whitelist'] = self._table_name
             payload['config']['topic.prefix'] = util.naming.jdbc_topic_prefix()
         if self._get():
             self._delete()
@@ -86,35 +93,43 @@ class JDBCSource(Connector):
 
     @Resource.log_notify
     def delete(self):
+        # self._topic.delete()
         self._delete()
 
 
 class Datagen(Connector):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        _id = kwargs.get('id', '')
+        self.name = util.naming.connector_name(kwargs.get('data_name'), _id)
+        topic_name = util.naming.topic_name(kwargs.get('data_name'), _id)
+        self._topic = Topic(topic_name, getenv('NUM_PARTITIONS'))
         self._iterations = kwargs.get('iterations')
         self._schema_path = kwargs.get('schema_path')
         self._schema_keyfield = kwargs.get('schema_keyfield')
 
     @Resource.log_notify
     def create(self):
-        topic_name = util.naming.topic_name(self._data_name)
         payload = {
-            'name': self._name,
+            'name': self.name,
             'config': {
                 'connector.class': 'io.confluent.kafka.connect.datagen.DatagenConnector',
-                'kafka.topic': topic_name,
+                'kafka.topic': self._topic.name,
                 'max.interval': self._poll_interval,
                 'iterations': self._iterations,
                 'schema.filename': self._schema_path,
                 'schema.keyfield': self._schema_keyfield,
+                'transforms': 'insertGenerationAt',
+                'transforms.insertGenerationAt.type': 'org.apache.kafka.connect.transforms.InsertField$Value',
+                'transforms.insertGenerationAt.timestamp.field': getenv('GENERATED_AT_FIELD'),
             }
         }
-        input('If topic {} does not exist, please create it first. With number of patitions = {}. Hit ENTER when done: '.format(topic_name, self._num_partitions))
+        self._topic.create()
         self._create(payload)
 
     @Resource.log_notify
     def delete(self):
+        # self._topic.delete()
         self._delete()
 
 
@@ -125,7 +140,7 @@ class S3Sink(Connector):
     @Resource.log_notify
     def create(self):
         payload = {
-            'name': self._name + '.sink',
+            'name': self.name + '.sink',
             config: {
                 'format.class': 'io.confluent.connect.s3.format.avro.AvroFormat',
                 'flush.size': 10000,

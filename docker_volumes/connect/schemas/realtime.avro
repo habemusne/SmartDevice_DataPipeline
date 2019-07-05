@@ -8,7 +8,7 @@
       "type": {
         "type": "int",
         "arg.properties": {
-          "range": { "min": 1, "max": 1000 }
+          "range": { "min": 1, "max": 20000 }
         }
       }
     },
@@ -36,33 +36,6 @@
         "type": "double",
         "arg.properties": {
           "range": { "min": -75.0, "max": -73.0 }
-        }
-      }
-    },
-    {
-      "name": "city",
-      "type": {
-        "type": "string",
-        "arg.properties": {
-          "options": ["New York"]
-        }
-      }
-    },
-    {
-      "name": "year",
-      "type": {
-        "type": "int",
-        "arg.properties": {
-          "range": { "min": 2018, "max": 2019 }
-        }
-      }
-    },
-    {
-      "name": "month",
-      "type": {
-        "type": "int",
-        "arg.properties": {
-          "range": { "min": 1, "max": 12 }
         }
       }
     },
