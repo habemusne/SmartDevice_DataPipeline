@@ -1,7 +1,7 @@
 import sys
 import json
 from os import getenv
-from os.path import join, abspath, dirname
+from os.path import join
 from dotenv import load_dotenv
 from fire import Fire
 
@@ -9,7 +9,7 @@ import util.naming
 from util.logger import logger
 from util.ksql_api import Api
 
-load_dotenv(dotenv_path=join(dirname(abspath(__file__)), '.env'))
+load_dotenv(dotenv_path='./.env')
 version_id = getenv('RESOURCE_NAME_VERSION_ID')
 interim_11 = 'INTERIM_11_' + version_id
 interim_12 = 'INTERIM_12_' + version_id
@@ -122,4 +122,3 @@ else:
         pass
     finally:
         teardown()
-
