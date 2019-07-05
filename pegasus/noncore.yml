@@ -1,0 +1,10 @@
+purchase_type: on_demand
+subnet_id: subnet-0bf671b4bcc2d80c8
+num_instances: 1
+key_name: mark-chen-IAM-key-pair
+security_group_ids: sg-033835348406c7269
+instance_type: m4.large
+tag_name: noncore
+vol_size: 20
+role: master
+use_eips: true
