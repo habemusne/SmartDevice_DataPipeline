@@ -2,7 +2,7 @@ import re
 import sys
 import json
 from os import getenv
-from os.path import join
+from os.path import join, abspath, dirname
 from dotenv import load_dotenv
 from fire import Fire
 from time import sleep
@@ -20,8 +20,11 @@ final = 'FINAL_' + version_id
 stmts_setup = [{
     'desc': 'Creating table {} from historical data topic'.format(interim_1),
     'stmt': """
-        CREATE TABLE "{name}" (user_id STRING, min_heart_rate INTEGER, max_heart_rate INTEGER)
-        WITH (
+        CREATE TABLE "{name}" (
+            user_id STRING,
+            min_heart_rate INTEGER,
+            max_heart_rate INTEGER
+        ) WITH (
             KAFKA_TOPIC = '{topic}',
             VALUE_FORMAT = 'AVRO',
             KEY = '{key}'
@@ -61,7 +64,7 @@ stmts_setup = [{
                 r.ROWTIME as {processed_at},
                 sum(r.heart_rate)/count(r.heart_rate) as avg_heart_rate
             from "{interim_2}" r
-            join "{interim_1}" h on h.user_id = r.user_id
+            left join "{interim_1}" h on h.user_id = r.user_id
             window tumbling (size {tumbling} seconds)
             group by r.user_id, r.ROWTIME
             having count(cast(r.latitude as string) + ' | ' + cast(r.longitude as string)) = 1

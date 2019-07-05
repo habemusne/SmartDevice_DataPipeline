@@ -2,9 +2,12 @@
 import os
 import re
 import subprocess
+import json
+from os import getenv
 from os.path import join, relpath
 from fire import Fire
 from time import sleep
+from dotenv import load_dotenv
 
 from util.logger import logger
 
@@ -12,11 +15,13 @@ LOCAL_ROOT_DIR = '/Users/a67/Project/insight/heart_watch'
 REMOTE_ROOT_DIR = '/home/ubuntu/heart_watch'
 CLUSTERS = set(['brokers', 'noncore', 'ksqls'])
 DNS_LIST = [
-    'ec2-18-213-147-6.compute-1.amazonaws.com', # broker 1
-    'ec2-3-209-181-191.compute-1.amazonaws.com', # ksql 1
-    'ec2-18-205-10-224.compute-1.amazonaws.com', # ksql 2
-    'ec2-3-219-21-38.compute-1.amazonaws.com', # noncore 1
+    'ec2-3-220-5-42.compute-1.amazonaws.com', # broker 1
+    'ec2-3-215-191-64.compute-1.amazonaws.com', # broker 2
+    'ec2-3-220-31-102.compute-1.amazonaws.com', # ksql 1
+    'ec2-52-5-193-59.compute-1.amazonaws.com', # ksql 2
+    'ec2-3-221-36-125.compute-1.amazonaws.com', # noncore 1
 ]
+load_dotenv(dotenv_path='./.env')
 
 
 def parallel(cmds, fix_instruction='', prompt=True):
@@ -42,23 +47,23 @@ def parallel(cmds, fix_instruction='', prompt=True):
 
 
 def stage1():
-    input('\nOpen setup/stage1/{}.yml and adjust the settings. Press ENTER when done: '.format(', '.join([key for key in CLUSTERS])))
-    parallel(['peg up setup/stage1/{}.yml'.format(key) for key in CLUSTERS])
+    input('\nOpen pegasus/{}.yml and adjust the settings. Press ENTER when done: '.format(', '.join([key for key in CLUSTERS])))
+    parallel(['peg up pegasus/{}.yml'.format(key) for key in CLUSTERS])
     fetch()
 
 
 def stage2():
-    input('WARNING: this terminal session will be "destroyed" after running this command. Please open a fresh terminal session for this stage. If you ARE running this in the new session, press ENTER. Otherwise, CTRL + C: ')
-    input('Copy env.template to .env and adjust .env. Press ENTER to when done: ')
+    input('\nWARNING: this terminal session will be "destroyed" after running this command. Please open a fresh terminal session for this stage. If you ARE running this in the new session, press ENTER. Otherwise, CTRL + C: ')
+    input('\nCopy env.template to .env and adjust .env. Press ENTER to when done: ')
     add_ssh_key()
     sync()
     env_override()
 
 
 def stage3():
-    answer = input('Are you running in large scale manner (more than 5 machines in total)? [y/n]')
+    answer = input('\nAre you running in large scale manner (more than 5 machines in total)? [y/n]')
     if answer == 'y':
-        answer = input('Have you followed the "A caveat for running in large scale" section in README? (i.e. you are using my public AMI) [y/n]')
+        answer = input('\nHave you followed the "A caveat for running in large scale" section in README? (i.e. you are using my public AMI) [y/n]')
         if answer != 'y':
             logger.warning('Please follow its instructions before proceeding.')
             exit(0)
@@ -101,6 +106,14 @@ def start_containers():
         'peg sshcmd-cluster noncore "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml up -d connect"',
         'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml up -d"',
     ])
+    logger.info("""
+        If you see a zookeeper error saying "ambiguous network", please ssh into brokers, then run
+        cd ~/heart_watch && docker network ls
+
+        If you see that there are 2 or more networks with the same name, remove them until there's 1 left.
+
+        Then, run python3 operations.py stop_containers && python3 operations.py start_containers
+    """)
 
 
 def stop_containers():
@@ -169,10 +182,29 @@ def clean_logs():
 
 
 def full_run():
-    input('Properly change RESOURCE_NAME_VERSION_ID. Press ENTER when done: ')
+    input('\nProperly change RESOURCE_NAME_VERSION_ID. Press ENTER when done: ')
     sync()
-    input('Run this on the broker: python3 setup/stage3/prepare.py c. Press ENTER when done: ')
-    input('Run this on the broker: python3 query.py setup && python3 query.py stat')
+    input('\nRun this on the broker: python3 setup/stage3/prepare.py c. Press ENTER when done: ')
+    input('\nRun this on the broker: python3 query.py setup && python3 query.py stat')
+
+
+def generate_realtime_data(avro_random_gen_dir, num_iterations):
+    # https://github.com/confluentinc/avro-random-generator
+    tmp_path = './realtime_{}.jsonlines'.format(num_iterations)
+    output_path = 'data/realtime_{}.data'.format(num_iterations)
+    os.system('{program} -c -f {schema_path} -i {num_iterations} -o {output_path}'.format(
+        program=join(avro_random_gen_dir, 'arg'),
+        schema_path='schemas/{}'.format(getenv('FILE_SCHEMA_REALTIME')),
+        num_iterations=num_iterations,
+        output_path=tmp_path,
+    ))
+    with open(tmp_path, 'r') as f, open(output_path, 'w') as g:
+        for line in f:
+            if not line:
+                continue
+            key = json.loads(line.strip())['user_id']
+            g.write('{}:{}'.format(key, line))
+    os.remove(tmp_path)
 
 
 Fire()

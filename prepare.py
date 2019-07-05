@@ -1,6 +1,7 @@
 import sys
 from os import getenv
 from dotenv import load_dotenv
+from os.path import join
 
 import util.naming
 from util.logger import logger
@@ -13,14 +14,14 @@ load_dotenv(dotenv_path='./.env')
 if sys.argv[1] in ['db', 'all']:
     anomaly_database = Database(**{
         'data_name': 'anomaly',
-        'seed_path': join(getenv('DATA_DIR'), getenv('ANOMALY_DATA_FILE')),
+        'seed_path': join(getenv('DIR_DATA'), getenv('FILE_DATA_ANOMALY')),
     })
     anomaly_database.delete()
     anomaly_database.create()
 
     historical_database = Database(**{
         'data_name': 'historical',
-        'seed_path': join(getenv('DATA_DIR'), getenv('HISTORICAL_DATA_FILE')),
+        'seed_path': join(getenv('DIR_DATA'), getenv('FILE_DATA_HISTORICAL')),
     })
     historical_database.delete()
     historical_database.create()
@@ -41,7 +42,7 @@ if sys.argv[1] in ['rc', 'c', 'all'] and getenv('MODE') == 'dev':
         'data_name': 'realtime',
         'poll_interval': int(getenv('REALTIME_POLL_INTERVAL')),
         'iterations': int(getenv('REALTIME_ITERATIONS')),
-        'schema_path': getenv('REALTIME_SCHEMA_PATH'),
+        'schema_path': join(getenv('DIR_SCHEMAS'), getenv('FILE_SCHEMA_REALTIME')),
         'schema_keyfield': getenv('REALTIME_KEYFIELD'),
         'num_partitions': getenv('NUM_PARTITIONS'),
     })

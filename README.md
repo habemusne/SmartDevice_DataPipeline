@@ -4,27 +4,42 @@ There are two parts on a thorough workflow demo: the first is setting the projec
 
 This query is defined as follows: patients are users whose heart rates are out of their historical range but did not move in the previous X seconds (`WINDOW_TUMBLING_SECONDS` in .env file). Continuously find them out.
 
-# Current progress
+## Step 1: setup
 
-1. Currently, the whole project runs on a **single** machine. 
-2. Per-person historical heart rate range is currently hard coded. However, my query still involves joining the historical table (so that I can later iterate this project easily). My plan for addressing this part is: since historical heart rate range is the only information the query needs from the historical table, the historical table for this project can simply store these ranges but nothing else.
-3. Future plans ordered by priority
-  1. Fix the partition bug, so that both parts can work fluently in a thorough demo
-  2. Breaks the architecture to multiple machines and do the benchmarking.
-  3. Benchmark using built-in kafka streaming. It also needs devOps things setup and configured for many machines.
+Firstly, install [pegasus](https://github.com/InsightDataScience/pegasus). Then
 
+```
+pip3 install requirements.txt
+python3 operations.py stage1
+```
 
-# Step 1: setup
+Then modify the `DNS_LIST` variable in `operations.py` to contain all the AWS dns's assigned from the previous step. Then:
 
-Firstly bring up 1 m4.large EC2 ubuntu machine with sufficient storage (currently I use 20 GB)
+```
+python3 operations.py stage2
+python3 operations.py stage3
+```
 
-Then ssh into it, and then run everything in `setup/setup.sh`.
+## Step 2: run it
 
-If you use [pegasus](https://github.com/InsightDataScience/pegasus), you can do `peg up setup/brokers.yml` and then `peg ssh brokers 1`. Then run the setup script.
+`python3 operations.py start_containers`
 
-# Step 2: run it
+ssh into one of the machines (I usually use the broker one), then
 
-On the EC2 machine, run `python3 query.py` to see the streaming result. Use `CTRL + C` to stop it.
+`python3 operations.py setup/stage3/prepare.py`
+
+## Step 3: start the analytics stream
+
+`python3 query.py setup`
+
+## step 4: see the result
+
+The UI is currently not available. You can go to the ksql server and run these commands to see the analytics result
+```
+docker-compose -f docker-compose/ksqls.yml exec ksql-cli ksql http://<KSQL_HOST>:8088
+set 'auto.offset.reset'='earliest';  # Optional
+select user_id, avg_heart_rate, processed_at from "FINAL_<RESOURCE_NAME_VERSION_ID>" window tumbling (size 10 seconds);
+```
 
 
 # Other Notes

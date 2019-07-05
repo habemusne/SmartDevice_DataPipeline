@@ -21,5 +21,5 @@ for i in range(getenv('NUM_PRODUCERS')):
     cmds.append('peg sshcmd-node noncore 1 "~/kafka/bin/kafka-console-producer.sh --broker-list {broker_list} --topic {topic_name} < {realtime_data_path}"'.format(
         broker_list=getenv('BROKER_LIST'),
         topic_name=topic_name,
-        realtime_data_path=join(getenv('DIR_DATA'), getenv('FILE_SCHEMA_REALTIME')),
+        realtime_data_path=join(getenv('DIR_DATA'), getenv('FILE_DATA_REALTIME')),
     ))
