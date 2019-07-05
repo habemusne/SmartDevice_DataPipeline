@@ -73,6 +73,7 @@ def stage3():
             'sudo apt-get install -y docker-ce python3-pip libpq-dev python-dev maven awscli',
             'sudo usermod -aG docker ubuntu',
             'cd ~/heart_watch && pip3 install -r requirements.txt',
+            'mkdir ~/heart_watch/.env.override'
         ]
     for cmd in cmds:
         _parallel(['peg sshcmd-cluster {} "{}"'.format(key, cmd) for key in CLUSTERS])
@@ -126,10 +127,11 @@ def add_ssh_key():
 def sync():
     command = """rsync -avL --exclude '.env.override/*' --progress -e "ssh -i ~/.ssh/mark-chen-IAM-key-pair.pem" --log-file="/Users/a67/rsync.log" /Users/a67/Project/insight/heart_watch/ ubuntu@{}:~/heart_watch/"""
     for dns in [
-        'ec2-18-213-147-6.compute-1.amazonaws.com', # broker 1
-        'ec2-3-209-181-191.compute-1.amazonaws.com', # ksql 1
-        'ec2-18-205-10-224.compute-1.amazonaws.com', # ksql 2
-        'ec2-3-219-21-38.compute-1.amazonaws.com', # noncore 1
+        'ec2-34-198-75-232.compute-1.amazonaws.com', # broker 1
+        'ec2-3-220-68-34.compute-1.amazonaws.com', # broker 2
+        'ec2-3-215-201-132.compute-1.amazonaws.com', # ksql 1
+        'ec2-34-230-254-249.compute-1.amazonaws.com', # ksql 2
+        'ec2-3-217-101-167.compute-1.amazonaws.com', # noncore 1
         # 'ec2-3-209-181-191.compute-1.amazonaws.com',
     ]:
         os.system(command.format(dns))
