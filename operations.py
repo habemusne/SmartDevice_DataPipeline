@@ -9,41 +9,23 @@ from fire import Fire
 from time import sleep
 from dotenv import load_dotenv
 
+from util import parallel
 from util.logger import logger
+
 
 LOCAL_ROOT_DIR = '/Users/a67/Project/insight/heart_watch'
 REMOTE_ROOT_DIR = '/home/ubuntu/heart_watch'
 CLUSTERS = set(['brokers', 'noncore', 'ksqls'])
 DNS_LIST = [
-    'ec2-3-220-5-42.compute-1.amazonaws.com', # broker 1
-    'ec2-3-215-191-64.compute-1.amazonaws.com', # broker 2
-    'ec2-3-220-31-102.compute-1.amazonaws.com', # ksql 1
-    'ec2-52-5-193-59.compute-1.amazonaws.com', # ksql 2
-    'ec2-3-221-36-125.compute-1.amazonaws.com', # noncore 1
+    'ec2-3-217-127-70.compute-1.amazonaws.com', # broker 1     
+    'ec2-54-173-174-130.compute-1.amazonaws.com', # broker 2       
+    'ec2-3-220-6-110.compute-1.amazonaws.com', # broker 2       
+    'ec2-3-218-29-232.compute-1.amazonaws.com', # ksql 1       
+    'ec2-3-218-217-234.compute-1.amazonaws.com', # ksql 2      
+    'ec2-3-218-41-97.compute-1.amazonaws.com', # ksql 2      
+    'ec2-174-129-46-139.compute-1.amazonaws.com', # noncore 1        
 ]
 load_dotenv(dotenv_path='./.env')
-
-
-def parallel(cmds, fix_instruction='', prompt=True):
-    logger.info('Running commands: \n\n{}'.format('\n'.join(cmds)))
-    processes = []
-    for _args in cmds:
-        process = subprocess.Popen(_args, shell=True)
-        processes.append(process)
-    for process in processes:
-        process.wait()
-    if prompt:
-        answer = input('\nIs the output signaling success? [y/n]: ')
-        while True:
-            if answer == 'n':
-                logger.info('Here\'s the commands list you are running parallelly: \n\n{}'.format('\n'.join(cmds)))
-                logger.info(fix_instruction)
-                input('\nAfter you manully fixed them, press ENTER when done: ')
-                break
-            elif answer != 'y':
-                answer = input('\n please enter y or n: ')
-            else:
-                break
 
 
 def stage1():
@@ -85,7 +67,7 @@ def stage3():
             'sudo usermod -aG docker ubuntu',
             'cd ~/heart_watch && pip3 install -r requirements.txt',
             'wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
-            'tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0.tgz kafka',
+            'tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
         ]
     for cmd in cmds:
         parallel(['peg sshcmd-cluster {} "{}"'.format(key, cmd) for key in CLUSTERS])
@@ -102,18 +84,14 @@ def stage3():
 def start_containers():
     parallel([
         'peg sshcmd-cluster brokers "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d"',
+    ])
+    logger.info('Waiting for 10 seconds.. ')
+    sleep(10)
+    parallel([
         'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml up -d schema-registry rest-proxy database control-center"',
         'peg sshcmd-cluster noncore "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml up -d connect"',
         'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml up -d"',
-    ])
-    logger.info("""
-        If you see a zookeeper error saying "ambiguous network", please ssh into brokers, then run
-        cd ~/heart_watch && docker network ls
-
-        If you see that there are 2 or more networks with the same name, remove them until there's 1 left.
-
-        Then, run python3 operations.py stop_containers && python3 operations.py start_containers
-    """)
+    ], prompt=False)
 
 
 def stop_containers():
@@ -122,7 +100,7 @@ def stop_containers():
         'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml stop && docker-compose -f docker-compose/noncore.yml rm -f"',
         'peg sshcmd-cluster noncore "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml stop && docker-compose -f docker-compose/noncore.yml rm -f"',
         'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml stop && docker-compose -f docker-compose/ksqls.yml rm -f"',
-    ])
+    ], prompt=False)
 
 
 def fetch():
@@ -146,8 +124,7 @@ def add_ssh_key():
 
 def sync():
     command = """rsync -avL --exclude '.env.override/*' --progress -e "ssh -i ~/.ssh/mark-chen-IAM-key-pair.pem" --log-file="/Users/a67/rsync.log" /Users/a67/Project/insight/heart_watch/ ubuntu@{}:~/heart_watch/"""
-    for dns in DNS_LIST:
-        os.system(command.format(dns))
+    parallel([command.format(dns) for dns in DNS_LIST], prompt=False)
 
 
 def force_sync():
@@ -190,6 +167,7 @@ def full_run():
 
 def generate_realtime_data(avro_random_gen_dir, num_iterations):
     # https://github.com/confluentinc/avro-random-generator
+    # python3 operations.py generate_realtime_data /Users/a67/Project/insight/avro-random-generator 100000
     tmp_path = './realtime_{}.jsonlines'.format(num_iterations)
     output_path = 'data/realtime_{}.data'.format(num_iterations)
     os.system('{program} -c -f {schema_path} -i {num_iterations} -o {output_path}'.format(

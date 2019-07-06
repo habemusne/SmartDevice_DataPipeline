@@ -6,6 +6,8 @@ from os.path import join
 import util.naming
 from util.logger import logger
 from util.database import Database
+from util.topic import Topic
+from util.schema import Schema
 from util.connector import JDBCSource as JDBCSourceConnector, Datagen as DatagenConnector
 
 load_dotenv(dotenv_path='./.env')
@@ -37,14 +39,23 @@ if sys.argv[1] in ['hc', 'c', 'all']:
     historical_data_connector.delete()
     historical_data_connector.create()
 
-if sys.argv[1] in ['rc', 'c', 'all'] and getenv('MODE') == 'dev':
-    realtime_data_connector = DatagenConnector(**{
-        'data_name': 'realtime',
-        'poll_interval': int(getenv('REALTIME_POLL_INTERVAL')),
-        'iterations': int(getenv('REALTIME_ITERATIONS')),
-        'schema_path': join(getenv('DIR_SCHEMAS'), getenv('FILE_SCHEMA_REALTIME')),
-        'schema_keyfield': getenv('REALTIME_KEYFIELD'),
-        'num_partitions': getenv('NUM_PARTITIONS'),
-    })
-    realtime_data_connector.delete()
-    realtime_data_connector.create()
+if sys.argv[1] in ['rc', 'c', 'all']:
+    if getenv('MODE') == 'dev':
+        realtime_data_connector = DatagenConnector(**{
+            'data_name': 'realtime',
+            'poll_interval': int(getenv('REALTIME_POLL_INTERVAL')),
+            'iterations': int(getenv('REALTIME_ITERATIONS')),
+            'schema_path': join(getenv('DIR_SCHEMAS'), getenv('FILE_SCHEMA_REALTIME')),
+            'schema_keyfield': getenv('REALTIME_KEYFIELD'),
+            'num_partitions': getenv('NUM_PARTITIONS'),
+        })
+        realtime_data_connector.delete()
+        realtime_data_connector.create()
+    else:
+        topic_name = util.naming.topic_name('realtime')
+        schema_path = join('schemas', getenv('FILE_SCHEMA_REALTIME'))
+        topic = Topic(topic_name, getenv('NUM_PARTITIONS'))
+        schema = Schema(schema_path, topic_name)
+        topic.create(force_exit=False)
+        schema.delete()
+        schema.create()

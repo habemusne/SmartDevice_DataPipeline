@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "user_data",
+  "namespace": "ksql",
+  "fields": [
+    {
+      "name": "min_heart_rate",
+      "type": {
+        "type": "int",
+        "arg.properties": {
+          "range": { "min": 60, "max": 66 }
+        }
+      }
+    },
+    {
+      "name": "max_heart_rate",
+      "type": {
+        "type": "int",
+        "arg.properties": {
+          "range": { "min": 94, "max": 100 }
+        }
+      }
+    }
+  ],
+  "connect.name": "ksql.user_data"
+}

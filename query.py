@@ -46,7 +46,7 @@ stmts_setup = [{
             generated_at STRING
         ) WITH (
             KAFKA_TOPIC = '{topic}',
-            VALUE_FORMAT = 'AVRO',
+            VALUE_FORMAT = '{format}',
             KEY = '{key}'
         );
     """.format(
@@ -54,6 +54,7 @@ stmts_setup = [{
         generated_at=getenv('GENERATED_AT_FIELD'),
         topic=util.naming.topic_name('realtime'),
         key=getenv('REALTIME_KEYFIELD'),
+        format='JSON' if getenv('MODE') == 'prod' else 'AVRO',
     ),
 }, {
     'desc': 'Creating table {}: user id + num distinct locations'.format(final),

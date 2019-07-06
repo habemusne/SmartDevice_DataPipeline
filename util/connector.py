@@ -20,7 +20,6 @@ class Connector(Resource):
         self._num_partitions = int(kwargs.get('num_partitions', getenv('NUM_PARTITIONS')))
 
     def _create(self, payload, force_exit=True):
-        import pdb;pdb.set_trace()
         response = requests.post(self._api_url, json=payload)
         if response.status_code >= 400:
             logger.error('Unable to create new connector {}. Please inspect from the logs'.format(self.name))
