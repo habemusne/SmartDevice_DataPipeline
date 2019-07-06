@@ -2,63 +2,50 @@
 import os
 import re
 import subprocess
+import json
+from os import getenv
 from os.path import join, relpath
 from fire import Fire
 from time import sleep
+from dotenv import load_dotenv
 
+from util import parallel
 from util.logger import logger
+
 
 LOCAL_ROOT_DIR = '/Users/a67/Project/insight/heart_watch'
 REMOTE_ROOT_DIR = '/home/ubuntu/heart_watch'
 CLUSTERS = set(['brokers', 'noncore', 'ksqls'])
 DNS_LIST = [
-    'ec2-18-213-147-6.compute-1.amazonaws.com', # broker 1
-    'ec2-3-209-181-191.compute-1.amazonaws.com', # ksql 1
-    'ec2-18-205-10-224.compute-1.amazonaws.com', # ksql 2
-    'ec2-3-219-21-38.compute-1.amazonaws.com', # noncore 1
+    'ec2-3-217-127-70.compute-1.amazonaws.com', # broker 1     
+    'ec2-54-173-174-130.compute-1.amazonaws.com', # broker 2       
+    'ec2-3-220-6-110.compute-1.amazonaws.com', # broker 2       
+    'ec2-3-218-29-232.compute-1.amazonaws.com', # ksql 1       
+    'ec2-3-218-217-234.compute-1.amazonaws.com', # ksql 2      
+    'ec2-3-218-41-97.compute-1.amazonaws.com', # ksql 2      
+    'ec2-174-129-46-139.compute-1.amazonaws.com', # noncore 1        
 ]
-
-
-def parallel(cmds, fix_instruction='', prompt=True):
-    logger.info('Running commands: \n\n{}'.format('\n'.join(cmds)))
-    processes = []
-    for _args in cmds:
-        process = subprocess.Popen(_args, shell=True)
-        processes.append(process)
-    for process in processes:
-        process.wait()
-    if prompt:
-        answer = input('\nIs the output signaling success? [y/n]: ')
-        while True:
-            if answer == 'n':
-                logger.info('Here\'s the commands list you are running parallelly: \n\n{}'.format('\n'.join(cmds)))
-                logger.info(fix_instruction)
-                input('\nAfter you manully fixed them, press ENTER when done: ')
-                break
-            elif answer != 'y':
-                answer = input('\n please enter y or n: ')
-            else:
-                break
+load_dotenv(dotenv_path='./.env')
 
 
 def stage1():
-    input('\nOpen setup/stage1/{}.yml and adjust the settings. Press ENTER when done: '.format(', '.join([key for key in CLUSTERS])))
-    parallel(['peg up setup/stage1/{}.yml'.format(key) for key in CLUSTERS])
+    input('\nOpen pegasus/{}.yml and adjust the settings. Press ENTER when done: '.format(', '.join([key for key in CLUSTERS])))
+    parallel(['peg up pegasus/{}.yml'.format(key) for key in CLUSTERS])
     fetch()
 
 
 def stage2():
-    input('WARNING: this terminal session will be "destroyed" after running this command. Please open a fresh terminal session for this stage. If you ARE running this in the new session, press ENTER. Otherwise, CTRL + C: ')
-    input('Copy env.template to .env and adjust .env. Press ENTER to when done: ')
+    input('\nWARNING: this terminal session will be "destroyed" after running this command. Please open a fresh terminal session for this stage. If you ARE running this in the new session, press ENTER. Otherwise, CTRL + C: ')
+    input('\nCopy env.template to .env and adjust .env. Press ENTER to when done: ')
     add_ssh_key()
     sync()
     env_override()
 
 
 def stage3():
-    answer = input('Are you running in large scale manner (more than 5 machines in total)? [y/n]')
+    answer = input('\nAre you running in large scale manner (more than 5 machines in total)? [y/n]')
     if answer == 'y':
-        answer = input('Have you followed the "A caveat for running in large scale" section in README? (i.e. you are using my public AMI) [y/n]')
+        answer = input('\nHave you followed the "A caveat for running in large scale" section in README? (i.e. you are using my public AMI) [y/n]')
         if answer != 'y':
             logger.warning('Please follow its instructions before proceeding.')
             exit(0)
@@ -80,7 +67,7 @@ def stage3():
             'sudo usermod -aG docker ubuntu',
             'cd ~/heart_watch && pip3 install -r requirements.txt',
             'wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
-            'tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0.tgz kafka',
+            'tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
         ]
     for cmd in cmds:
         parallel(['peg sshcmd-cluster {} "{}"'.format(key, cmd) for key in CLUSTERS])
@@ -97,10 +84,14 @@ def stage3():
 def start_containers():
     parallel([
         'peg sshcmd-cluster brokers "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d"',
+    ])
+    logger.info('Waiting for 10 seconds.. ')
+    sleep(10)
+    parallel([
         'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml up -d schema-registry rest-proxy database control-center"',
         'peg sshcmd-cluster noncore "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml up -d connect"',
         'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml up -d"',
-    ])
+    ], prompt=False)
 
 
 def stop_containers():
@@ -109,7 +100,7 @@ def stop_containers():
         'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml stop && docker-compose -f docker-compose/noncore.yml rm -f"',
         'peg sshcmd-cluster noncore "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml stop && docker-compose -f docker-compose/noncore.yml rm -f"',
         'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml stop && docker-compose -f docker-compose/ksqls.yml rm -f"',
-    ])
+    ], prompt=False)
 
 
 def fetch():
@@ -133,8 +124,7 @@ def add_ssh_key():
 
 def sync():
     command = """rsync -avL --exclude '.env.override/*' --progress -e "ssh -i ~/.ssh/mark-chen-IAM-key-pair.pem" --log-file="/Users/a67/rsync.log" /Users/a67/Project/insight/heart_watch/ ubuntu@{}:~/heart_watch/"""
-    for dns in DNS_LIST:
-        os.system(command.format(dns))
+    parallel([command.format(dns) for dns in DNS_LIST], prompt=False)
 
 
 def force_sync():
@@ -169,10 +159,30 @@ def clean_logs():
 
 
 def full_run():
-    input('Properly change RESOURCE_NAME_VERSION_ID. Press ENTER when done: ')
+    input('\nProperly change RESOURCE_NAME_VERSION_ID. Press ENTER when done: ')
     sync()
-    input('Run this on the broker: python3 setup/stage3/prepare.py c. Press ENTER when done: ')
-    input('Run this on the broker: python3 query.py setup && python3 query.py stat')
+    input('\nRun this on the broker: python3 setup/stage3/prepare.py c. Press ENTER when done: ')
+    input('\nRun this on the broker: python3 query.py setup && python3 query.py stat')
+
+
+def generate_realtime_data(avro_random_gen_dir, num_iterations):
+    # https://github.com/confluentinc/avro-random-generator
+    # python3 operations.py generate_realtime_data /Users/a67/Project/insight/avro-random-generator 100000
+    tmp_path = './realtime_{}.jsonlines'.format(num_iterations)
+    output_path = 'data/realtime_{}.data'.format(num_iterations)
+    os.system('{program} -c -f {schema_path} -i {num_iterations} -o {output_path}'.format(
+        program=join(avro_random_gen_dir, 'arg'),
+        schema_path='schemas/{}'.format(getenv('FILE_SCHEMA_REALTIME')),
+        num_iterations=num_iterations,
+        output_path=tmp_path,
+    ))
+    with open(tmp_path, 'r') as f, open(output_path, 'w') as g:
+        for line in f:
+            if not line:
+                continue
+            key = json.loads(line.strip())['user_id']
+            g.write('{}:{}'.format(key, line))
+    os.remove(tmp_path)
 
 
 Fire()
