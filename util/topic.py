@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 from os.path import join
@@ -17,21 +18,22 @@ class Topic(Resource):
 
     @Resource.log_notify
     def create(self, force_exit=True):
+        payload = {
+            'name': self.name,
+            'numPartitions': self._num_partitions,
+            'replicationFactor': self._replication_factor,
+            'configs': {
+                'cleanup.policy': 'delete',
+                'delete.retention.ms': '300000',  # 5 minutes
+                'max.message.bytes': '1000012',
+                'min.insync.replicas': '1',
+                'retention.bytes': '1073741824',  # 1GB can hold 70-85 streaming files, each 100,000 msgs
+                'retention.ms': 3600000,  # msg lasts at most 1 hour, for demo
+            },
+        }
         response = requests.put(
             join(self._base_url, 'kafka', self._cluster_id, 'topics?validate=false'),
-            json={
-                'name': self.name,
-                'numPartitions': self._num_partitions,
-                'replicationFactor': self._replication_factor,
-                'configs': {
-                    'cleanup.policy': 'delete',
-                    'delete.retention.ms': '300000',  # 5 minutes
-                    'max.message.bytes': '1000012',
-                    'min.insync.replicas': '1',
-                    'retention.bytes': '1073741824',  # 1GB can hold 70-85 streaming files, each 100,000 msgs
-                    'retention.ms': 3600000,  # msg lasts at most 1 hour, for demo
-                },
-            },
+            json=payload,
         )
         if response.status_code >= 400:
             logger.error('Unable to create topic: {}'.format(self.name))

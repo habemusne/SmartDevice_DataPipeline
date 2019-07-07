@@ -4,7 +4,7 @@ import re
 import subprocess
 import json
 from os import getenv
-from os.path import join, relpath
+from os.path import join, relpath, exists
 from fire import Fire
 from time import sleep
 from dotenv import load_dotenv
@@ -15,17 +15,20 @@ from util.logger import logger
 
 LOCAL_ROOT_DIR = '/Users/a67/Project/insight/heart_watch'
 REMOTE_ROOT_DIR = '/home/ubuntu/heart_watch'
-CLUSTERS = set(['brokers', 'noncore', 'ksqls'])
-DNS_LIST = [
-    'ec2-3-217-127-70.compute-1.amazonaws.com', # broker 1     
-    'ec2-54-173-174-130.compute-1.amazonaws.com', # broker 2       
-    'ec2-3-220-6-110.compute-1.amazonaws.com', # broker 2       
-    'ec2-3-218-29-232.compute-1.amazonaws.com', # ksql 1       
-    'ec2-3-218-217-234.compute-1.amazonaws.com', # ksql 2      
-    'ec2-3-218-41-97.compute-1.amazonaws.com', # ksql 2      
-    'ec2-174-129-46-139.compute-1.amazonaws.com', # noncore 1        
-]
+CLUSTERS = set(['brokers', 'ksqls'])
+SERVER_STORE_FILE = './cluster_servers.store'
 load_dotenv(dotenv_path='./.env')
+
+
+def get_cluster_servers(force=True):
+    if not exists(SERVER_STORE_FILE) or force == True:
+        data = {}
+        for cluster in CLUSTERS:
+            data[cluster] = re.findall('Public DNS: (.*)', os.popen('peg fetch {}'.format(cluster)).read())
+        with open(SERVER_STORE_FILE, 'w') as f:
+            json.dump(data, f)
+    with open(SERVER_STORE_FILE, 'r') as f:
+        return json.loads(f.read())
 
 
 def stage1():
@@ -43,14 +46,18 @@ def stage2():
 
 
 def stage3():
-    answer = input('\nAre you running in large scale manner (more than 5 machines in total)? [y/n]')
+    answer = input('\nAre you running in large scale manner (more than 5 machines in total)? [y/n] ')
     if answer == 'y':
-        answer = input('\nHave you followed the "A caveat for running in large scale" section in README? (i.e. you are using my public AMI) [y/n]')
+        answer = input('\nHave you followed the "A caveat for running in large scale" section in README? (i.e. you are using my public AMI) [y/n] ')
         if answer != 'y':
             logger.warning('Please follow its instructions before proceeding.')
             exit(0)
         else:
-            cmds = ['cd ~/heart_watch && pip3 install -r requirements.txt']
+            cmds = [
+                'cd ~/heart_watch && pip3 install -r requirements.txt',
+                'cd ~/heart_watch && wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
+                'cd ~/heart_watch && tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
+            ]
     else:
         cmds = [
             'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -',
@@ -66,8 +73,8 @@ def stage3():
             'sudo apt-get install -y docker-ce python3-pip libpq-dev python-dev maven awscli',
             'sudo usermod -aG docker ubuntu',
             'cd ~/heart_watch && pip3 install -r requirements.txt',
-            'wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
-            'tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
+            'cd ~/heart_watch && wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
+            'cd ~/heart_watch && tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
         ]
     for cmd in cmds:
         parallel(['peg sshcmd-cluster {} "{}"'.format(key, cmd) for key in CLUSTERS])
@@ -77,28 +84,36 @@ def stage3():
         sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
 
-        Then make sure than you can run docker-compose. If you can't please fix it.
+        Then make sure than you can run docker-compose. If you can't, please manually fix it.
     """)
 
-
 def start_containers():
+    cmds = []
+    for i in range(1, int(len(getenv('BROKER_LIST').split(','))) + 1):
+        cmds.append('peg sshcmd-node brokers {} "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d zookeeper"'.format(i))
+    parallel(cmds, prompt=False)
+    sleep(5)
+
+    cmds = []
+    for i in range(1, int(len(getenv('BROKER_LIST').split(','))) + 1):
+        cmds.append('peg sshcmd-node brokers {} "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d broker"'.format(i))
+    parallel(cmds, prompt=False)
+    sleep(5)
+
+    cmds = []
+    cmds.append('peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d schema-registry connect rest-proxy database"')
+    cmds.append('peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml up -d"')
+    parallel(cmds, prompt=False)
+
+    sleep(20)
     parallel([
-        'peg sshcmd-cluster brokers "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d"',
-    ])
-    logger.info('Waiting for 10 seconds.. ')
-    sleep(10)
-    parallel([
-        'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml up -d schema-registry rest-proxy database control-center"',
-        'peg sshcmd-cluster noncore "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml up -d connect"',
-        'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml up -d"',
+        'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d control-center"',
     ], prompt=False)
 
 
 def stop_containers():
     parallel([
         'peg sshcmd-cluster brokers "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml stop && docker-compose -f docker-compose/brokers.yml rm -f"',
-        'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml stop && docker-compose -f docker-compose/noncore.yml rm -f"',
-        'peg sshcmd-cluster noncore "cd ~/heart_watch && docker-compose -f docker-compose/noncore.yml stop && docker-compose -f docker-compose/noncore.yml rm -f"',
         'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml stop && docker-compose -f docker-compose/ksqls.yml rm -f"',
     ], prompt=False)
 
@@ -109,10 +124,9 @@ def fetch():
 
 def add_ssh_key():
     cmds = []
-    for key in CLUSTERS:
-        server_list = re.findall('Public DNS: (.*)', os.popen('peg fetch {}'.format(key)).read())
-        for i in range(len(server_list)):
-            cmds.append('peg ssh {} {}'.format(key, str(i + 1)))
+    for cluster, servers in get_cluster_servers(force=False).items():
+        for i in range(len(servers)):
+            cmds.append('peg ssh {} {}'.format(cluster, str(i + 1)))
     processes = []
     for _args in cmds:
         process = subprocess.Popen(_args, shell=True)
@@ -124,7 +138,9 @@ def add_ssh_key():
 
 def sync():
     command = """rsync -avL --exclude '.env.override/*' --progress -e "ssh -i ~/.ssh/mark-chen-IAM-key-pair.pem" --log-file="/Users/a67/rsync.log" /Users/a67/Project/insight/heart_watch/ ubuntu@{}:~/heart_watch/"""
-    parallel([command.format(dns) for dns in DNS_LIST], prompt=False)
+    cluster_servers = get_cluster_servers(force=False)
+
+    parallel([command.format(dns) for dns in cluster_servers['brokers'] + cluster_servers['ksqls']], prompt=False)
 
 
 def force_sync():
@@ -133,25 +149,76 @@ def force_sync():
     sync()
 
 
-def env_override(cluster='all'):
-    def work(cluster, variables):
-        remote_path = join(REMOTE_ROOT_DIR, relpath('.env.override/{}'.format(cluster), LOCAL_ROOT_DIR))
-        server_list = re.findall('Public DNS: (.*)', os.popen('peg fetch {}'.format(cluster)).read())
-        for i in range(len(server_list)):
-            with open('.env.override/{}'.format(cluster), 'w') as f:
-                if 'KAFKA_ADVERTISED_LISTENERS' in variables:
-                    f.write('{}={}\n'.format('KAFKA_ADVERTISED_LISTENERS', 'PLAINTEXT://{}:9092'.format(server_list[i])))
-                if 'KAFKA_BROKER_ID' in variables:
-                    f.write('{}={}\n'.format('KAFKA_BROKER_ID', i + 1))
-                if 'KSQL_HOST' in variables:
-                    f.write('{}={}\n'.format('KSQL_HOST', server_list[i]))
-            os.system('peg scp from-local {} {} {} {}'.format(cluster, str(i + 1), '.env.override/{}'.format(cluster), remote_path))
+def env_override():
+    def key_val_str(key, val):
+        return '{}={}\n'.format(key, val)
 
-    if cluster in ['brokers', 'all']:
-        work('brokers', set(['KAFKA_ADVERTISED_LISTENERS', 'KAFKA_BROKER_ID']))
+    cluster_servers = get_cluster_servers(force=False)
+    ksqls_str = ','.join(['http://{}:8088'.format(s) for s in cluster_servers['ksqls']])
+    brokers_str = ','.join(['{}:9092'.format(s) for s in cluster_servers['brokers']])
 
-    if cluster in ['ksqls', 'all']:
-        work('ksqls', set(['KSQL_HOST']))
+    # TODO: using multiple zookeepers needs extra distribucted setup
+    # zookeepers_str = ','.join(['{}:2181'.format(s) for s in cluster_servers['brokers']])
+    zookeepers_str = cluster_servers['brokers'][0] + ':2181'
+    schema_registry_kafkastore_bootstrap_servers = ','.join(['PLAINTEXT://{}:9092'.format(s) for s in cluster_servers['brokers']])
+    master_dns = cluster_servers['brokers'][0]
+
+    for cluster, servers in cluster_servers.items():
+        for i, server in enumerate(servers):
+            local_path = '.env.override_{}_{}'.format('brokers', i + 1)
+            with open('.env.override/zookeeper', 'w') as f:
+                for j in range(len(servers)):
+                    f.write(key_val_str(
+                        'ZOOKEEPER_SERVER_{}'.format(j + 1),
+                        '{}:2888:3888'.format(servers[j]),
+                    ))
+
+            with open('.env.override/broker', 'w') as f:
+                f.write(key_val_str(
+                    'KAFKA_ADVERTISED_LISTENERS',
+                    'PLAINTEXT://{}:9092'.format(server)),
+                )
+                f.write(key_val_str('KAFKA_BROKER_ID', i + 1))
+                # f.write(key_val_str('KAFKA_ZOOKEEPER_CONNECT', "{}".format(zookeepers_str)))
+                f.write(key_val_str('CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS', brokers_str))
+                f.write(key_val_str('CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT', zookeepers_str))
+
+            with open('.env.override/schema-registry', 'w') as f:
+                f.write(key_val_str('SCHEMA_REGISTRY_HOST_NAME', master_dns))
+                f.write(key_val_str('SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL', zookeepers_str))
+
+            with open('.env.override/connect', 'w') as f:
+                f.write(key_val_str('CONNECT_BOOTSTRAP_SERVERS', '{}:9092'.format(master_dns)))
+                f.write(key_val_str('CONNECT_REST_ADVERTISED_HOST_NAME', master_dns))
+                f.write(key_val_str('CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL', 'http://{}:8081'.format(master_dns)))
+
+            with open('.env.override/rest-proxy', 'w') as f:
+                f.write(key_val_str('KAFKA_REST_BOOTSTRAP_SERVERS', brokers_str))
+                f.write(key_val_str('KAFKA_REST_SCHEMA_REGISTRY_URL', 'http://{}:8081'.format(master_dns)))
+
+            with open('.env.override/control-center', 'w') as f:
+                f.write(key_val_str('CONTROL_CENTER_BOOTSTRAP_SERVERS', brokers_str))
+                f.write(key_val_str('CONTROL_CENTER_ZOOKEEPER_CONNECT', zookeepers_str))
+                f.write(key_val_str('CONTROL_CENTER_KSQL_URL', ksqls_str))
+                f.write(key_val_str('CONTROL_CENTER_KSQL_ADVERTISED_URL', '{}:8088'.format(master_dns)))
+                f.write(key_val_str('CONTROL_CENTER_SCHEMA_REGISTRY_URL', 'http://{}:8081'.format(master_dns)))
+
+            with open('.env.override/ksql-server', 'w') as f:
+                f.write(key_val_str('KSQL_BOOTSTRAP_SERVERS', brokers_str))
+                f.write(key_val_str('KSQL_HOST', server))
+                f.write(key_val_str('KSQL_KSQL_SCHEMA_REGISTRY_URL', 'http://{}:8081'.format(master_dns)))
+                f.write(key_val_str('KSQL_HOST_NAME', server))
+
+            services = ['zookeeper', 'broker', 'schema-registry', 'connect', 'rest-proxy', 'control-center', 'ksql-server']
+            cmds = []
+            for service in services:
+                cmds.append('peg scp from-local {cluster} {node} {local_path} {remove_path} && rm {local_path}'.format(
+                    cluster=cluster,
+                    node=str(i + 1),
+                    local_path=join('.env.override', service),
+                    remove_path=join(REMOTE_ROOT_DIR, '.env.override', service),
+                ))
+            parallel(cmds, prompt=False)
 
 
 def clean_logs():
@@ -162,7 +229,7 @@ def full_run():
     input('\nProperly change RESOURCE_NAME_VERSION_ID. Press ENTER when done: ')
     sync()
     input('\nRun this on the broker: python3 setup/stage3/prepare.py c. Press ENTER when done: ')
-    input('\nRun this on the broker: python3 query.py setup && python3 query.py stat')
+    input('\nRun this on the broker: python3 query.py setup && python3 query.py stat ')
 
 
 def generate_realtime_data(avro_random_gen_dir, num_iterations):
