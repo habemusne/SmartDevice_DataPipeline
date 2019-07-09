@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "realtime_data",
+  "fields": [
+    {
+      "name": "user_id",
+      "type": "string"
+    },
+    {
+      "name": "zipcode",
+      "type": "int"
+    },
+    {
+      "name": "latitude",
+      "type": "double"
+    },
+    {
+      "name": "longitude",
+      "type": "double"
+    },
+    {
+      "name": "heart_rate",
+      "type": "int"
+    }
+  ]
+}

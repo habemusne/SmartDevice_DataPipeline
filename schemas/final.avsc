@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "final_data",
+  "fields": [
+    {
+      "name": "user_id",
+      "type": "string"
+    },
+    {
+      "name": "avg_heart_rate",
+      "type": "int"
+    }
+  ]
+}

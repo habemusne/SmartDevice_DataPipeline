@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "name": "historical_data",
+  "fields": [
+    {
+      "name": "min_heart_rate",
+      "type": {
+        "type": "int",
+        "arg.properties": {
+          "range": { "min": 51, "max": 53 }
+        }
+      }
+    },
+    {
+      "name": "max_heart_rate",
+      "type": {
+        "type": "int",
+        "arg.properties": {
+          "range": { "min": 107, "max": 109 }
+        }
+      }
+    }
+  ]
+}
