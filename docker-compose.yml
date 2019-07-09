@@ -32,7 +32,7 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_DELETE_TOPIC_ENABLE: 'true'
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
-      KAFKA_LOG_RETENTION_HOURS: 720
+      KAFKA_LOG_RETENTION_MINUTES: 60
       KAFKA_LOG_RETENTION_BYTES: 4294967296
       KAFKA_LOG_SEGMENT_BYTES: 107374182
       KAFKA_LOG_RETENTION_CHECK_INTERVAL.MS: 60000
@@ -49,9 +49,9 @@ services:
     image: confluentinc/cp-schema-registry:5.2.1
     hostname: schema-registry
     container_name: schema-registry
-    depends_on:
-      - zookeeper
-      - broker
+    # depends_on:
+    #   - zookeeper
+    #   - broker
     ports:
       - "8081:8081"
     environment:
@@ -65,7 +65,8 @@ services:
       context: .
       dockerfile: ./docker_volumes/connect/Dockerfile
     volumes:
-      - ../docker_volumes/connect/schemas/:/schemas/
+      - ./docker_volumes/connect/schemas/:/schemas/
+      - ./docker_volumes/connect/aws_credentials:/root/.aws/credentials
     hostname: connect
     container_name: connect
     depends_on:

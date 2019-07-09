@@ -31,3 +31,23 @@ def topic_name_jdbc(data_name):
 def connector_name(data_name, index=''):
     result = '_'.join(['connect', version_id, data_name])
     return result if not index else '{}_{}'.format(result, index)
+
+
+def interim_1_name(version_id_override=None):
+    return 'INTERIM_1_{}'.format(version_id_override or version_id)
+
+
+def interim_2_name(version_id_override=None):
+    return 'INTERIM_2_{}'.format(version_id_override or version_id)
+
+
+def interim_3_name(version_id_override=None):
+    return 'INTERIM_3_{}'.format(version_id_override or version_id)
+
+
+def final_table_name(version_id_override=None):
+    return 'FINAL_{}'.format(version_id_override or version_id)
+
+
+def final_topic_name(version_id_override=None):
+    return 'topic-final-{}'.format(version_id_override or version_id)

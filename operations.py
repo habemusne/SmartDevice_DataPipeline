@@ -4,31 +4,19 @@ import re
 import subprocess
 import json
 from os import getenv
-from os.path import join, relpath, exists
+from os.path import join, relpath, exists, abspath, dirname
 from fire import Fire
 from time import sleep
 from dotenv import load_dotenv
 
-from util import parallel
+from util import parallel, get_cluster_servers, sync, update_dotenv
 from util.logger import logger
 
 
-LOCAL_ROOT_DIR = '/Users/a67/Project/insight/heart_watch'
+LOCAL_ROOT_DIR = dirname(abspath(__file__))
 REMOTE_ROOT_DIR = '/home/ubuntu/heart_watch'
 CLUSTERS = set(['brokers', 'ksqls'])
-SERVER_STORE_FILE = './cluster_servers.store'
 load_dotenv(dotenv_path='./.env')
-
-
-def get_cluster_servers(force=True):
-    if not exists(SERVER_STORE_FILE) or force == True:
-        data = {}
-        for cluster in CLUSTERS:
-            data[cluster] = re.findall('Public DNS: (.*)', os.popen('peg fetch {}'.format(cluster)).read())
-        with open(SERVER_STORE_FILE, 'w') as f:
-            json.dump(data, f)
-    with open(SERVER_STORE_FILE, 'r') as f:
-        return json.loads(f.read())
 
 
 def stage1():
@@ -41,7 +29,7 @@ def stage2():
     input('\nWARNING: this terminal session will be "destroyed" after running this command. Please open a fresh terminal session for this stage. If you ARE running this in the new session, press ENTER. Otherwise, CTRL + C: ')
     input('\nCopy env.template to .env and adjust .env. Press ENTER to when done: ')
     add_ssh_key()
-    sync()
+    configure_remote()
     env_override()
 
 
@@ -73,8 +61,8 @@ def stage3():
             'sudo apt-get install -y docker-ce python3-pip libpq-dev python-dev maven awscli',
             'sudo usermod -aG docker ubuntu',
             'cd ~/heart_watch && pip3 install -r requirements.txt',
-            'cd ~/heart_watch && wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
-            'cd ~/heart_watch && tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
+            'cd ~/ && wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
+            'cd ~/ && tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
         ]
     for cmd in cmds:
         parallel(['peg sshcmd-cluster {} "{}"'.format(key, cmd) for key in CLUSTERS])
@@ -84,7 +72,7 @@ def stage3():
         sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
 
-        Then make sure than you can run docker-compose. If you can't, please manually fix it.
+        Then log out and log back again. Then make sure than you can run docker-compose. If you can't, please manually fix it.
     """)
 
 def start_containers():
@@ -134,13 +122,6 @@ def add_ssh_key():
     sleep(5)
     for process in processes:
         process.kill()
-
-
-def sync():
-    command = """rsync -avL --exclude '.env.override/*' --progress -e "ssh -i ~/.ssh/mark-chen-IAM-key-pair.pem" --log-file="/Users/a67/rsync.log" /Users/a67/Project/insight/heart_watch/ ubuntu@{}:~/heart_watch/"""
-    cluster_servers = get_cluster_servers(force=False)
-
-    parallel([command.format(dns) for dns in cluster_servers['brokers'] + cluster_servers['ksqls']], prompt=False)
 
 
 def force_sync():
@@ -221,35 +202,101 @@ def env_override():
             parallel(cmds, prompt=False)
 
 
+def configure_remote():
+    cluster_servers = get_cluster_servers(force=False)
+    master_dns = cluster_servers['brokers'][0]
+    key_val_dict = {}
+    for variable in ['SCHEMA_REGISTRY_HOST', 'CONNECT_HOST', 'CONTROL_CENTER_HOST', 'BROKER_LEADER', 'DB_HOST']:
+        key_val_dict[variable] = master_dns
+    key_val_dict['BROKER_LIST'] = ','.join(['{}:9092'.format(s) for s in cluster_servers['brokers']])
+    key_val_dict['ZOOKEEPER_LIST'] = '{}:2181'.format(cluster_servers['brokers'][0])
+    key_val_dict['KSQL_LEADER'] = cluster_servers['ksqls'][0]
+    key_val_dict['KSQL_LIST'] = ','.join(['http://{}:8088'.format(s) for s in cluster_servers['ksqls']])
+    update_dotenv(key_val_dict)
+
+
 def clean_logs():
     parallel(['peg sshcmd-cluster {} "sudo sh -c \'truncate -s 0 /var/lib/docker/containers/*/*-json.log\'"'.format(key) for key in CLUSTERS], prompt=False)
 
 
-def full_run():
-    input('\nProperly change RESOURCE_NAME_VERSION_ID. Press ENTER when done: ')
-    sync()
-    input('\nRun this on the broker: python3 setup/stage3/prepare.py c. Press ENTER when done: ')
-    input('\nRun this on the broker: python3 query.py setup && python3 query.py stat ')
-
-
-def generate_realtime_data(avro_random_gen_dir, num_iterations):
+def generate_data(data_name, schema_path, num_iterations, avro_random_gen_dir, key_field=None):
     # https://github.com/confluentinc/avro-random-generator
-    # python3 operations.py generate_realtime_data /Users/a67/Project/insight/avro-random-generator 100000
-    tmp_path = './realtime_{}.jsonlines'.format(num_iterations)
-    output_path = 'data/realtime_{}.data'.format(num_iterations)
+    # python3 operations.py generate_data realtime ./schemas/realtime_value_datagen.avsc 100000 /Users/a67/Project/insight/avro-random-generator user_id
+    # python3 operations.py generate_data historical ./schemas/historical.avsc 20000 /Users/a67/Project/insight/avro-random-generator
+    tmp_path = './{}_{}.data'.format(data_name, num_iterations)
+    output_path = 'data/{}_{}.data'.format(data_name, num_iterations)
     os.system('{program} -c -f {schema_path} -i {num_iterations} -o {output_path}'.format(
         program=join(avro_random_gen_dir, 'arg'),
-        schema_path='schemas/{}'.format(getenv('FILE_SCHEMA_REALTIME')),
+        schema_path=schema_path,
         num_iterations=num_iterations,
         output_path=tmp_path,
     ))
-    with open(tmp_path, 'r') as f, open(output_path, 'w') as g:
-        for line in f:
-            if not line:
-                continue
-            key = json.loads(line.strip())['user_id']
-            g.write('{}:{}'.format(key, line))
-    os.remove(tmp_path)
+    if key_field:
+        with open(tmp_path, 'r') as f, open(output_path, 'w') as g:
+            for line in f:
+                if not line:
+                    continue
+                key = json.loads(line.strip())[key_field]
+                if key.isdigit():
+                    key = '"{}"'.format(key)
+                g.write('{}:{}'.format(key, line))
+        os.remove(tmp_path)
+    else:
+        os.system('mv {} {}'.format(tmp_path, output_path))
+
+
+def configure_producer():
+    print("""
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo add-apt-repository --remove -y ppa:andrei-pozolotin/maven3
+        sudo apt-get -y update
+        sudo dpkg --configure -a
+        sudo apt-get install -y maven unzip python3-pip libpq-dev python-dev
+        cd ~/ && wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz
+        cd ~/ && tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka
+        wget http://packages.confluent.io/archive/3.0/confluent-3.0.0-2.11.zip
+        unzip confluent-3.0.0-2.11.zip && mv confluent-3.0.0 confluent
+        cd ~/heart_watch && pip3 install -r requirements.txt
+    """)
+
+
+def configure_website():
+    print("""
+        # Run this on your local
+        python3 operations.py sync <host_ip>
+
+        # Run all the following on remote host
+
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
+        sudo add-apt-repository --remove -y ppa:andrei-pozolotin/maven3
+        sudo apt-get -y update
+        sudo apt-get install -y python3-pip libpq-dev python-dev
+        cd ~/heart_watch && pip3 install -r requirements.txt
+        sudo apt install -y npm
+        cd ~/heart_watch && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+        . ~/.nvm/nvm.sh
+        nvm install 12.4.0
+        cd ~/heart_watch/ui && npm i
+        sudo npm i react-scripts -g
+
+        mv .env.template .env
+        # Then properly edit .env
+
+        # run this if in production
+        npm run build
+        sudo npm install -g serve
+        export SERVER_HOST=<host ip> && sudo serve -s build -l tcp://0.0.0.0:80
+
+        # run this is in development
+        npm start
+
+        # Run the flask server in a background process
+        cd ~/heart_watch/ui && python3 server.py
+
+        # Run the react server in a background process
+        cd ~/heart_watch/ui && npm start
+    """)
 
 
 Fire()

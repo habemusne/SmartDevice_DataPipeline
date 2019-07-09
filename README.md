@@ -78,3 +78,34 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose # check if it works
 ```
+
+# UI Setup
+
+Due to time constraint, setting up the UI is not in the docker deployment pipeline. This means that it needs a few more commands to spin the UI up.
+
+## System Requirements
+My mac: node v12.4.0, npm 6.9.0
+My EC2 ubuntu: node 12.4.0, npm 6.9.0 (installation procedure is provided below)
+
+## Setup
+
+```
+# If operating on EC2, install node and npm
+sudo apt install -y npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install 12.4.0
+
+# install dependencies
+cd ~/heart_watch/ui && npm i
+
+# Attention: if you see "found xx vunerabilities", let them be.
+
+# install the start up script to your system. Version on my Mac is react-scripts@3.0.1, EC2 react-scripts@3.0.1
+npm i react-scripts -g # on Mac
+sudo npm i react-scripts -g # on EC2
+
+# Run the server in a background process
+cd ~/heart_watch/ui && python3 server.py
+
+```

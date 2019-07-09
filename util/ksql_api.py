@@ -1,12 +1,10 @@
 import requests
-from os import getenv
 
 from util.logger import logger
 
 
 class Api:
     def __init__(self, host=None, port=8088):
-        host = host or getenv('KSQL_LEADER')
         self._ksql_endpoint = 'http://{}:{}/ksql'.format(host, port)
         self._query_endpoint = 'http://{}:{}/query'.format(host, port)
 
