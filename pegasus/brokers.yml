@@ -3,7 +3,7 @@ subnet_id: subnet-0bf671b4bcc2d80c8
 num_instances: 3
 key_name: mark-chen-IAM-key-pair
 security_group_ids: sg-033835348406c7269
-instance_type: m4.large
+instance_type: r5a.large
 tag_name: brokers
 vol_size: 20
 role: master

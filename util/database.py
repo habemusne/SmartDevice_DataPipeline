@@ -1,5 +1,3 @@
-# Assumption: 1. use postgres 2. table column names/types are exactly the same as input data's field names/types
-
 import json
 from os import getenv
 from sqlalchemy.ext.automap import automap_base
@@ -13,14 +11,12 @@ from util.logger import logger
 
 class Database(Resource):
     def __init__(self, **kwargs):
+        """
+        @param data_name: table name
+        @param seed_path: data in jsonlines file. Table column names/types are exactly the same as this data's field names/types
+        """
         self.name = kwargs.get('data_name', '')
-        connect_string = 'postgres://{}:{}@{}:{}/{}'.format(
-            kwargs.get('user', getenv('DB_USER')),
-            kwargs.get('password', getenv('DB_PASS')),
-            kwargs.get('host', getenv('DB_HOST')),
-            kwargs.get('port', getenv('DB_PORT')),
-            kwargs.get('db_name', getenv('DB_NAME'))
-        )
+        connect_string = 'postgres://postgres:postgres@{}:5432/postgres'.format(getenv('DB_HOST'))
         self.Base, self._engine = automap_base(), create_engine(connect_string)
         self.Base.prepare(self._engine, reflect=True)
         self._Model = self.get_model(self.name)

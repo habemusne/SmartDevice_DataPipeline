@@ -1,20 +1,21 @@
 import os
 import requests
 import json
-from os.path import join
 from os import getenv
+from os.path import join
 
 from util.logger import logger
 from util.resource import Resource
 
 
 class Topic(Resource):
-    def __init__(self, topic_name, num_partitions, replication_factor=1):
+    def __init__(self, control_center_host, topic_name, num_partitions, replication_factor=1, long_last=False):
         self.name = topic_name
         self._num_partitions = num_partitions
         self._replication_factor = replication_factor
-        self._base_url = 'http://{}:9021/2.0'.format(getenv('CONTROL_CENTER_HOST'))
+        self._base_url = 'http://{}:9021/2.0'.format(control_center_host)
         self._cluster_id = json.loads(requests.get(join(self._base_url, 'clusters/kafka')).text)[0]['clusterId']
+        self._long_last = long_last
 
     @Resource.log_notify
     def create(self, force_exit=True):
@@ -24,11 +25,11 @@ class Topic(Resource):
             'replicationFactor': self._replication_factor,
             'configs': {
                 'cleanup.policy': 'delete',
-                'delete.retention.ms': '300000',  # 5 minutes
-                'max.message.bytes': '1000012',
+                'delete.retention.ms': getenv('KAFKA_LOG_DELETE_RETENTION_MS'),  # 1 minute
+                'max.message.bytes': 1000012,
                 'min.insync.replicas': '1',
-                'retention.bytes': '1073741824',  # 1GB can hold 70-85 streaming files, each 100,000 msgs
-                'retention.ms': 3600000,  # msg lasts at most 1 hour, for demo
+                'retention.bytes': getenv('KAFKA_RENTENTION_BYTES'),
+                'retention.ms': getenv('KAFKA_RETENTION_MS_LONG') if self._long_last else getenv('KAFKA_RETENTION_MS_SHORT'),
             },
         }
         response = requests.put(

@@ -8,3 +8,6 @@ target/
 .env.override
 ui/node_modules
 cluster_servers.store
+ui/.env
+ui/build
+docker_volumes/connect/aws_credentials

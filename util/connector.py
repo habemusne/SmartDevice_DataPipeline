@@ -12,12 +12,12 @@ from util.topic import Topic
 
 class Connector(Resource):
     def __init__(self, **kwargs):
-        self._api_url = 'http://{}:{}/connectors'.format(
-            kwargs.get('host', getenv('CONNECT_HOST')),
-            kwargs.get('port', getenv('CONNECT_PORT'))
-        )
-        self._poll_interval = int(kwargs.get('poll_interval', getenv('POLL_INTERVAL')))
-        self._num_partitions = int(kwargs.get('num_partitions', getenv('NUM_PARTITIONS')))
+        """
+        @param host
+        @param poll_interval
+        """
+        self._api_url = 'http://{}:8083/connectors'.format(kwargs.get('host'))
+        self._poll_interval = kwargs.get('poll_interval')
 
     def _create(self, payload, force_exit=True):
         response = requests.post(self._api_url, json=payload)
@@ -40,35 +40,40 @@ class Connector(Resource):
 
 class JDBCSource(Connector):
     def __init__(self, **kwargs):
+        """
+        @param host
+        @param poll_interval
+
+        @param data_name
+        @param query
+        @param keyfield
+
+        @param control_center_host
+        """
         super().__init__(**kwargs)
         data_name = kwargs.get('data_name')
         self._table_name = data_name
         self.name = util.naming.connector_name(data_name)
         self._query = kwargs.get('query')
         if self._query:
-            self._topic = Topic(util.naming.topic_name(data_name), getenv('NUM_PARTITIONS'))
+            self._topic = Topic(kwargs.get('control_center_host'), util.naming.topic_name(data_name), int(getenv('NUM_PARTITIONS')), long_last=True)
         else:
             self._topic_prefix = util.naming.jdbc_topic_prefix()
-            self._topic = Topic(self._topic_prefix + data_name, getenv('NUM_PARTITIONS'))
+            self._topic = Topic(kwargs.get('control_center_host'), self._topic_prefix + data_name, int(getenv('NUM_PARTITIONS')), long_last=True)
 
-        self._db_host = kwargs.get('db_host', getenv('DB_HOST'))
-        self._db_port = kwargs.get('db_port', getenv('DB_PORT'))
-        self._db_user = kwargs.get('db_user', getenv('DB_USER'))
-        self._db_password = kwargs.get('db_password', getenv('DB_PASS'))
-        self._db_name = kwargs.get('db_name', getenv('DB_NAME'))
         self._keyfield = kwargs.get('keyfield')
 
     @Resource.log_notify
     def create(self):
-        db_connect_url_jdbc = 'jdbc:postgresql://{}:{}/{}'.format(self._db_host, self._db_port, self._db_name)
+        db_connect_url_jdbc = 'jdbc:postgresql://{}:5432/postgres'.format(getenv('DB_HOST'))
         
         payload = {
             'name': self.name,
             'config': {
                 'connector.class': 'io.confluent.connect.jdbc.JdbcSourceConnector',
                 'connection.url': db_connect_url_jdbc,
-                'connection.user': self._db_user,
-                'connection.password': self._db_password,
+                'connection.user': 'postgres',
+                'connection.password': 'postgres',
                 'poll.interval.ms' : self._poll_interval,
                 'numeric.mapping': 'best_fit',
                 'mode': 'bulk',
@@ -99,11 +104,21 @@ class JDBCSource(Connector):
 
 class Datagen(Connector):
     def __init__(self, **kwargs):
+        """
+        @param host
+        @param poll_interval
+
+        @param id
+        @param data_name
+        @param iterations
+        @param schema_path
+        @param schema_keyfield
+        """
         super().__init__(**kwargs)
         _id = kwargs.get('id', '')
         self.name = util.naming.connector_name(kwargs.get('data_name'), _id)
         topic_name = util.naming.topic_name(kwargs.get('data_name'), _id)
-        self._topic = Topic(topic_name, getenv('NUM_PARTITIONS'))
+        self._topic = Topic(topic_name, int(getenv('NUM_PARTITIONS')))
         self._iterations = kwargs.get('iterations')
         self._schema_path = kwargs.get('schema_path')
         self._schema_keyfield = kwargs.get('schema_keyfield')
@@ -121,7 +136,7 @@ class Datagen(Connector):
                 'schema.keyfield': self._schema_keyfield,
                 'transforms': 'insertGenerationAt',
                 'transforms.insertGenerationAt.type': 'org.apache.kafka.connect.transforms.InsertField$Value',
-                'transforms.insertGenerationAt.timestamp.field': getenv('GENERATED_AT_FIELD'),
+                'transforms.insertGenerationAt.timestamp.field': 'generated_at',
             }
         }
         self._topic.create()
@@ -148,7 +163,8 @@ class S3Sink(Connector):
                 's3.bucket.name': '',
             }
         }
+        raise NotImplementedError
 
     @Resource.log_notify
     def delete(self):
-        pass
+        raise NotImplementedError
