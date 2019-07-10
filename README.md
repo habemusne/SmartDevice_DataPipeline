@@ -80,7 +80,7 @@ Finally, KSQL joins the historical data with the real-time data, publishing to t
 
 ### When `MODE=dev`
 
-![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/internal.png "Dev Data Flow")
+![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/data_flow_dev.png "Dev Data Flow")
 
 
 ### When `MODE=prod`
