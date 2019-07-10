@@ -36,7 +36,6 @@ store = Store()
 def configure():
     configurables = dotenv_values(dotenv_path=ENV_FILE)
     key_val_dict = {}
-    import pdb; pdb.set_trace()
     for field in request.form:
         if field not in configurables:
             continue
@@ -76,16 +75,6 @@ def ksql_metrics():
         'ksql': 'describe extended {};'.format(resource_name),
     })
     result = { metric: parse(r'{}\W+(\d+)'.format(metric), response.text) for metric in METRICS }
-
-    # TODO: demo purpose...
-    if 'interim_3' == request.args.get('resource') and int(result['messages-per-sec']) > 0:
-        increment = max(int(np.random.normal(3, 2)), 0)
-        store.count += increment
-        store.count = min(store.count, 20000)
-        result['consumer-total-messages'] = store.count
-        result['consumer-messages-per-sec'] = increment
-        result['total-messages'] = store.count
-        result['messages-per-sec'] = increment
 
     return jsonify(result)
 
