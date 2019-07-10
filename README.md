@@ -87,6 +87,12 @@ Finally, KSQL joins the historical data with the real-time data, publishing to t
 
 ![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/data_flow.png "Prod Data Flow")
 
+# Performance Improvement
+
+According to the author, the original project handles ~14,000 messages with 3 m4.large brokers and 3 m4.large Spark workers ($0.6/hr). This project handles ~16,000 messages with 3 r5a.large brokers and 3 r5.large ksql servers ($0.717/hr) with 100 partitions and 30 producer processes. This is a 14% increase.
+
+About the measurement: I measure it in a very simple manner. I counted the elapsed time from when the first stream shows non-0 messages-per-second to when the final table shows 0 messages-per-second. The elapsed time is about 3 minutes, which means 16,000 messages on average.
+
 # Future Improvements
 
 1. Enable Zookeeper cluster. Currently, all services use a single Zookeeper. The Zookeeper cluster mode is not set up. This can become serious in production when it becomes unavailable.
