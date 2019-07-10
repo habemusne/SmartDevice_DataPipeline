@@ -32,6 +32,8 @@ Open `cluster_servers.store`, find the first broker. It is the "master broker" t
 Then ssh into each KSQL machine, run `cd ~/heart_watch && docker-compose up -d ksql-cli`.
 
 Finally, at the master broker run `docker-compose up -d control-center`. Open http://<master broker ip>:9021 and wait until 3 things happen: the main page shows number of brokers, the "connect" tab is working, and the "KSQL" tab is also working. Once all these are done, you are ready to run the project.
+  
+An extra note here is that if you are using external producer cluster (rather than using brokers by default), you need to run `docker-compose up -d schema-registry` on each producer.
 
 
 ### Phase 3: run the project
