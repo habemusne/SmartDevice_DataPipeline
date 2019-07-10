@@ -58,7 +58,7 @@ Kafka Connect brings historical data into the system. If env `MODE` is set to `d
 
 ### Schema Registry
 
-Schema registry ensures that the system can handle consistent data formats. Currently it is hosted on one of the brokers and all of the producers. The reason why a producer needs schema registry is that it uses [kafka-avro-console-producer](https://docs.confluent.io/current/schema-registry/serializer-formatter.html) to generate the data. This producer requires schema registry to ensure data format. It is certainly [possible](https://stackoverflow.com/questions/55478598/why-kafka-avro-console-producer-doesnt-honour-the-default-value-for-the-field) that they all use the schema registry service hosted on one of the brokers. Due to time constraint, I did not implement this feature to reduce the amount of services.
+Schema registry ensures that the system can handle consistent data formats. Currently it is hosted on one of the brokers and all of the producers. The reason why a producer needs schema registry is that it uses [kafka-avro-console-producer](https://docs.confluent.io/current/schema-registry/serializer-formatter.html) to generate the data. This producer requires schema registry to ensure data format. By default, they all use the schema-registry deployed locally, which is why we need multiple schema registry services. It is certainly [possible](https://stackoverflow.com/questions/55478598/why-kafka-avro-console-producer-doesnt-honour-the-default-value-for-the-field) that they all use the schema registry service hosted on one of the brokers. Due to time constraint, I did not implement this feature to reduce the amount of services.
 
 ### Confluent Dashboard
 
@@ -80,7 +80,7 @@ Finally, KSQL joins the historical data with the real-time data, publishing to t
 
 ### When `MODE=dev`
 
-![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/internal.drawio "Dev Data Flow")
+![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/internal.png "Dev Data Flow")
 
 
 ### When `MODE=prod`
