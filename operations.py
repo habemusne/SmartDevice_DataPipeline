@@ -9,13 +9,11 @@ from fire import Fire
 from time import sleep
 from dotenv import load_dotenv
 
-from util import parallel, get_cluster_servers, sync, update_dotenv
+from util import parallel, get_cluster_servers, sync, update_dotenv, CLUSTERS
 from util.logger import logger
-
 
 LOCAL_ROOT_DIR = dirname(abspath(__file__))
 REMOTE_ROOT_DIR = '/home/ubuntu/heart_watch'
-CLUSTERS = set(['brokers', 'ksqls'])
 load_dotenv(dotenv_path='./.env')
 
 
@@ -63,6 +61,8 @@ def stage3():
             'cd ~/heart_watch && pip3 install -r requirements.txt',
             'cd ~/ && wget http://apache.mirrors.pair.com/kafka/2.2.0/kafka_2.12-2.2.0.tgz',
             'cd ~/ && tar -xzf kafka_2.12-2.2.0.tgz && mv kafka_2.12-2.2.0 kafka',
+            'unzip confluent-3.0.0-2.11.zip && mv confluent-3.0.0 confluent',
+            'cd ~/heart_watch && pip3 install -r requirements.txt',
         ]
     for cmd in cmds:
         parallel(['peg sshcmd-cluster {} "{}"'.format(key, cmd) for key in CLUSTERS])
@@ -74,37 +74,6 @@ def stage3():
 
         Then log out and log back again. Then make sure than you can run docker-compose. If you can't, please manually fix it.
     """)
-
-def start_containers():
-    cmds = []
-    for i in range(1, int(len(getenv('BROKER_LIST').split(','))) + 1):
-        cmds.append('peg sshcmd-node brokers {} "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d zookeeper"'.format(i))
-    parallel(cmds, prompt=False)
-    sleep(5)
-
-    cmds = []
-    for i in range(1, int(len(getenv('BROKER_LIST').split(','))) + 1):
-        cmds.append('peg sshcmd-node brokers {} "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d broker"'.format(i))
-    parallel(cmds, prompt=False)
-    sleep(5)
-
-    cmds = []
-    cmds.append('peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d schema-registry connect rest-proxy database"')
-    cmds.append('peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml up -d"')
-    parallel(cmds, prompt=False)
-
-    sleep(20)
-    parallel([
-        'peg sshcmd-node brokers 1 "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml up -d control-center"',
-    ], prompt=False)
-
-
-def stop_containers():
-    parallel([
-        'peg sshcmd-cluster brokers "cd ~/heart_watch && docker-compose -f docker-compose/brokers.yml stop && docker-compose -f docker-compose/brokers.yml rm -f"',
-        'peg sshcmd-cluster ksqls "cd ~/heart_watch && docker-compose -f docker-compose/ksqls.yml stop && docker-compose -f docker-compose/ksqls.yml rm -f"',
-    ], prompt=False)
-
 
 def fetch():
     parallel(['peg fetch {}'.format(key) for key in CLUSTERS], prompt=False)

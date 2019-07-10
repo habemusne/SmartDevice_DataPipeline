@@ -1,111 +1,98 @@
-# Project description
+# Introduction
 
-There are two parts on a thorough workflow demo: the first is setting the project up, and the second is to make a query for the problem that the [previous project](https://github.com/anshu3769/SmartDevice_DataPipeline) addresses.
+Health monitoring services grow along with the increasing popularity of wearable devices. The amount of health data sent to such services is usually enormous. Maintainability is an important factor to keep such services available and extensible.
 
-This query is defined as follows: patients are users whose heart rates are out of their historical range but did not move in the previous X seconds (`WINDOW_TUMBLING_SECONDS` in .env file). Continuously find them out.
+[The original HeartWatch](https://github.com/anshu3769/SmartDevice_DataPipeline) is a project developed by a previous [Insight](https://www.insightdatascience.com/) fellow. It aims to handle the large-scale health data using Kafka + Spark streaming. Embedding these two major technologies, it requires engineers with in-depth knowledge in both to maintain. This is a human resource requirement that a company may not readily have. My project, the new HeartWatch, aims to resolve this problem by simplifying the architecture to Kafka-only.
 
-## Step 1: setup
+# The Problem Defined
 
-Firstly, install [pegasus](https://github.com/InsightDataScience/pegasus). Then
+Same as the original project, this project mainly answers this question by using data engineering techniques:
 
-```
-pip3 install requirements.txt
-python3 operations.py stage1
-```
+> Given all users' historical range of their heart rates, and given the real-time stream of their current location + heart rate.
+> Find out those whose heart rates are out of their historical ranges, but are not moving during the last X seconds.
 
-Then modify the `DNS_LIST` variable in `operations.py` to contain all the AWS dns's assigned from the previous step. Then:
+# The Data
 
-```
-python3 operations.py stage2
-python3 operations.py stage3
-```
+All data in this project are randomly generated using [avro random generator](https://github.com/confluentinc/avro-random-generator). There are mainly two data sets, historical and real-time. The historical data contains each user's historical heart rate range, and the real-time data contains each user's location and heart rate at the moment. Their schemas are [here](https://github.com/habemusne/heart_watch/blob/master/schemas/historical.avsc) and [here](https://github.com/habemusne/heart_watch/blob/master/schemas/realtime_value.avsc) respectively.
 
-## Step 2: run it
-
-`python3 operations.py start_containers`
-
-ssh into one of the machines (I usually use the broker one), then
-
-`python3 operations.py setup/stage3/prepare.py`
-
-## Step 3: start the analytics stream
-
-`python3 query.py setup`
-
-## step 4: see the result
-
-The UI is currently not available. You can go to the ksql server and run these commands to see the analytics result
-```
-docker-compose -f docker-compose/ksqls.yml exec ksql-cli ksql http://<KSQL_HOST>:8088
-set 'auto.offset.reset'='earliest';  # Optional
-select user_id, avg_heart_rate, processed_at from "FINAL_<RESOURCE_NAME_VERSION_ID>" window tumbling (size 10 seconds);
-```
+In the current set up, the historical data has 20,000 users (20,000 rows in turn).
 
 
-# Other Notes
+# The Pipeline Shift
 
-## A caveat for running in large scale
+![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/architecture_shift.png "Pipeline Shift")
 
-- When running large scale, it is necessary to install docker on all the machines. If you opt for pegasus for large scale deployment (instead of terraform or cloudfront), you may like to use `peg sshcmd-cluster` for convience. But with this command to run my bash scripts that installs docker-compose, you will see "cannot execute binary file: Exec format error" upon running `docker-compose`. Specifically, `peg sshcmd-cluster` fails to install a valid `docker-compose` with these 2 commands (they are directly copy pasted from docker's official website):
+The main goal of this project is to remove the Spark streaming module and use Kafka only. Therefore, it does not take too much care for the data downstreams. While the original project includes S3 and Redshift as the downstream, this project simply uses Kafka Connect's S3 sink connector to store the processed data on S3. Another mild difference is that this project uses ReactJS rather than Dash as the frontend.
 
-```
-sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+# A Closer Look
 
-Unfortunately, I was not able to figure out why. I was guessing that it's because of permission and ACL, but pegasus uses "ubuntu" as the user to login and run `sshcmd-cluster` (see `run_cmd_on_cluster` function in `util.sh`).
+![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/internal.png "Internal")
 
-A solution is to ssh into every machine, then run the above commands. But this is not scalable at all.
+This project splits the system into 3 clusters including a broker cluster, a KSQL cluster, a producer cluster. It also contains several other services including a database, a Kafka connect service, several schema registry services, a Confluent dashboard, and a frontend website. Except for the producer cluster and the website, all other clusters and services are dockerized and their  configurations are at [docker-compose.yml](https://github.com/habemusne/heart_watch/blob/master/docker-compose.yml).
 
-As another solution, I made a public AMI that comes with docker and docker-compose. This AMI is built on top of the AMI used by pegasus (in us-east-1). However, pegasus does not support customized AMI, and I feel like it's too much work to refactor it for that. The solution here is to actually modify pegasus's source code to use my AMI. It is located at `select_ami` method in `util.sh` under your pegasus home directory. Just replace the hard-coded AMI string with `ami-0d9ff4b3c55d0b601`, and you will be good to go.
+### Broker cluster
 
-If you want to know what I did on top of the original pegasus image, here are the commands:
+The broker cluster serves as the backbone of this project. In my own setup, I use 3 `r5a.large` machines. Each machine runs a broker and a zookeeper.
 
-```
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
-sudo add-apt-repository --remove -y ppa:andrei-pozolotin/maven3
-sudo apt-get -y update
-apt-cache policy docker-ce
-sudo kill -9 $(ps aux | grep 'dpkg' | awk '{print $2}')
-sudo kill -9 $(ps aux | grep 'apt' | awk '{print $2}')
-sudo killall -r dpkg
-sudo killall -r apt
-sudo dpkg --configure -a
-sudo apt-get install -y docker-ce python3-pip libpq-dev python-dev maven awscli
-sudo usermod -aG docker ubuntu
-sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose # check if it works
-```
+### KSQL cluster
 
-# UI Setup
+The KSQL cluster works on the analytics processing of the data. In my own setup, I use 3 `r5.large` machines. Each machine runs 1 KSQL server and 1 KSQL shell client.
 
-Due to time constraint, setting up the UI is not in the docker deployment pipeline. This means that it needs a few more commands to spin the UI up.
+### Producer cluster
 
-## System Requirements
-My mac: node v12.4.0, npm 6.9.0
-My EC2 ubuntu: node 12.4.0, npm 6.9.0 (installation procedure is provided below)
+The producer cluster is used to send real-time data to the broker cluster. In my own setup, I use 3 `t2.xlarge` machines. Each machine can have X producer processes where X is configurable as the `NUM_PRODUCERS_PROCESSES_PER_MACHINE` env. Each process reads the whole real-time data file and send each message (as avro) to the brokers. For demo purpose, once they are invoked, they will constantly run until the env `PRODUCER_RUN` is set to `0`.
 
-## Setup
+However, the producer cluster is not necessary for running this project.
 
-```
-# If operating on EC2, install node and npm
-sudo apt install -y npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-. ~/.nvm/nvm.sh
-nvm install 12.4.0
+If env `MODE` is set to `dev`, then the project will use [DatagenConnector](https://github.com/confluentinc/kafka-connect-datagen) to stream random real-time data. Keep in mind that this connector cannot run in multi-process.
 
-# install dependencies
-cd ~/heart_watch/ui && npm i
+If env `MODE` is set to `prod`, but `PRODUCER_LIST` is not set, then the brokers will be used as producers as default.
 
-# Attention: if you see "found xx vunerabilities", let them be.
+### Database
 
-# install the start up script to your system. Version on my Mac is react-scripts@3.0.1, EC2 react-scripts@3.0.1
-npm i react-scripts -g # on Mac
-sudo npm i react-scripts -g # on EC2
+The postgres database hosts historical data. The project uses the Kafka Connect service to bring them into the system. Currently, the database is hosted on one of the brokers.
 
-# Run the server in a background process
-cd ~/heart_watch/ui && python3 server.py
+### Kafka Connect
 
-```
+Kafka Connect brings historical data into the system. If env `MODE` is set to `dev`, then it is also in charge of generating random real-time data to the system. Currently, Kafka Connect is hosted on one of the brokers, and there can only be 1 instance.
+
+### Schema Registry
+
+Schema registry ensures that the system can handle consistent data formats. Currently it is hosted on one of the brokers and all of the producers. The reason why a producer needs schema registry is that it uses [kafka-avro-console-producer](https://docs.confluent.io/current/schema-registry/serializer-formatter.html) to generate the data. This producer requires schema registry to ensure data format. It is certainly [possible](https://stackoverflow.com/questions/55478598/why-kafka-avro-console-producer-doesnt-honour-the-default-value-for-the-field) that they all use the schema registry service hosted on one of the brokers. Due to time constraint, I did not implement this feature to reduce the amount of services.
+
+### Confluent Dashboard
+
+The Confluent Dashboard is used to monitor, operate, and manage the brokers. It also allows to run KSQL queries. Currently, it is hosted on one of the brokers.
+
+### The Website
+
+The website module mainly serves to display simply metrics of the KSQL tables/streams during the system running. It consists of a simple [Flask backend](https://github.com/habemusne/heart_watch/blob/master/ui/server.py) and a [ReactJS frontend](https://github.com/habemusne/heart_watch/tree/master/ui).
+
+# Data Flow
+
+As aforementioned, the historical data is conveyed by Kafka Connect to the system. It is constructed as a KSQL table from the topic it goes to.
+
+The source of real-time data differs between `dev` and `prod` mode. In `dev`, the `DataGenConnector` generates random data on-the-fly. In `prod`, producers are in charge of reading a `jsonlines` real-time data file and send each line to the system. The details are shown in the two diagrams below. Note that the former cannot be multi-processed.
+
+In either case, the real time data goes to a single topic, the real-time topic. The KSQL servers then brings the data from this topic to a stream. Another stream is created from this stream in order to repartition the data by the correct key.
+
+Finally, KSQL joins the historical data with the real-time data, publishing to the final topic. The website displays the metrics of both the first stream (in order to show producer's message-producing speed) and the final table (in order to show KSQL's message-consumption speed).
+
+### When `MODE=dev`
+
+![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/internal.drawio "Dev Data Flow")
+
+
+### When `MODE=prod`
+
+![alt text](https://github.com/habemusne/heart_watch/blob/master/presentation/data_flow.png "Prod Data Flow")
+
+# Future Improvements
+
+1. Enable Zookeeper cluster. Currently, all services use a single Zookeeper. The Zookeeper cluster mode is not set up. This can become serious in production when it becomes unavailable.
+2. Explore performance improvements. The system can now run with ease, making performance experiments easy. It currently does not process too many data per second, which is a potential area for more experiments.
+3. Improve code reusability. Currently this project serves only for health data analytics. It'd be great if it can handle more analytic tasks.
+
+# Project Setup
+
+Please visit [this page](https://github.com/habemusne/heart_watch/blob/master/SETUP.md) for project setup instructions.
