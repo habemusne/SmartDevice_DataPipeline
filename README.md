@@ -1,5 +1,7 @@
 # Introduction
 
+[Demo link](data-pipeline.club)
+
 Health monitoring services grow along with the increasing popularity of wearable devices. The amount of health data sent to such services is usually enormous. Maintainability is an important factor to keep such services available and extensible.
 
 [The original HeartWatch](https://github.com/anshu3769/SmartDevice_DataPipeline) is a project developed by a previous [Insight](https://www.insightdatascience.com/) fellow. It aims to handle the large-scale health data using Kafka + Spark streaming. Embedding these two major technologies, it requires engineers with in-depth knowledge in both to maintain. This is a human resource requirement that a company may not readily have. My project, the new HeartWatch, aims to resolve this problem by simplifying the architecture to Kafka-only.
