@@ -11,3 +11,6 @@ cluster_servers.store
 ui/.env
 ui/build
 docker_volumes/connect/aws_credentials
+operation_notes.txt
+ui/server_old.py
+ui/src/App_old.js

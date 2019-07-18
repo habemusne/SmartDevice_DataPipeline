@@ -14,7 +14,7 @@ from flask_cors import CORS
 
 import util.naming
 from util.ksql_api import Api
-from util import update_dotenv, Store
+from util import update_dotenv
 
 METRICS = [
     'consumer-total-messages',
@@ -30,7 +30,6 @@ CORS(app)
 ENV_FILE = join(root_dir, '.env')
 load_dotenv(dotenv_path=ENV_FILE)
 api = Api(host=getenv('KSQL_LEADER'))
-store = Store()
 
 @app.route('/configure', methods=['POST'])
 def configure():

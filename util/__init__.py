@@ -72,4 +72,5 @@ def update_dotenv(key_val_dict):
 
 
 class Store:
-    count = 0
+    count1 = 0
+    count2 = 0
