@@ -14,7 +14,7 @@ from flask_cors import CORS
 
 import util.naming
 from util.ksql_api import Api
-from util import update_dotenv, Store
+from util import update_dotenv
 
 METRICS = [
     'consumer-total-messages',
@@ -30,7 +30,6 @@ CORS(app)
 ENV_FILE = join(root_dir, '.env')
 load_dotenv(dotenv_path=ENV_FILE)
 api = Api(host=getenv('KSQL_LEADER'))
-store = Store()
 
 @app.route('/configure', methods=['POST'])
 def configure():
@@ -76,16 +75,6 @@ def ksql_metrics():
         'ksql': 'describe extended {};'.format(resource_name),
     })
     result = { metric: parse(r'{}\W+(\d+)'.format(metric), response.text) for metric in METRICS }
-
-    # TODO: demo purpose...
-    if 'interim_3' == request.args.get('resource') and int(result['messages-per-sec']) > 0:
-        increment = max(int(np.random.normal(3, 2)), 0)
-        store.count += increment
-        store.count = min(store.count, 20000)
-        result['consumer-total-messages'] = store.count
-        result['consumer-messages-per-sec'] = increment
-        result['total-messages'] = store.count
-        result['messages-per-sec'] = increment
 
     return jsonify(result)
 

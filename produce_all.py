@@ -10,12 +10,13 @@ from util import parallel, get_cluster_servers
 load_dotenv(dotenv_path='./.env')
 topic_name = util.naming.topic_name('realtime')
 
-brokers = get_cluster_servers(force=False)['brokers']
+cluster_servers = get_cluster_servers(force=False)
+brokers = cluster_servers['brokers']
 cmds = []
 producer_cluster = 'producers' if getenv('PRODUCER_LIST') else 'brokers'
 remote_realtime_data_path = join(getenv('DIR_DATA'), getenv('FILE_DATA_REALTIME'))
 
-for i in range(len(brokers)):
+for i in range(len(cluster_servers[producer_cluster])):
     for _ in range(int(getenv('NUM_PRODUCERS_PROCESSES_PER_MACHINE'))):
         # cmds.append("""peg sshcmd-node {cluster} {index} " \
         #     ~/kafka/bin/kafka-console-producer.sh \
