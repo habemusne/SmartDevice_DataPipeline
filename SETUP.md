@@ -1,7 +1,3 @@
-# Introduction
-
-This is the setup instruction for this project. This project is complicated, I am not able to guarentee that the procedure works 100% perfect.
-
 ### Phase 1: setup the environment
 
 First thing to know is that this project heavily relies on [pegasus](https://github.com/InsightDataScience/pegasus), an aws-cli wrapper. Install it.
@@ -139,8 +135,3 @@ sudo npm i react-scripts -g # on EC2
 cd ~/heart_watch/ui && python3 server.py
 
 ```
-
-
-### If You Are Insight fellow
-
-If you are an Insight fellow and are not too familiar with DE, I don't recommend you to set up my project. If you do, you might end up hating me and this project, just as how I hated a previous fellow's project --- I wasted 2 weeks on setting it up but failed.
