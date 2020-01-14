@@ -1,6 +1,6 @@
 # Introduction
 
-[Demo link](http://data-pipeline.club)
+[Presentation slides](https://habemusne-public.s3.amazonaws.com/Mark_Chen.pptx)
 
 Health monitoring services grow along with the increasing popularity of wearable devices. The amount of health data sent to such services is usually enormous. Maintainability is an important factor to keep such services available and extensible.
 
